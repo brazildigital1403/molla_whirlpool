@@ -302,7 +302,7 @@
     align-items: center;
     gap: 12px;
     padding: 16px 20px;
-    background: linear-gradient(135deg, rgba(0, 160, 221, 0.10), rgba(80, 229, 150, 0.08));
+    background: linear-gradient(135deg, rgba(0, 160, 221, 0.12), rgba(13, 67, 107, 0.10));
     border-bottom: 1px solid rgba(13, 67, 107, 0.06);
   }
   .whp-drawer-user-avatar {
@@ -420,7 +420,7 @@
   white-space: nowrap;
 }
 .whp-role-chip.whp-role-admin {
-  background: linear-gradient(135deg, var(--whp-green), var(--whp-blue));
+  background: linear-gradient(135deg, var(--whp-blue), var(--whp-navy));
   color: var(--whp-navy);
 }
 @media (max-width: 760px) {
@@ -448,7 +448,7 @@
   width: 26px;
   height: 26px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--whp-blue), var(--whp-green));
+  background: linear-gradient(135deg, var(--whp-blue), var(--whp-navy));
   color: var(--whp-navy);
   display: grid;
   place-items: center;
@@ -568,18 +568,18 @@
   transition: background 160ms ease, color 160ms ease, transform 160ms ease;
 }
 .whp-dropdown-item:hover {
-  background: rgba(80, 229, 150, 0.14);
+  background: rgba(0, 160, 221, 0.14);
   color: var(--whp-navy);
   transform: translateX(2px);
 }
 .whp-dropdown-item.active {
-  background: linear-gradient(135deg, #50E596 0%, #00A0DD 100%);
-  color: var(--whp-navy);
+  background: linear-gradient(135deg, #00A0DD 0%, #0D436B 100%);
+  color: #FFFFFF;
   font-weight: 800;
-  box-shadow: 0 4px 12px rgba(80, 229, 150, 0.30);
+  box-shadow: 0 4px 12px rgba(0, 160, 221, 0.30);
 }
 .whp-dropdown-item.active:hover {
-  background: linear-gradient(135deg, #50E596 0%, #00A0DD 100%);
+  background: linear-gradient(135deg, #00A0DD 0%, #0D436B 100%);
   transform: translateX(0);
 }
 .whp-dropdown-item.is-disabled {
@@ -655,7 +655,7 @@
     overflow: hidden;
     transition: max-height 260ms ease;
     padding-left: 14px;
-    border-left: 2px solid rgba(80, 229, 150, 0.45);
+    border-left: 2px solid rgba(0, 160, 221, 0.45);
     margin-left: 18px;
   }
   .whp-drawer-group.is-expanded .whp-drawer-submenu {
@@ -676,14 +676,14 @@
     transition: background 160ms ease, color 160ms ease, transform 160ms ease;
   }
   .whp-drawer-sublink:hover {
-    background: rgba(80, 229, 150, 0.14);
+    background: rgba(0, 160, 221, 0.14);
     transform: translateX(2px);
   }
   .whp-drawer-sublink.active {
-    background: linear-gradient(135deg, #50E596 0%, #00A0DD 100%);
-    color: var(--whp-navy);
+    background: linear-gradient(135deg, #00A0DD 0%, #0D436B 100%);
+    color: #FFFFFF;
     font-weight: 800;
-    box-shadow: 0 4px 12px rgba(80, 229, 150, 0.30);
+    box-shadow: 0 4px 12px rgba(0, 160, 221, 0.30);
   }
   .whp-drawer-sublink.is-disabled {
     color: rgba(13, 67, 107, 0.42);

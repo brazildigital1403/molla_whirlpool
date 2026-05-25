@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Central do Cliente | Whirlpool Brasil</title>
-  <meta name="description" content="Central do cliente Whirlpool Brasil — Jornada, Conteúdo Social, Aprovação de Peças e Arquivos." />
+  <meta name="description" content="Central do cliente Whirlpool Brasil — Conteúdo Social, Aprovação de Peças e Arquivos." />
   <link rel="icon" type="image/webp" href="/img/logo_whirlpool.webp" />
   <script src="/assets/auth.js"></script>
   <link rel="stylesheet" href="/assets/header.css" />
@@ -15,12 +15,11 @@
       --blue: #00A0DD;
       --blue-soft: #7FCDE9;
       --success: #50E596;
-      --green: #50E596;
-      --green-soft: #A8F2C9;
       --light: #F1F5F9;
       --white: #FFFFFF;
       --text: #0D436B;
       --muted: #5B7280;
+      --amber: #F59E0B;
       --shadow: 0 18px 40px rgba(13, 67, 107, 0.10);
       --shadow-lg: 0 24px 60px rgba(13, 67, 107, 0.16);
       --radius: 22px;
@@ -40,8 +39,8 @@
       place-items: center;
       padding: 64px 24px 56px;
       background:
-        radial-gradient(circle at 85% 15%, rgba(0, 160, 221, 0.18), transparent 42%),
-        radial-gradient(circle at 10% 80%, rgba(13, 67, 107, 0.10), transparent 42%),
+        radial-gradient(circle at 85% 15%, rgba(0, 160, 221, 0.22), transparent 42%),
+        radial-gradient(circle at 10% 80%, rgba(13, 67, 107, 0.14), transparent 42%),
         linear-gradient(135deg, #F1F5F9 0%, #FFFFFF 100%);
       position: relative;
       overflow: hidden;
@@ -101,11 +100,6 @@
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 24px;
     }
-    .grid-single {
-      grid-template-columns: 1fr;
-      margin-top: 24px;
-    }
-    .card-wide { max-width: none; }
 
     .card {
       background: var(--white);
@@ -128,7 +122,7 @@
       top: 0; left: 0; right: 0;
       height: 5px;
       background: linear-gradient(90deg, var(--blue), var(--navy));
-      opacity: 0.9;
+      opacity: 0.95;
     }
     .card:hover {
       transform: translateY(-6px);
@@ -146,10 +140,19 @@
       text-transform: uppercase;
       align-self: flex-start;
     }
-    .card.tag-jor .tag { background: rgba(0, 160, 221, 0.14); }
-    .card.tag-social .tag { background: linear-gradient(135deg, rgba(0, 160, 221, 0.18), rgba(80, 229, 150, 0.18)); }
-    .card.tag-end .tag { background: rgba(80, 229, 150, 0.20); color: var(--navy); }
-    .card.tag-arq .tag { background: rgba(13, 67, 107, 0.10); color: var(--navy); }
+    /* Variantes — todas em tons de azul Whirlpool */
+    .card.tag-social .tag {
+      background: linear-gradient(135deg, rgba(0, 160, 221, 0.18), rgba(13, 67, 107, 0.14));
+      color: var(--navy);
+    }
+    .card.tag-end .tag {
+      background: rgba(13, 67, 107, 0.10);
+      color: var(--navy);
+    }
+    .card.tag-arq .tag {
+      background: rgba(0, 160, 221, 0.10);
+      color: var(--navy);
+    }
 
     .card h2 {
       font-size: 24px;
@@ -224,20 +227,13 @@
     <div class="hero">
       <img src="/img/logo_whirlpool.webp" alt="Whirlpool" class="brand-mark" />
       <span class="eyebrow">Whirlpool Brasil · Central do Cliente</span>
-      <h1>Tudo da campanha num <strong>só lugar</strong></h1>
-      <p class="lede">Acompanhe a jornada, valide conteúdos sociais, aprove peças e acesse os arquivos da Whirlpool Brasil — num hub único, atualizado em tempo real pela Agência Molla.</p>
+      <h1>Tudo da marca num <strong>só lugar</strong></h1>
+      <p class="lede">Acompanhe o conteúdo social, aprove peças e acesse os arquivos da Whirlpool Brasil — num hub único, atualizado em tempo real pela Agência Molla.</p>
     </div>
   </section>
 
   <main>
     <div class="grid">
-      <a class="card tag-jor" href="/jornada">
-        <span class="tag">Jornada</span>
-        <h2>Jornada da Marca</h2>
-        <p>Linha do tempo macro com todas as ativações, eventos e marcos da Whirlpool — visão única e cronológica.</p>
-        <span class="cta">Abrir jornada</span>
-      </a>
-
       <a class="card tag-social" href="/social">
         <span class="badge-soon">Em breve</span>
         <span class="tag">Social</span>

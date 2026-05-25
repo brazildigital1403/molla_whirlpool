@@ -24,12 +24,6 @@
   const NAV_ITEMS = [
     {
       type: 'link',
-      href: '/jornada',
-      id: 'jornada',
-      label: 'Jornada'
-    },
-    {
-      type: 'link',
       href: '/social',
       id: 'social',
       label: 'Social'

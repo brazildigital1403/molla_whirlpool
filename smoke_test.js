@@ -167,7 +167,6 @@ const REQUIRED = [
   { file: 'public/assets/config.js', re: /exyqqiquhiswrhcpdemf\.supabase\.co/, label: 'SUPABASE_URL real' },
   { file: 'public/assets/config.js', re: /sb_publishable_vXIcUhTY/,        label: 'publishable key real' },
   { file: 'public/assets/header.js', re: /id: 'social'/,                   label: "NAV_ITEMS contem id 'social'" },
-  { file: 'public/assets/header.js', re: /id: 'jornada'/,                  label: "NAV_ITEMS contem id 'jornada'" },
   { file: 'public/assets/header.js', re: /id: 'aprovacao'/,                label: "NAV_ITEMS contem id 'aprovacao'" },
   { file: 'public/assets/header.js', re: /id: 'arquivos'/,                 label: "NAV_ITEMS contem id 'arquivos'" },
   { file: 'public/assets/header.css',re: /--success: #50E596/,             label: '--success no :root (regra ouro #10)' },
@@ -190,6 +189,48 @@ for (const r of REQUIRED) {
   if (r.re.test(content)) ok(r.label);
   else ko(`${r.label} — nao achou padrao em ${r.file}`);
 }
+
+// ============================================================
+// SECAO 7 · CHECKS S2 · ajustes visuais
+// ============================================================
+console.log(`\n${YEL}7. Ajustes S2 aplicados${RST}`);
+
+// 7a) Jornada removida do NAV_ITEMS
+const headerJs = read('public/assets/header.js');
+if (!/id:\s*'jornada'/.test(headerJs)) ok("NAV_ITEMS sem 'jornada' (desabilitada S2)");
+else ko("NAV_ITEMS AINDA tem 'jornada' — devia ter sido removido");
+
+// 7b) Index sem card de Jornada
+const indexHtml = read('public/index.html');
+if (!/href="\/jornada"/.test(indexHtml)) ok("index.html sem card de Jornada");
+else ko("index.html AINDA tem card de Jornada");
+
+// 7c) Index sem gradientes blue->green (devem ser navy->blue ou blue->navy)
+const blueGreenInIndex = /linear-gradient[^;]*var\(--blue\)[^;]*var\(--green\)/.test(indexHtml)
+                       || /linear-gradient[^;]*var\(--green\)[^;]*var\(--blue\)/.test(indexHtml);
+if (!blueGreenInIndex) ok("index.html sem gradient blue<->green");
+else ko("index.html AINDA tem gradient blue<->green");
+
+// 7d) header.css sem gradientes whp-green <-> whp-blue (perfil/admin)
+const headerCss = read('public/assets/header.css');
+const greenBlueGrad = /linear-gradient[^;]*--whp-green[^;]*--whp-blue/.test(headerCss)
+                    || /linear-gradient[^;]*--whp-blue[^;]*--whp-green/.test(headerCss);
+if (!greenBlueGrad) ok("header.css sem gradient whp-green<->whp-blue (perfil/admin azuis)");
+else ko("header.css AINDA tem gradient verde-azul em perfil/admin");
+
+// 7e) ajuda.css sem rgba(80,229,150) — verde como decoracao
+const ajudaCss = read('public/ajuda/ajuda.css');
+if (!/80,\s*229,\s*150/.test(ajudaCss)) ok("ajuda.css sem rgba verde decorativo");
+else ko("ajuda.css AINDA tem rgba(80,229,150,...)");
+
+// 7f) Verdes semanticos preservados no ajuda.html (botao Aprovar, status, KPI)
+const ajudaHtml = read('public/ajuda.html');
+if (/#50E596|#16A34A/.test(ajudaHtml)) ok("ajuda.html preserva verdes semanticos (botao Aprovar, status)");
+else ko("ajuda.html perdeu verdes semanticos — UX de aprovacao fica inconsistente");
+
+// 7g) 3 areas em vez de 4
+if (/As 3 áreas/.test(ajudaHtml) && !/As 4 áreas/.test(ajudaHtml)) ok("ajuda mostra '3 areas' (sem Jornada)");
+else ko("ajuda ainda fala em '4 areas'");
 
 // ============================================================
 // SECAO 5 · ROTAS DESCARTADAS NAO PODEM EXISTIR NO vercel.json
