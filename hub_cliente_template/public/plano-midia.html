@@ -1,0 +1,1473 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Plano Tático de Mídia | MetLife 2026</title>
+  <script src="/assets/auth.js"></script>
+  <link rel="stylesheet" href="/assets/header.css" />
+  <link rel="stylesheet" href="/assets/breadcrumb.css" />
+  <link rel="stylesheet" href="/assets/footer.css" />
+  <style>
+    :root {
+      --navy: #003B5C;
+      --blue: #2DB5DF;
+      --teal: #27C7BD;
+      --green: #50E596;
+      --light: #EEF6F8;
+      --white: #FFFFFF;
+      --text: #003B5C;
+      --muted: #5B7280;
+      --shadow: 0 18px 40px rgba(0, 59, 92, 0.12);
+      --radius: 22px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--light);
+      color: var(--text);
+      line-height: 1.45;
+    }
+    header {
+      display: grid;
+      place-items: center;
+      padding: 80px 24px;
+      background: radial-gradient(circle at top right, rgba(80,229,150,.35), transparent 34%),
+                  linear-gradient(135deg, #EEF6F8 0%, #FFFFFF 100%);
+    }
+    .hero {
+      max-width: 1120px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 40px;
+      align-items: center;
+    }
+    .eyebrow {
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(45,181,223,.14);
+      color: var(--navy);
+      font-weight: 700;
+      margin-bottom: 18px;
+      font-size: 14px;
+    }
+    h1 {
+      font-size: clamp(42px, 7vw, 82px);
+      line-height: .95;
+      margin: 0 0 22px;
+      letter-spacing: -2px;
+    }
+    h2 {
+      font-size: clamp(30px, 4vw, 48px);
+      line-height: 1;
+      margin: 0 0 18px;
+      letter-spacing: -1px;
+    }
+    h3 { margin: 0 0 10px; font-size: 22px; }
+    h4 { margin: 14px 0 6px; font-size: 12px; text-transform: uppercase; letter-spacing: .5px; opacity: .85; }
+    p { margin: 0 0 14px; }
+    .lead {
+      font-size: 22px;
+      color: var(--muted);
+      max-width: 680px;
+    }
+    .hero-card {
+      background: var(--navy);
+      color: white;
+      padding: 32px;
+      border-radius: 32px;
+      box-shadow: var(--shadow);
+    }
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-top: 24px;
+    }
+    .metric {
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 18px;
+      padding: 18px;
+    }
+    .metric strong {
+      display: block;
+      font-size: 34px;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    nav {
+      /* substituído pela classe global .anchor-nav (breadcrumb.css)
+         que padroniza scroll lateral + hover azul + sticky em todas as páginas */
+    }
+    section { padding: 80px 24px; }
+    section.dark { background: var(--navy); color: white; }
+    section.dark h2 { color: white; }
+    section.dark .eyebrow { background: rgba(80,229,150,.20); color: var(--green); }
+    section.dark .lead { color: rgba(255,255,255,.78); }
+    .container { max-width: 1180px; margin: 0 auto; }
+    .section-intro { max-width: 820px; margin-bottom: 34px; }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .cards-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    .cards-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+    .card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 26px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(0,59,92,.06);
+    }
+    .card.dark { background: var(--navy); color: white; }
+    .card.dark-soft { background: rgba(255,255,255,.06); color: white; border-color: rgba(255,255,255,.14); }
+    .card.blue { background: var(--blue); color: white; }
+    .card.green { background: var(--green); color: var(--navy); }
+    .card.teal { background: var(--teal); color: var(--navy); }
+    .pill {
+      display: inline-block;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.18);
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+    .white-pill { background: rgba(0,59,92,.08); color: var(--navy); }
+    ul { padding-left: 18px; margin: 14px 0 0; }
+    li { margin: 7px 0; }
+    .table-wrap {
+      overflow-x: auto;
+      background: white;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 760px;
+    }
+    th, td {
+      padding: 18px;
+      text-align: left;
+      border-bottom: 1px solid rgba(0,59,92,.08);
+    }
+    th { background: var(--navy); color: white; }
+    tr:last-child td { border-bottom: none; font-weight: 700; }
+    .bench-table { min-width: auto; }
+    .bench-table th, .bench-table td { padding: 12px 14px; font-size: 14px; }
+    .bench-highlight {
+      margin-top: 14px;
+      padding: 12px 14px;
+      background: rgba(45,181,223,.12);
+      color: var(--navy);
+      border-radius: 12px;
+      font-weight: 800;
+      font-size: 14px;
+    }
+    .pyramid-svg {
+      max-width: 280px;
+      width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+    .invest-box {
+      background: rgba(255,255,255,.18);
+      padding: 14px;
+      border-radius: 12px;
+      margin-top: 16px;
+      text-align: center;
+    }
+    .invest-box strong {
+      font-size: 22px;
+      display: block;
+    }
+    .invest-box span {
+      font-size: 11px;
+      display: block;
+      margin-top: 4px;
+      opacity: .9;
+    }
+    .invest-box.on-green { background: rgba(0,59,92,.18); }
+    .mix-pct {
+      font-size: 56px;
+      line-height: 1;
+      font-weight: 900;
+      margin-bottom: 4px;
+    }
+    .mix-channel {
+      font-size: 16px;
+      font-weight: 800;
+      margin-bottom: 14px;
+      opacity: .9;
+    }
+    .big-stat {
+      background: rgba(255,255,255,.08);
+      padding: 24px;
+      border-radius: var(--radius);
+      text-align: center;
+    }
+    .big-stat strong {
+      display: block;
+      font-size: 46px;
+      line-height: 1;
+      margin-bottom: 6px;
+      font-weight: 900;
+    }
+    .big-stat span {
+      font-size: 14px;
+      opacity: .78;
+    }
+    .big-stat.accent { background: rgba(80,229,150,.18); }
+    .big-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .note {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 18px;
+    }
+    section.dark .note { color: rgba(255,255,255,.6); }
+    .quote-block {
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-top: 14px;
+    }
+    .msg-italic {
+      font-style: italic;
+      opacity: .9;
+    }
+    footer {
+      padding: 56px 24px;
+      background: var(--navy);
+      color: white;
+      text-align: center;
+    }
+    .cta {
+      display: inline-block;
+      margin-top: 20px;
+      background: var(--green);
+      color: var(--navy);
+      padding: 14px 22px;
+      border-radius: 999px;
+      font-weight: 800;
+      text-decoration: none;
+    }
+    @media (max-width: 920px) {
+      .hero, .cards, .cards-2, .cards-4 { grid-template-columns: 1fr; }
+      .big-stats { grid-template-columns: 1fr; }
+      .metric-grid { grid-template-columns: 1fr; }
+    }
+    footer .brand-footer-row {
+      margin-top: 32px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    footer .brand-logo-footer {
+      height: 24px;
+      width: auto;
+      opacity: 0.9;
+    }
+    footer .brand-footer-text {
+      font-size: 12px;
+      opacity: 0.7;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="page-subbar">
+    <div class="page-subbar-inner">
+      <span class="crumb"><a href="/">Central do Cliente</a> &nbsp;/&nbsp; <span class="crumb-group">Mídia</span> &nbsp;/&nbsp; <strong>Plano</strong></span>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <header>
+    <div class="hero">
+      <div>
+        <span class="eyebrow">Plano Estratégico de Marca e Mídia 2026</span>
+        <h1>Ativar. Amplificar.<br/>Converter.</h1>
+        <p class="lead">Transformar ativos proprietários em crescimento mensurável. É tempo de Copa do Mundo, é tempo de cuidado.</p>
+      </div>
+      <div class="hero-card">
+        <h3>Resumo executivo</h3>
+        <p>Campanha digital de 75 dias com foco em awareness, engajamento e captação leve, incluindo camada B2B no LinkedIn para corretores.</p>
+        <div class="metric-grid">
+          <div class="metric"><strong>R$ 340K</strong><span>investimento bruto</span></div>
+          <div class="metric"><strong>75 dias</strong><span>18/05 a 31/07/2026</span></div>
+          <div class="metric"><strong>11–12M</strong><span>impressões estimadas</span></div>
+          <div class="metric"><strong>3,2–3,7M</strong><span>brasileiros impactados</span></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="anchor-nav" aria-label="Navegação interna do Plano de Mídia">
+    <div class="anchor-nav-inner">
+      <a href="#problema">Diagnóstico</a>
+      <a href="#oportunidade">Oportunidade</a>
+      <a href="#pilares">Pilares</a>
+      <a href="#sistema">Sistema</a>
+      <a href="#publicos">Públicos</a>
+      <a href="#personas">Personas</a>
+      <a href="#ondas">Ondas</a>
+      <a href="#benchmark">Benchmark</a>
+      <a href="#investimento">Investimento</a>
+      <a href="#mix">Mix de canais</a>
+      <a href="#linkedin">LinkedIn</a>
+      <a href="#search">Sobre Google Ads</a>
+      <a href="#cenarios">Cenários</a>
+      <a href="#tatico">Plano tático</a>
+      <a href="#impacto">Impacto</a>
+    </div>
+  </nav>
+
+  <!-- PROBLEMA ESTRATÉGICO -->
+  <section id="problema">
+    <div class="container">
+      <div class="section-intro">
+        <span class="eyebrow white-pill">Diagnóstico</span>
+        <h2>O problema estratégico</h2>
+      </div>
+      <div class="cards">
+        <div class="card dark">
+          <h3>Hoje temos</h3>
+          <ul>
+            <li>Marca global forte.</li>
+            <li>Ativos proprietários únicos.</li>
+            <li>Presença institucional relevante.</li>
+          </ul>
+        </div>
+        <div class="card green">
+          <h3>Mas no Brasil</h3>
+          <ul>
+            <li>Não somos top of mind.</li>
+            <li>Não somos naturalmente associados a propósito e proteção.</li>
+            <li><strong>Market share (4%)</strong> ainda abaixo do potencial frente à nossa força global.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>E existe um risco</h3>
+          <p>Investir em 2026 sem alterar percepção é alocar capital sem gerar vantagem competitiva. Mas existem oportunidades para mudar o cenário.</p>
+          <p style="margin-top:14px;"><strong>Essa oportunidade terá o digital como principal vetor de construção de presença e frequência da campanha.</strong></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OPORTUNIDADE -->
+  <section id="oportunidade" class="dark">
+    <div class="container">
+      <div class="section-intro">
+        <span class="eyebrow">Premissa</span>
+        <h2 style="max-width: 820px;">A oportunidade.<br/>Isso não é publicidade — é vantagem competitiva estrutural.</h2>
+        <p class="lead">Ativos proprietários permitem construir autoridade emocional e diferenciação sustentável sem depender de patrocínio oficial.</p>
+      </div>
+      <div class="cards-2">
+        <div class="card dark-soft">
+          <h3 style="color: white;">Nossos assets</h3>
+          <ul>
+            <li>Um estádio sede da Copa (MetLife Stadium).</li>
+            <li>Uma fundação conectada ao Global Citizen.</li>
+            <li>Projetos sociais proprietários.</li>
+            <li>Um discurso legítimo sobre proteção.</li>
+          </ul>
+        </div>
+        <div class="card green">
+          <h3>Vamos mudar o patamar de percepção para:</h3>
+          <p class="quote-block">"MetLife transforma evento em legado, e legado em crescimento."</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PILARES -->
+  <section id="pilares">
+    <div class="container">
+      <div class="section-intro">
+        <span class="eyebrow white-pill">Nossa proposta</span>
+        <h2>Pilares · transformar 2026 no ano de ativação definitiva da marca no Brasil.</h2>
+        <p class="lead">Conceito forte + produção estruturada + escala digital = impacto real de marca.</p>
+      </div>
+      <div class="cards">
+        <div class="card dark">
+          <span class="pill">Pilar 1</span>
+          <h3>Conceito forte e memorável</h3>
+          <ul>
+            <li>Manifesto + slogan</li>
+            <li>Identidade visual consistente</li>
+            <li>Mensagem clara: "Patrocinadora Oficial do Cuidado com os Brasileiros"</li>
+            <li>Conexão emocional com o momento da Copa</li>
+          </ul>
+        </div>
+        <div class="card green">
+          <span class="pill white-pill">Pilar 2</span>
+          <h3>Produção criativa estruturada</h3>
+          <ul>
+            <li>Vídeo manifesto (30–45s)</li>
+            <li>Cortes e variações para cada canal</li>
+            <li>+36 peças adaptadas para Meta, YouTube e LinkedIn</li>
+            <li>Mensagem coerente e repetida com consistência</li>
+          </ul>
+        </div>
+        <div class="card blue">
+          <span class="pill">Pilar 3</span>
+          <h3>Amplificação digital nacional</h3>
+          <ul>
+            <li>75 dias de campanha (18/05 a 31/07)</li>
+            <li><strong>59% Meta · 23% YouTube · 18% LinkedIn</strong></li>
+            <li>~11–12M impressões estimadas</li>
+            <li>~3,2–3,7M brasileiros impactados</li>
+            <li>Frequência média alvo: 3 a 3,5</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SISTEMA DE AMPLIFICAÇÃO -->
+  <section id="sistema">
+    <div class="container">
+      <div class="section-intro">
+        <span class="eyebrow white-pill">Sistema de amplificação digital 2026</span>
+        <h2>Como o conceito ganha escala e impacto nacional</h2>
+        <p class="lead">Quatro blocos encadeados, do conteúdo à mensuração, garantem que a verba de R$ 340K bruta seja convertida em impacto real de marca.</p>
+      </div>
+      <div class="cards-4">
+        <div class="card dark">
+          <span class="pill">Bloco 1</span>
+          <h3>Conteúdo &amp; narrativa</h3>
+          <ul>
+            <li>Manifesto</li>
+            <li>Slogan</li>
+            <li>Identidade visual</li>
+            <li>Direcionamento criativo</li>
+          </ul>
+        </div>
+        <div class="card teal">
+          <span class="pill white-pill">Bloco 2</span>
+          <h3>Produção criativa estruturada</h3>
+          <ul>
+            <li>Vídeo manifesto</li>
+            <li>Cortes e versões curtas</li>
+            <li>Peças estáticas adaptadas</li>
+            <li>Variações por canal</li>
+          </ul>
+        </div>
+        <div class="card green">
+          <span class="pill white-pill">Bloco 3</span>
+          <h3>Amplificação digital · R$ 340K bruto</h3>
+          <ul>
+            <li>59% Meta · 23% YouTube · 18% LinkedIn</li>
+            <li>~11–12M impressões estimadas</li>
+            <li>Frequência média 3 a 3,5</li>
+            <li>75 dias contínuos</li>
+          </ul>
+        </div>
+        <div class="card blue">
+          <span class="pill">Bloco 4</span>
+          <h3>Impacto mensurável</h3>
+          <ul>
+            <li>Alcance ~3,2–3,7M</li>
+            <li>Engajamento qualificado</li>
+            <li>Crescimento de tráfego</li>
+            <li>Leads B2B (corretores)</li>
+            <li>Indicadores de brand impact</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PÚBLICOS ESTRATÉGICOS -->
+  <section id="publicos">
+    <div class="container">
+      <div class="section-intro">
+        <span class="eyebrow white-pill">Públicos estratégicos</span>
+        <h2>Quem queremos impactar</h2>
+        <p class="lead">O foco principal de mídia são prospects AB nacional. Clientes entram como reforço. Corretores ganham camada B2B dedicada no LinkedIn. Colaboradores recebem ações orgânicas.</p>
+      </div>
+      <div class="cards-2" style="grid-template-columns: 1.6fr 1fr; align-items: center; gap: 36px;">
+        <div class="cards-2">
+          <div class="card dark">
+            <span class="pill">Foco principal</span>
+            <h3>Prospects</h3>
+            <ul>
+              <li>Público AB · 28 a 50 anos</li>
+              <li>Nacional</li>
+              <li>Objetivo: awareness + captação leve</li>
+              <li>Canais: Meta + YouTube</li>
+            </ul>
+          </div>
+          <div class="card green">
+            <h3>Clientes</h3>
+            <ul>
+              <li>Reforço institucional</li>
+              <li>Reimpacto via mídia</li>
+              <li>Canais: Meta</li>
+            </ul>
+          </div>
+          <div class="card blue">
+            <span class="pill">Camada B2B</span>
+            <h3>Corretores</h3>
+            <ul>
+              <li>Fortalecimento de marca</li>
+              <li>Apoio comercial</li>
+              <li>Geração de leads B2B</li>
+              <li>Canais: LinkedIn (principal) + Meta (reforço)</li>
+            </ul>
+          </div>
+          <div class="card teal">
+            <h3>Colaboradores</h3>
+            <ul>
+              <li>Amplificação orgânica</li>
+              <li>Engajamento interno</li>
+              <li>Não são foco direto da mídia paga; podemos ativar ações orgânicas no Meta</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <svg viewBox="0 0 320 280" class="pyramid-svg" aria-label="Pirâmide de prioridades">
+            <polygon points="160,20 300,260 20,260" fill="rgba(45,181,223,.18)" stroke="#2DB5DF" stroke-width="2"/>
+            <text x="160" y="70" text-anchor="middle" font-size="20" font-weight="900" fill="#003B5C">Topo</text>
+            <text x="160" y="92" text-anchor="middle" font-size="13" fill="#003B5C">Corretores</text>
+            <text x="160" y="166" text-anchor="middle" font-size="20" font-weight="900" fill="#003B5C">Meio</text>
+            <text x="160" y="188" text-anchor="middle" font-size="13" fill="#003B5C">Clientes</text>
+            <text x="160" y="244" text-anchor="middle" font-size="20" font-weight="900" fill="#003B5C">Base</text>
+            <text x="160" y="262" text-anchor="middle" font-size="13" fill="#003B5C">Prospects</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PERSONAS -->
+  <section id="personas">
+    <div class="container">
+      <div class="section-intro">
+        <span class="eyebrow white-pill">Personas e segmentação</span>
+        <h2>Quatro perfis de pessoas dentro do nosso público</h2>
+        <p class="lead">Em vez de mirar em "interesse financeiro" genérico, a gente parte de momentos de vida e responsabilidades reais. Cada persona recebe uma mensagem diferente, no canal certo.</p>
+      </div>
+      <div class="cards-2">
+        <div class="card dark">
+          <span class="pill">Persona 1</span>
+          <h3>O Provedor responsável</h3>
+          <p>Adulto com família, filhos ou dependentes diretos. A pessoa que cuida dos outros antes de cuidar de si.</p>
+          <h4>Mensagem-chave</h4>
+          <p class="msg-italic">"Cuidar é proteger quem depende de você."</p>
+          <h4>Como a gente identifica essa pessoa</h4>
+          <ul>
+            <li>Sinais de família, filhos, escola, casa própria</li>
+            <li>Comportamento de busca por saúde e rotina familiar</li>
+            <li>Faixa típica: 32 a 50 anos</li>
+          </ul>
+        </div>
+
+        <div class="card green">
+          <span class="pill white-pill">Persona 2</span>
+          <h3>O Profissional em ascensão</h3>
+          <p>Pessoa em crescimento na carreira, começando a organizar a vida financeira e pensar a longo prazo.</p>
+          <h4>Mensagem-chave</h4>
+          <p class="msg-italic">"Seu futuro merece proteção desde agora."</p>
+          <h4>Como a gente identifica essa pessoa</h4>
+          <ul>
+            <li>Sinais de carreira, produtividade e empreendedorismo</li>
+            <li>Conteúdos de desenvolvimento pessoal e profissional</li>
+            <li>Faixa típica: 28 a 40 anos</li>
+          </ul>
+        </div>
+
+        <div class="card blue">
+          <span class="pill">Persona 3</span>
+          <h3>O Decisor de vida</h3>
+          <p>Pessoa vivendo uma mudança importante: casamento, primeiro filho, mudança de cidade, novo ciclo.</p>
+          <h4>Mensagem-chave</h4>
+          <p class="msg-italic">"Grandes momentos pedem mais segurança."</p>
+          <h4>Como a gente identifica essa pessoa</h4>
+          <ul>
+            <li>Sinais de casamento, maternidade e paternidade</li>
+            <li>Planejamento familiar e mudanças de endereço</li>
+            <li>Faixa típica: 28 a 45 anos</li>
+          </ul>
+        </div>
+
+        <div class="card teal">
+          <span class="pill white-pill">Persona 4</span>
+          <h3>O Público reimpactado</h3>
+          <p>Quem já interagiu com a MetLife: assistiu um vídeo, visitou o site, engajou com um post. A gente conversa de novo com essas pessoas em outro tom.</p>
+          <h4>Mensagem-chave</h4>
+          <p class="msg-italic">"Conheça como a MetLife pode cuidar de você."</p>
+          <h4>Como a gente identifica essa pessoa</h4>
+          <ul>
+            <li>Quem viu o vídeo manifesto (mesmo parcial)</li>
+            <li>Quem visitou nossos canais digitais</li>
+            <li>CRM e listas próprias da MetLife (quando disponíveis)</li>
+          </ul>
+        </div>
+      </div>
+      <p class="note">As personas são uma referência de planejamento de mensagem. A entrega real depende da capacidade de segmentação de cada plataforma (Meta, YouTube e LinkedIn) e da disponibilidade de dados próprios da MetLife.</p>
+    </div>
+  </section>
+
+  <!-- ONDAS -->
+  <section id="ondas">
+    <div class="container">
+      <div class="section-intro">
+        <span class="eyebrow white-pill">Ativação em 3 ondas · 75 dias</span>
+        <h2>Objetivos, formatos, mensagem, KPIs e distribuição de investimento</h2>
+        <p class="lead">Campanha progressiva de 75 dias, com lançamento em 18/05, intensificação no pico de atenção da Copa e consolidação ao longo de julho. LinkedIn Ads roda em todas as ondas, com intensificação na onda 2.</p>
+      </div>
+      <div class="cards">
+        <!-- ONDA 1 -->
+        <div class="card blue">
+          <span class="pill">Onda 1</span>
+          <h3>Lançamento &amp; reconhecimento</h3>
+          <p style="font-size: 13px; opacity: .9;"><strong>18/05 a 14/06 · 28 dias</strong></p>
+          <h4>Objetivo</h4>
+          <p>Gerar reconhecimento inicial da campanha e do conceito.</p>
+          <h4>Foco de mídia</h4>
+          <ul>
+            <li>Meta (vídeo e estático)</li>
+            <li>YouTube (vídeo manifesto)</li>
+            <li>LinkedIn institucional + Lead Gen Corretores</li>
+          </ul>
+          <h4>Estratégia</h4>
+          <ul>
+            <li>Introduzir o slogan</li>
+            <li>Criar base de alcance</li>
+            <li>Construir primeira frequência</li>
+            <li>Iniciar captação B2B</li>
+          </ul>
+          <h4>KPIs</h4>
+          <p>Alcance · Impressões · VTR · CPM · Visitas site + Brand Lift · CPL B2B</p>
+          <div class="invest-box">
+            <strong>R$ 102K</strong>
+            <span>Investimento bruto · 30% do total</span>
+          </div>
+          <h4>Mensagem-chave</h4>
+          <p class="msg-italic">"Patrocinadora Oficial do Cuidado"</p>
+        </div>
+
+        <!-- ONDA 2 -->
+        <div class="card green">
+          <span class="pill white-pill">Onda 2</span>
+          <h3>Intensificação &amp; pico</h3>
+          <p style="font-size: 13px;"><strong>15/06 a 12/07 · 28 dias</strong></p>
+          <h4>Objetivo</h4>
+          <p>Maximizar impacto no momento de atenção nacional.</p>
+          <h4>Foco de mídia</h4>
+          <ul>
+            <li>Meta com maior frequência</li>
+            <li>YouTube com cortes curtos</li>
+            <li>LinkedIn: institucional V2 + Engajamento B2B (Document Ad)</li>
+          </ul>
+          <h4>Estratégia</h4>
+          <ul>
+            <li>Aumentar repetição</li>
+            <li>Elevar frequência média</li>
+            <li>Estimular engajamento</li>
+            <li>Intensificar B2B</li>
+          </ul>
+          <h4>KPIs</h4>
+          <p>Frequência · Engajamento · Visualizações completas · Buscas da marca · Visitas site + Brand Lift</p>
+          <div class="invest-box on-green">
+            <strong>R$ 136K</strong>
+            <span>Investimento bruto · 40% do total</span>
+          </div>
+          <h4>Mensagem-chave</h4>
+          <p class="msg-italic">"Cuidado nos momentos que fazem história"</p>
+        </div>
+
+        <!-- ONDA 3 -->
+        <div class="card dark">
+          <span class="pill">Onda 3</span>
+          <h3>Consolidação &amp; performance</h3>
+          <p style="font-size: 13px; opacity: .9;"><strong>13/07 a 31/07 · 19 dias</strong></p>
+          <h4>Objetivo</h4>
+          <p>Transformar exposição em ação leve e consolidar lembrança.</p>
+          <h4>Foco de mídia</h4>
+          <ul>
+            <li>Retargeting Meta</li>
+            <li>Conversão leve</li>
+            <li>LinkedIn: retargeting B2B + reforço institucional</li>
+          </ul>
+          <h4>Estratégia</h4>
+          <ul>
+            <li>Reimpactar quem viu vídeos</li>
+            <li>Trabalhar tráfego e leads</li>
+            <li>Medir impacto indireto</li>
+            <li>Fechar jornada B2B</li>
+          </ul>
+          <h4>KPIs</h4>
+          <p>Cliques · Tráfego · Leads · Engajamento acumulado · Visitas site + Brand Lift</p>
+          <div class="invest-box">
+            <strong>R$ 102K</strong>
+            <span>Investimento bruto · 30% do total</span>
+          </div>
+          <h4>Mensagem-chave</h4>
+          <p class="msg-italic">"Proteção é constante"</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENCHMARK -->
+  <section id="benchmark">
+    <div class="container">
+      <div class="section-intro">
+        <span class="eyebrow white-pill">Benchmark de mercado</span>
+        <h2>Todas as projeções foram estimadas com base em benchmarks Brasil 2024–2025</h2>
+      </div>
+      <div class="cards">
+        <div class="card">
+          <h3>Custo de mídia (CPM)</h3>
+          <div class="table-wrap" style="margin-top: 14px; box-shadow: none;">
+            <table class="bench-table">
+              <tr><th>Canal</th><th>CPM médio (R$)</th></tr>
+              <tr><td>Meta Vídeo</td><td>18 a 30</td></tr>
+              <tr><td>YouTube</td><td>22 a 35</td></tr>
+              <tr><td>LinkedIn</td><td>50 a 90</td></tr>
+              <tr><td>CTV</td><td>28 a 45</td></tr>
+              <tr><td>Programática</td><td>25 a 40</td></tr>
+            </table>
+          </div>
+          <div class="bench-highlight">CPM médio ponderado: R$ 30</div>
+        </div>
+
+        <div class="card">
+          <h3>Frequência eficaz para awareness</h3>
+          <div class="table-wrap" style="margin-top: 14px; box-shadow: none;">
+            <table class="bench-table">
+              <tr><th>Faixa</th><th>Efeito</th></tr>
+              <tr><td>2 a 3</td><td>Visibilidade</td></tr>
+              <tr><td>4</td><td>Lembrança mínima</td></tr>
+              <tr><td>5 a 7</td><td>Recall consistente</td></tr>
+              <tr><td>8+</td><td>Dominância</td></tr>
+            </table>
+          </div>
+          <div class="bench-highlight">Frequência estimada no plano: 3 a 3,5</div>
+          <p class="note">Compatível com orçamento de R$ 340K bruto em 75 dias.</p>
+        </div>
+
+        <div class="card">
+          <h3>Custo por lead (CPL)</h3>
+          <div class="table-wrap" style="margin-top: 14px; box-shadow: none;">
+            <table class="bench-table">
+              <tr><th>Tipo</th><th>CPL médio (R$)</th></tr>
+              <tr><td>B2C leve (Meta)</td><td>30 a 70</td></tr>
+              <tr><td>B2B LinkedIn</td><td>60 a 100</td></tr>
+            </table>
+          </div>
+          <div class="bench-highlight">CPL estimado LinkedIn: R$ 60 a R$ 100 · 250 a 400 leads B2B</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INVESTIMENTO -->
+  <section id="investimento">
+    <div class="container">
+      <div class="section-intro">
+        <span class="eyebrow white-pill">Estratégia de investimento em mídia 2026</span>
+        <h2>Investimento total bruto: <span style="color: var(--blue);">R$ 340K</span></h2>
+        <p class="lead">Distribuição pensada para gerar base na onda 1, pico na onda 2 e otimização na onda 3. <strong>Todos os valores apresentados são brutos</strong> (antes de impostos e taxas).</p>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Período</th>
+              <th>Onda 1<br/><span style="opacity:.7; font-weight:600;">18/05 a 14/06</span></th>
+              <th>Onda 2<br/><span style="opacity:.7; font-weight:600;">15/06 a 12/07</span></th>
+              <th>Onda 3<br/><span style="opacity:.7; font-weight:600;">13/07 a 31/07</span></th>
+              <th>TOTAL</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Investimento bruto</td>
+              <td>R$ 102.000</td>
+              <td>R$ 136.000</td>
+              <td>R$ 102.000</td>
+              <td>R$ 340.000</td>
+            </tr>
+            <tr>
+              <td>CPM médio</td>
+              <td>R$ 29–32</td>
+              <td>R$ 29–32</td>
+              <td>R$ 29–32</td>
+              <td>~R$ 30</td>
+            </tr>
+            <tr>
+              <td>Impressões</td>
+              <td>~3,2M</td>
+              <td>~4,3M</td>
+              <td>~3,2M</td>
+              <td>~11–12M</td>
+            </tr>
+            <tr>
+              <td>Alcance estimado</td>
+              <td>~1,1–1,3M</td>
+              <td>~1,4–1,6M</td>
+              <td>~1,1–1,3M</td>
+              <td>~3,2–3,7M únicos acumulados</td>
+            </tr>
+            <tr>
+              <td>Duração</td>
+              <td>28 dias</td>
+              <td>28 dias</td>
+              <td>19 dias</td>
+              <td>75 dias</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="text-align: center; margin-top: 30px; font-size: 20px; font-weight: 800; color: var(--navy);">
+        Impactar cerca de 3,2 a 3,7 milhões de brasileiros em 75 dias.<br/>
+        <span style="font-size: 16px; font-weight: 600; color: var(--blue);">Com frequência eficaz e foco em marca.</span>
+      </p>
+      <p class="note">Valores apresentados como investimento bruto, sujeitos a impostos e taxas no fechamento operacional. CPM ponderado considera o mix entre Meta, YouTube e LinkedIn, sendo este último com CPM mais alto porém público qualificado B2B.</p>
+    </div>
+  </section>
+
+  <!-- MIX DE CANAIS -->
+  <section id="mix">
+    <div class="container">
+      <div class="section-intro">
+        <span class="eyebrow white-pill">Mix de canais e distribuição de investimento</span>
+        <h2>Três canais, três funções complementares</h2>
+        <p class="lead">Mix recalibrado para incluir a camada B2B do LinkedIn, mantendo Meta como motor de escala e YouTube como pilar emocional.</p>
+      </div>
+      <div class="cards">
+        <!-- META -->
+        <div class="card dark">
+          <div class="mix-pct">59%</div>
+          <div class="mix-channel">Meta Ads · R$ 200K</div>
+          <h4>Função</h4>
+          <p>Escala + frequência + retargeting</p>
+          <h4>Formatos</h4>
+          <ul>
+            <li>Vídeo curto (Reels e Feed)</li>
+            <li>Estático e carrossel</li>
+            <li>Conversão leve</li>
+            <li>Retargeting</li>
+          </ul>
+          <h4>Objetivo estratégico</h4>
+          <p>Construção de marca + consolidação</p>
+          <h4>Mensagem</h4>
+          <p>Território da marca + proteção + cuidado</p>
+        </div>
+
+        <!-- YOUTUBE -->
+        <div class="card blue">
+          <div class="mix-pct">23%</div>
+          <div class="mix-channel">YouTube · R$ 80K</div>
+          <h4>Função</h4>
+          <p>Construção emocional em vídeo</p>
+          <h4>Formatos</h4>
+          <ul>
+            <li>Vídeo manifesto</li>
+            <li>Cuts de 6 a 15 segundos</li>
+            <li>In-stream (pulável e não pulável)</li>
+          </ul>
+          <h4>Objetivo estratégico</h4>
+          <p>Maximizar reconhecimento e associação emocional</p>
+          <h4>Mensagem</h4>
+          <p>Proteção no momento de maior atenção nacional</p>
+        </div>
+
+        <!-- LINKEDIN -->
+        <div class="card teal">
+          <div class="mix-pct">18%</div>
+          <div class="mix-channel">LinkedIn · R$ 60K</div>
+          <h4>Função</h4>
+          <p>Legitimidade institucional + leads B2B</p>
+          <h4>Formatos</h4>
+          <ul>
+            <li>Sponsored Content (vídeo e imagem)</li>
+            <li>Lead Gen Form nativo</li>
+            <li>Document Ad para engajamento B2B</li>
+          </ul>
+          <h4>Objetivo estratégico</h4>
+          <p>Fortalecer posicionamento e gerar 250 a 400 leads de corretores</p>
+          <h4>Mensagem</h4>
+          <p>Proteção é nosso negócio. O cenário pode mudar — nossa missão não.</p>
+        </div>
+      </div>
+      <p class="note">Distribuição revista vs. plano anterior (60% Meta · 25% YouTube · 15% LinkedIn) para refletir o investimento bruto total de R$ 340K. A camada LinkedIn ganha peso para sustentar 3 campanhas paralelas (institucional, Lead Gen Corretores e engajamento B2B) e exige uma LP dedicada de corretores publicada antes de 18/05.</p>
+    </div>
+  </section>
+
+  <!-- LINKEDIN DETALHADO -->
+  <section id="linkedin">
+    <div class="container">
+      <div class="section-intro">
+        <span class="eyebrow white-pill">LinkedIn Ads · em detalhe</span>
+        <h2>Onde vão os R$ 60K do LinkedIn</h2>
+        <p class="lead">A camada B2B do LinkedIn é dividida em <strong>3 campanhas paralelas</strong> ao longo dos 75 dias. Cada uma com um papel claro: reconhecimento, captação de corretores e engajamento qualificado.</p>
+      </div>
+
+      <div class="cards">
+        <div class="card dark">
+          <span class="pill">Campanha 1</span>
+          <h3>Institucional · Reconhecimento de marca</h3>
+          <p>Apresentar a MetLife para executivos e profissionais de empresas médias e grandes.</p>
+          <h4>Para quem</h4>
+          <p>Diretores, gerentes, RH e tomadores de decisão de empresas médias e grandes.</p>
+          <h4>O que vai ao ar</h4>
+          <p>Posts patrocinados em vídeo (versão do manifesto adaptada) + posts patrocinados estáticos.</p>
+          <h4>Objetivo</h4>
+          <p>Reconhecimento de marca + visualizações de vídeo.</p>
+          <h4>Investimento</h4>
+          <p><strong>R$ 25K brutos</strong></p>
+        </div>
+
+        <div class="card green">
+          <span class="pill white-pill">Campanha 2</span>
+          <h3>Lead Gen · Captação de corretores</h3>
+          <p>Capturar leads diretos de corretores e parceiros comerciais sem tirar a pessoa do LinkedIn.</p>
+          <h4>Para quem</h4>
+          <p>Corretores de seguros, consultores financeiros, agentes autônomos e profissionais do setor.</p>
+          <h4>O que vai ao ar</h4>
+          <p>Formulário nativo do LinkedIn (a pessoa preenche sem sair da plataforma) + posts estáticos de apoio.</p>
+          <h4>Objetivo</h4>
+          <p>Gerar leads B2B qualificados.</p>
+          <h4>Investimento</h4>
+          <p><strong>R$ 25K brutos</strong> · Pré-requisito: LP de corretores no ar antes de 18/05.</p>
+        </div>
+
+        <div class="card blue">
+          <span class="pill">Campanha 3</span>
+          <h3>Engajamento institucional B2B</h3>
+          <p>Capturar interesse de público qualificado para impactar de novo na fase final da campanha.</p>
+          <h4>Para quem</h4>
+          <p>Público B2B amplo, com sobreposição às personas Provedor e Profissional em ascensão.</p>
+          <h4>O que vai ao ar</h4>
+          <p>Posts em PDF (Document Ad) com conteúdo aprofundado sobre proteção, bem-estar corporativo e MetLife Foundation + posts estáticos.</p>
+          <h4>Objetivo</h4>
+          <p>Engajamento sem CTA comercial direto. Quem interagir entra na lista de retargeting.</p>
+          <h4>Investimento</h4>
+          <p><strong>R$ 10K brutos</strong></p>
+        </div>
+      </div>
+
+      <div class="section-intro" style="margin-top: 54px;">
+        <h2>Distribuição dos 12 criativos LinkedIn</h2>
+        <p>Cada peça respeita a regra de pelo menos 10 dias no ar, exceto criativos contextuais (jogos da Copa) que rodam em janelas curtas pré-aprovadas.</p>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Campanha</th>
+              <th>Criativos</th>
+              <th>Formatos</th>
+              <th>Veiculação</th>
+              <th>Ondas</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Institucional</strong></td>
+              <td>5 peças (2 vídeos + 3 estáticos)</td>
+              <td>Posts patrocinados em vídeo e imagem</td>
+              <td>Mínimo 10 dias por peça</td>
+              <td>Ondas 1, 2 e 3</td>
+            </tr>
+            <tr>
+              <td><strong>Lead Gen Corretores</strong></td>
+              <td>4 peças (1 vídeo + 3 estáticos)</td>
+              <td>Formulário nativo + imagem</td>
+              <td>Mínimo 10 dias por peça</td>
+              <td>Ondas 1 e 2 (foco)</td>
+            </tr>
+            <tr>
+              <td><strong>Engajamento B2B</strong></td>
+              <td>3 peças (1 PDF + 2 estáticos)</td>
+              <td>Document Ad + imagem</td>
+              <td>Mínimo 10 dias por peça</td>
+              <td>Onda 2</td>
+            </tr>
+            <tr>
+              <td>Total</td>
+              <td>12 criativos</td>
+              <td>4 formatos LinkedIn</td>
+              <td>75 dias de campanha</td>
+              <td>3 ondas</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="section-intro" style="margin-top: 54px;">
+        <h2>O que essa camada B2B deve entregar</h2>
+        <p>Faixas estimadas com base em performance de campanhas B2B com perfil de seguros e serviços financeiros no LinkedIn Brasil, 2024–2025. Valores podem variar conforme criativo, segmentação e momento de leilão.</p>
+      </div>
+
+      <div class="cards-2">
+        <div class="card">
+          <h3>Pré-requisito de produção: LP de corretores</h3>
+          <p>A campanha de Lead Gen depende de uma <strong>landing page dedicada para corretores</strong>. Ela precisa estar no ar <strong>antes de 18/05</strong> para receber também os cliques que vierem do post patrocinado.</p>
+          <h4>O que essa LP precisa ter</h4>
+          <ul>
+            <li>Mensagem alinhada ao conceito da campanha</li>
+            <li>Proposta de valor pro corretor (apoio comercial, autoridade da marca, ferramentas)</li>
+            <li>Formulário próprio (nome, e-mail, telefone, região, tipo de atuação)</li>
+            <li>Provas sociais e selos institucionais MetLife</li>
+            <li>Pixel de retargeting Meta e LinkedIn instalado</li>
+          </ul>
+        </div>
+        <div class="card green">
+          <h3>Performance estimada · LinkedIn</h3>
+          <ul>
+            <li><strong>Impressões:</strong> 600 a 800 mil</li>
+            <li><strong>Pessoas únicas:</strong> 180 a 240 mil profissionais</li>
+            <li><strong>Cliques:</strong> 4 a 7 mil</li>
+            <li><strong>Taxa de clique média:</strong> 0,6% a 1% (de cada 100 impactados, ~1 clica)</li>
+            <li><strong>Leads B2B (corretores):</strong> 250 a 400</li>
+            <li><strong>Custo por lead:</strong> R$ 60 a R$ 100</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="note">A camada LinkedIn é o único canal da campanha com objetivo direto de gerar leads. Os outros canais (Meta e YouTube) focam em construção de marca.</p>
+    </div>
+  </section>
+
+  <!-- SOBRE GOOGLE ADS SEARCH -->
+  <section id="search">
+    <div class="container">
+      <div class="section-intro">
+        <span class="eyebrow white-pill">Sobre Google Ads (Search)</span>
+        <h2>Por que não investir em Google Search agora</h2>
+        <p class="lead">A pergunta sobre incluir Google Ads na campanha apareceu — e a recomendação é <strong>não alocar verba em Search neste momento</strong>. A explicação tem 4 motivos diretos.</p>
+      </div>
+
+      <div class="cards">
+        <div class="card dark">
+          <span class="pill">Motivo 1</span>
+          <h3>Esta é uma campanha de marca, não de captura</h3>
+          <p>O objetivo é construir reconhecimento, frequência e associação ao conceito "Patrocinadora Oficial do Cuidado".</p>
+          <p style="margin-top: 12px;">Google Search captura demanda que <em>já existe</em>. A gente quer <em>criar</em> demanda nova — coisa diferente.</p>
+        </div>
+        <div class="card">
+          <span class="pill white-pill">Motivo 2</span>
+          <h3>Falta top of mind para sustentar Search</h3>
+          <p>Com 4% de market share no Brasil e baixa associação à proteção, existe pouca gente pesquisando "MetLife" no Google hoje.</p>
+          <p style="margin-top: 12px;">Investir em Search agora seria competir por um volume pequeno de buscas, com custo por clique alto e retorno frágil.</p>
+        </div>
+        <div class="card blue">
+          <span class="pill">Motivo 3</span>
+          <h3>O conceito é emocional, não funcional</h3>
+          <p>"Patrocinadora Oficial do Cuidado" funciona em formatos imersivos: vídeo, redes sociais, display.</p>
+          <p style="margin-top: 12px;">Search exige texto curto e funcional ("Faça sua cotação · Plano X"), o que dilui a mensagem central da campanha.</p>
+        </div>
+        <div class="card green">
+          <span class="pill white-pill">Motivo 4</span>
+          <h3>Os mesmos R$ 60K rendem mais em LinkedIn</h3>
+          <p>Em Search, R$ 60K gerariam poucos cliques institucionais e nenhum aprendizado sobre marca.</p>
+          <p style="margin-top: 12px;">Em LinkedIn, os mesmos R$ 60K entregam <strong>250 a 400 leads de corretores</strong> + alcance B2B qualificado para retargeting.</p>
+        </div>
+      </div>
+
+      <div class="section-intro" style="margin-top: 54px;">
+        <h2>Quando faria sentido voltar com Search</h2>
+        <p class="lead">A recomendação não é "nunca". É "ainda não". Em uma segunda fase, Search vira complemento natural.</p>
+      </div>
+
+      <div class="cards-2">
+        <div class="card">
+          <h3>Em uma segunda fase (pós-julho)</h3>
+          <p>Depois de 75 dias construindo marca, o volume de buscas pelo termo "MetLife" tende a crescer organicamente.</p>
+          <p style="margin-top: 12px;">Esse é o momento certo pra entrar com <strong>Search defensivo</strong> (proteger nossa marca quando alguém pesquisa "MetLife" direto) + <strong>termos comerciais</strong> de longa cauda.</p>
+        </div>
+        <div class="card">
+          <h3>Como complemento, não como protagonista</h3>
+          <p>Em uma fase 2, a recomendação seria entre <strong>R$ 30K e R$ 50K</strong> em Search com foco em:</p>
+          <ul>
+            <li>Termos da marca (defensivo)</li>
+            <li>Termos competitivos (concorrentes diretos)</li>
+            <li>Long tail de produtos específicos (ex: "seguro de vida coletivo MetLife")</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="note">A lógica é de funil: campanhas de awareness em formatos imersivos vêm <strong>antes</strong> de captura de demanda em Search. Sem volume de busca pela marca, Search vira ruído caro.</p>
+    </div>
+  </section>
+
+  <!-- CENÁRIOS CONTEXTUAIS -->
+  <section id="cenarios">
+    <div class="container">
+      <div class="section-intro">
+        <span class="eyebrow white-pill">Gestão de cenários contextuais</span>
+        <h2>A estratégia não depende do resultado esportivo.<br/>Ela depende da consistência da marca.</h2>
+      </div>
+      <div class="cards">
+        <div class="card green">
+          <span class="pill white-pill">Cenário 1</span>
+          <h3>Brasil campeão (ou avanço até a final)</h3>
+          <h4>Contexto emocional</h4>
+          <p>Euforia, união, engajamento alto.</p>
+          <h4>Direcionamento de mensagem</h4>
+          <p class="msg-italic">"Proteção está presente nos momentos que fazem história."</p>
+          <h4>Tom</h4>
+          <p>Celebrativo, institucional, humano.</p>
+          <h4>Ação em mídia</h4>
+          <ul>
+            <li>Aumento de frequência nos criativos emocionais</li>
+            <li>Reforço de vídeo manifesto</li>
+            <li>Cortes comemorativos pré-aprovados</li>
+          </ul>
+          <h4>Objetivo</h4>
+          <p>Maximizar associação positiva à marca.</p>
+        </div>
+
+        <div class="card blue">
+          <span class="pill">Cenário 2</span>
+          <h3>Brasil eliminado</h3>
+          <h4>Contexto emocional</h4>
+          <p>Frustração, queda de engajamento esportivo.</p>
+          <h4>Direcionamento de mensagem</h4>
+          <p class="msg-italic">"Proteção é constante. Vai além do resultado."</p>
+          <h4>Tom</h4>
+          <p>Resiliência, continuidade, cuidado.</p>
+          <h4>Ação em mídia</h4>
+          <ul>
+            <li>Redução de peças com linguagem esportiva</li>
+            <li>Migração para discurso institucional</li>
+            <li>Reforço de marca e propósito</li>
+          </ul>
+          <h4>Objetivo</h4>
+          <p>Manter relevância sem oportunismo.</p>
+        </div>
+
+        <div class="card dark">
+          <span class="pill">Plano operacional</span>
+          <h3>Diferencial estratégico da nossa operação</h3>
+          <ul style="margin-top: 16px;">
+            <li>Criativos pré-produzidos para ambos cenários</li>
+            <li>Ajuste rápido de rota (D+1)</li>
+            <li>Planejamento de mídia flexível</li>
+            <li>Matriz criativa validada previamente</li>
+            <li>Peças contextuais rodam em janelas curtas (exceção à regra de 10 dias mínimos)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLANO TÁTICO DE CRIATIVOS -->
+  <section id="tatico">
+    <div class="container">
+      <div class="section-intro">
+        <span class="eyebrow white-pill">Plano tático de criativos</span>
+        <h2>O que vai ser produzido, em que volume e para onde vai</h2>
+        <p class="lead">Aqui o conceito vira ativo. Quantos vídeos, quantos estáticos, em qual canal e qual o papel de cada peça. Toda criação respeita 10 dias mínimos no ar — exceto peças contextuais (jogos da Copa, momentos comemorativos).</p>
+      </div>
+
+      <div class="cards-4">
+        <div class="card dark">
+          <div style="font-size: 56px; font-weight: 900; line-height: 1; margin-bottom: 8px;">10</div>
+          <h3>Vídeos</h3>
+          <p>1 manifesto principal, 4 cortes de 15 segundos, 4 versões curtas de 6 a 10 segundos e 1 institucional LinkedIn.</p>
+        </div>
+        <div class="card blue">
+          <div style="font-size: 56px; font-weight: 900; line-height: 1; margin-bottom: 8px;">20</div>
+          <h3>Estáticos</h3>
+          <p>Peças principais, variações de copy, carrosséis, CTAs leves e estáticos B2B para LinkedIn.</p>
+        </div>
+        <div class="card teal">
+          <div style="font-size: 56px; font-weight: 900; line-height: 1; margin-bottom: 8px;">6</div>
+          <h3>Peças LinkedIn</h3>
+          <p>Posts patrocinados, formulários nativos, posts em PDF e imagens dedicadas ao B2B.</p>
+        </div>
+        <div class="card green">
+          <div style="font-size: 56px; font-weight: 900; line-height: 1; margin-bottom: 8px;">36</div>
+          <h3>Ativos totais</h3>
+          <p>Total para ativação em Meta, YouTube e LinkedIn ao longo dos 75 dias da campanha.</p>
+        </div>
+      </div>
+
+      <div class="section-intro" style="margin-top: 54px;">
+        <h2>Distribuição por onda</h2>
+        <p class="lead">O volume acompanha o papel de cada fase: começar forte (Onda 1), ampliar variações (Onda 2) e preservar espaço pra otimização (Onda 3).</p>
+      </div>
+
+      <div class="cards">
+        <div class="card blue">
+          <span class="pill">Onda 1</span>
+          <h3>Lançamento · 13 criativos</h3>
+          <p style="font-size: 13px; opacity: .9;"><strong>18/05 a 14/06</strong></p>
+          <h4>O que entra no ar</h4>
+          <ul>
+            <li>5 vídeos: manifesto + cortes principais (Meta + YouTube)</li>
+            <li>4 peças estáticas: conceito, slogan e awareness (Meta)</li>
+            <li>4 peças LinkedIn: 1 vídeo institucional + 1 formulário + 2 estáticos</li>
+          </ul>
+          <h4>Foco</h4>
+          <p>Apresentar a campanha, criar primeira frequência e iniciar captação B2B.</p>
+        </div>
+
+        <div class="card green">
+          <span class="pill white-pill">Onda 2</span>
+          <h3>Intensificação · 14 criativos</h3>
+          <p style="font-size: 13px;"><strong>15/06 a 12/07</strong></p>
+          <h4>O que entra no ar</h4>
+          <ul>
+            <li>4 novos vídeos/cortes: versões curtas e reforço (Meta + YouTube)</li>
+            <li>5 peças estáticas: variações de copy, carrossel e engajamento (Meta)</li>
+            <li>5 peças LinkedIn: institucional + reforço Lead Gen + PDF engajamento</li>
+          </ul>
+          <h4>Foco</h4>
+          <p>Escala, frequência, aprendizado criativo e intensificação B2B.</p>
+        </div>
+
+        <div class="card dark">
+          <span class="pill">Onda 3</span>
+          <h3>Otimização · 9 + reaproveitamentos</h3>
+          <p style="font-size: 13px; opacity: .9;"><strong>13/07 a 31/07</strong></p>
+          <h4>O que entra no ar</h4>
+          <ul>
+            <li>2 vídeos/cortes: reforço dos melhores ângulos (Meta + YouTube)</li>
+            <li>4 peças estáticas: retargeting, CTA leve e conversão (Meta)</li>
+            <li>3 peças LinkedIn: reforço institucional + retargeting de leads</li>
+          </ul>
+          <h4>Foco</h4>
+          <p>Reimpactar públicos quentes, gerar ação leve e fechar jornada B2B.</p>
+        </div>
+      </div>
+
+      <div class="section-intro" style="margin-top: 54px;">
+        <h2>Matriz por tipo de campanha</h2>
+        <p class="lead">Cada criativo tem um papel dentro da estrutura de mídia. Essa matriz orienta o time de criação sobre o que cada peça precisa entregar.</p>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Tipo de campanha</th>
+              <th>Canal</th>
+              <th>Objetivo</th>
+              <th>Criativos previstos</th>
+              <th>Mensagem / abordagem</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Awareness</td>
+              <td>Meta + YouTube</td>
+              <td>Alcance, frequência e reconhecimento do conceito</td>
+              <td>1 manifesto + 4 cortes + 4 estáticos</td>
+              <td>"Patrocinadora Oficial do Cuidado com os Brasileiros"</td>
+            </tr>
+            <tr>
+              <td>Vídeo Views</td>
+              <td>YouTube + Meta</td>
+              <td>Construir associação emocional e reforçar narrativa</td>
+              <td>4 cortes de 15s + 4 versões de 6–10s</td>
+              <td>Cuidado, proteção, família, presença e Copa</td>
+            </tr>
+            <tr>
+              <td>Engajamento</td>
+              <td>Meta</td>
+              <td>Estimular interação com a campanha</td>
+              <td>5 a 6 estáticos e carrosséis</td>
+              <td>Perguntas leves, identificação, torcida, momentos da vida</td>
+            </tr>
+            <tr>
+              <td>Tráfego</td>
+              <td>Meta</td>
+              <td>Levar usuários ao site ou ambiente institucional</td>
+              <td>3 a 4 estáticos com CTA leve</td>
+              <td>"Conheça como a MetLife pode cuidar de você"</td>
+            </tr>
+            <tr>
+              <td>Conversão leve · Remarketing</td>
+              <td>Meta</td>
+              <td>Reimpactar usuários com maior sinal de interesse</td>
+              <td>2 vídeos + 3 a 4 estáticos</td>
+              <td>Reforço de confiança, proteção e próximos passos</td>
+            </tr>
+            <tr>
+              <td><strong>Institucional B2B</strong></td>
+              <td>LinkedIn</td>
+              <td>Brand Awareness para decisores e perfil corporativo</td>
+              <td>5 peças (2 vídeos + 3 estáticos)</td>
+              <td>Vídeo manifesto adaptado + cortes institucionais</td>
+            </tr>
+            <tr>
+              <td><strong>Lead Gen Corretores</strong></td>
+              <td>LinkedIn</td>
+              <td>Captação de leads B2B com formulário nativo</td>
+              <td>4 peças (1 vídeo + 3 estáticos)</td>
+              <td>"Seja parceiro MetLife" + LP dedicada</td>
+            </tr>
+            <tr>
+              <td><strong>Engajamento B2B</strong></td>
+              <td>LinkedIn</td>
+              <td>Captura de público qualificado para retargeting</td>
+              <td>3 peças (1 PDF + 2 estáticos)</td>
+              <td>Conteúdo aprofundado sobre proteção e MetLife Foundation</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="section-intro" style="margin-top: 54px;">
+        <h2>Matriz por canal</h2>
+        <p class="lead">Cada canal tem uma função específica dentro do plano.</p>
+      </div>
+
+      <div class="cards">
+        <div class="card dark">
+          <h3>Meta Ads</h3>
+          <p><strong>Função:</strong> escala, frequência, engajamento, tráfego e retargeting.</p>
+          <h4>Formatos</h4>
+          <p>Reels, Stories, Feed, carrossel e estáticos.</p>
+          <h4>Peças principais</h4>
+          <p>Cortes curtos, variações de copy, carrosséis e CTAs leves.</p>
+          <h4>Uso tático</h4>
+          <p>Testar ângulos criativos e escalar os melhores resultados.</p>
+        </div>
+        <div class="card blue">
+          <h3>YouTube Ads</h3>
+          <p><strong>Função:</strong> construção emocional e reforço da narrativa.</p>
+          <h4>Formatos</h4>
+          <p>In-stream pulável e vídeos curtos.</p>
+          <h4>Peças principais</h4>
+          <p>Manifesto, cortes de 15s e versões de 6 a 10s.</p>
+          <h4>Uso tático</h4>
+          <p>Reconhecimento e reforço da associação à mensagem central.</p>
+        </div>
+        <div class="card green">
+          <h3>LinkedIn Ads</h3>
+          <p><strong>Função:</strong> camada B2B, autoridade institucional e leads de corretores.</p>
+          <h4>Formatos</h4>
+          <p>Sponsored Content, Lead Gen Form, Document Ad e Single Image.</p>
+          <h4>Peças principais</h4>
+          <p>Vídeo institucional, formulário de corretores, Document Ad de engajamento.</p>
+          <h4>Uso tático</h4>
+          <p>Ativar 3 campanhas paralelas (Institucional, Lead Gen e Engajamento).</p>
+        </div>
+      </div>
+
+      <div class="section-intro" style="margin-top: 54px;">
+        <h2>KPIs e mensuração</h2>
+        <p class="lead">Brand Lift será avaliado em parceria com as plataformas, mas a leitura de impacto não depende só dele. Trabalhamos com faixas conservadoras de referência considerando os 3 canais.</p>
+      </div>
+
+      <div class="cards">
+        <div class="card">
+          <h3>Awareness</h3>
+          <p><strong>11 a 12M impressões</strong> · 3,2 a 3,7M pessoas únicas impactadas.</p>
+          <p>Frequência média próxima de 3, CPM controlado e acompanhamento de VTR (taxa de visualização completa de vídeo).</p>
+          <p style="margin-top: 12px;"><em>LinkedIn adiciona 600 a 800 mil impressões qualificadas em público B2B.</em></p>
+        </div>
+        <div class="card">
+          <h3>Engajamento</h3>
+          <p><strong>130K a 180K interações</strong> ao longo da campanha (curtidas, comentários, compartilhamentos, salvamentos).</p>
+          <p>LinkedIn contribui com engajamento qualificado em Document Ads e Sponsored Content.</p>
+        </div>
+        <div class="card">
+          <h3>Interesse · Tráfego</h3>
+          <p><strong>65K a 90K acessos</strong> gerados ao site e ambientes digitais.</p>
+          <p>Leitura complementar de tráfego direto, páginas visitadas e comportamento de navegação. Inclui cliques do LinkedIn para a LP de corretores.</p>
+        </div>
+        <div class="card">
+          <h3>Conversão leve · Meta</h3>
+          <p><strong>400 a 800 leads institucionais (Meta)</strong>.</p>
+          <p>Taxa de conversão aproximada entre 0,7% e 1% sobre o tráfego gerado. Não é o objetivo principal — é uma referência de leitura.</p>
+        </div>
+        <div class="card green">
+          <h3>Leads B2B · LinkedIn</h3>
+          <p><strong>250 a 400 leads de corretores</strong> via formulário nativo.</p>
+          <p>Custo por lead entre R$ 60 e R$ 100. Esse é o KPI principal da camada B2B e será reportado separadamente dos leads do Meta.</p>
+        </div>
+        <div class="card teal">
+          <h3>Brand Lift</h3>
+          <p>Avaliação em parceria com Meta e YouTube para medir aumento de:</p>
+          <ul>
+            <li>Reconhecimento espontâneo da marca</li>
+            <li>Lembrança de anúncio</li>
+            <li>Associação ao conceito da campanha</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="note">Volumetrias são referências de planejamento construídas a partir do investimento bruto, CPM médio ponderado, comportamento esperado por canal e benchmarks de mercado para campanhas digitais Brasil 2024–2025. A priorização final pode ser ajustada conforme disponibilidade de produção, aprovação das peças e aprendizados das primeiras semanas.</p>
+    </div>
+  </section>
+
+  <!-- IMPACTO -->
+  <section id="impacto" class="dark">
+    <div class="container">
+      <div class="section-intro">
+        <span class="eyebrow">Impacto consolidado</span>
+        <h2 style="max-width: 760px;">Marca forte não depende de um resultado esportivo. Depende de presença consistente.</h2>
+      </div>
+      <div class="big-stats">
+        <div class="big-stat">
+          <strong>+11M</strong>
+          <span>Impressões ao longo dos 75 dias</span>
+        </div>
+        <div class="big-stat">
+          <strong>+3,5M</strong>
+          <span>Pessoas únicas impactadas</span>
+        </div>
+        <div class="big-stat">
+          <strong>3 ondas</strong>
+          <span>Estratégia estruturada de ativação</span>
+        </div>
+      </div>
+      <div class="big-stats" style="grid-template-columns: repeat(2, 1fr); margin-top: 20px; max-width: 760px;">
+        <div class="big-stat accent">
+          <strong>250–400</strong>
+          <span>Leads B2B (corretores) via LinkedIn</span>
+        </div>
+        <div class="big-stat accent">
+          <strong>36 peças</strong>
+          <span>Adaptadas para Meta, YouTube e LinkedIn</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <h2>Ativar. Amplificar. Converter.</h2>
+    <p>O plano apresenta uma referência tática para execução e acompanhamento, mantendo margem para ajustes conforme performance criativa, aprovação de peças e aprendizado das plataformas.</p>
+    <a class="cta" href="#problema">Voltar ao início</a>
+    <div class="brand-footer-row">
+      <img src="/img/logo_molla.svg" alt="Molla" class="brand-logo-footer" />
+      <p class="brand-footer-text">Agência Molla</p>
+    </div>
+  </footer>
+
+  <script src="/assets/header.js"></script>
+</body>
+</html>

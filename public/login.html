@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Acesso | Whirlpool Brasil</title>
+  <meta name="description" content="Acesso ao hub Whirlpool Brasil." />
+  <style>
+    :root {
+      --navy: #0D436B;
+      --navy-deep: #082F49;
+      --blue: #00A0DD;
+      --blue-soft: #7FCDE9;
+      --success: #50E596;
+      --green: #50E596;
+      --green-soft: #A8F2C9;
+      --light: #F1F5F9;
+      --white: #FFFFFF;
+      --text: #0D436B;
+      --muted: #5B7280;
+      --danger: #E5484D;
+      --shadow: 0 18px 40px rgba(13, 67, 107, 0.12);
+      --shadow-lg: 0 24px 60px rgba(13, 67, 107, 0.18);
+      --radius: 22px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--light);
+      color: var(--text);
+      line-height: 1.5;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      background:
+        radial-gradient(circle at 85% 15%, rgba(80,229,150,.32), transparent 38%),
+        radial-gradient(circle at 10% 80%, rgba(0, 160, 221,.22), transparent 42%),
+        linear-gradient(135deg, #F1F5F9 0%, #FFFFFF 100%);
+    }
+
+    .card {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-lg);
+      padding: 48px 40px;
+      width: 100%;
+      max-width: 440px;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(13, 67, 107, 0.06);
+      text-align: center;
+    }
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, var(--blue), var(--navy));
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: rgba(0, 160, 221,.14);
+      color: var(--navy);
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 28px;
+      margin: 0 0 8px;
+      letter-spacing: -0.3px;
+    }
+    h1 strong {
+      background: linear-gradient(135deg, var(--navy), var(--blue));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    p.lede {
+      color: var(--muted);
+      font-size: 14px;
+      margin: 0 0 28px;
+    }
+
+    label {
+      display: block;
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--navy);
+      margin-bottom: 8px;
+      letter-spacing: 0.3px;
+      text-align: left;
+    }
+
+    form#loginForm { text-align: left; }
+    .field-spacer { height: 16px; }
+
+    .input-wrap {
+      position: relative;
+    }
+    input[type="password"], input[type="text"] {
+      width: 100%;
+      padding: 14px 48px 14px 16px;
+      border: 1.5px solid rgba(13, 67, 107, 0.14);
+      border-radius: 14px;
+      font-size: 15px;
+      font-family: inherit;
+      color: var(--navy);
+      background: var(--white);
+      transition: border-color 180ms ease, box-shadow 180ms ease;
+    }
+    input:focus {
+      outline: none;
+      border-color: var(--blue);
+      box-shadow: 0 0 0 4px rgba(0, 160, 221, 0.14);
+    }
+
+    .toggle-vis {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: transparent;
+      border: 0;
+      cursor: pointer;
+      color: var(--muted);
+      padding: 6px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    button.primary {
+      width: 100%;
+      margin-top: 20px;
+      padding: 14px;
+      border: 0;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--navy), var(--blue));
+      color: var(--white);
+      font-weight: 700;
+      font-size: 15px;
+      letter-spacing: 0.3px;
+      cursor: pointer;
+      transition: transform 180ms ease, box-shadow 180ms ease, opacity 180ms;
+      box-shadow: 0 8px 22px rgba(13, 67, 107, 0.18);
+    }
+    button.primary:hover { transform: translateY(-1px); box-shadow: 0 12px 28px rgba(13, 67, 107, 0.22); }
+    button.primary:active { transform: translateY(0); }
+    button.primary:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+    .error {
+      background: rgba(229, 72, 77, 0.08);
+      border: 1px solid rgba(229, 72, 77, 0.22);
+      color: var(--danger);
+      padding: 10px 14px;
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-top: 14px;
+      display: none;
+    }
+    .error.show { display: block; animation: shake 0.4s ease; }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-4px); }
+      75% { transform: translateX(4px); }
+    }
+
+    footer {
+      margin-top: 28px;
+      text-align: center;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    footer strong { color: var(--navy); }
+    footer .footer-logo {
+      height: 20px;
+      width: auto;
+      display: block;
+      margin: 0 auto 8px;
+      opacity: 0.85;
+    }
+
+    .brand-row {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 18px;
+    }
+    .brand-row .brand-img {
+      height: 38px;
+      width: auto;
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <div class="brand-row">
+      <img src="/img/logo_whirlpool.webp" alt="Whirlpool" class="brand-img" />
+    </div>
+    <span class="eyebrow">Whirlpool Brasil · Central do Cliente</span>
+    <h1>Acesso <strong>restrito</strong></h1>
+    <p class="lede">Identifique-se para acessar o hub da Whirlpool Brasil.</p>
+
+    <form id="loginForm" autocomplete="off">
+      <label for="userName">Seu nome</label>
+      <div class="input-wrap">
+        <input id="userName" type="text" placeholder="Como você quer ser identificado" autocomplete="name" maxlength="60" required />
+      </div>
+
+      <div class="field-spacer"></div>
+
+      <label for="password">Senha</label>
+      <div class="input-wrap">
+        <input id="password" type="password" placeholder="••••••••" autocomplete="current-password" required />
+        <button type="button" class="toggle-vis" id="toggleVis" aria-label="Mostrar senha">Ver</button>
+      </div>
+
+      <button class="primary" type="submit" id="submitBtn">Entrar</button>
+      <div class="error" id="errorBox" role="alert">Senha incorreta. Tenta de novo.</div>
+    </form>
+
+    <footer>
+      <img src="/img/logo_molla.svg" alt="Molla" class="footer-logo" />
+      <p><strong>Agência Molla</strong></p>
+    </footer>
+  </main>
+
+  <script src="/assets/auth.js"></script>
+  <script>
+    (function () {
+      'use strict';
+
+      // Se já autenticado, não fica preso na tela de login
+      if (window.WhirlpoolAuth && window.WhirlpoolAuth.isAuthenticated()) {
+        window.location.replace('/');
+        return;
+      }
+
+      const form = document.getElementById('loginForm');
+      const inputName = document.getElementById('userName');
+      const input = document.getElementById('password');
+      const errorBox = document.getElementById('errorBox');
+      const submitBtn = document.getElementById('submitBtn');
+      const toggleVis = document.getElementById('toggleVis');
+
+      toggleVis.addEventListener('click', () => {
+        const isPwd = input.type === 'password';
+        input.type = isPwd ? 'text' : 'password';
+        toggleVis.textContent = isPwd ? 'Ocultar' : 'Ver';
+        input.focus();
+      });
+
+      const showError = (msg) => {
+        errorBox.textContent = msg;
+        errorBox.classList.add('show');
+        setTimeout(() => errorBox.classList.remove('show'), 3000);
+      };
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const userName = (inputName.value || '').trim();
+        const pwd = input.value;
+
+        if (userName.length < 2) {
+          showError('Informe seu nome (mínimo 2 caracteres).');
+          inputName.focus();
+          return;
+        }
+
+        const ok = window.WhirlpoolAuth.login(pwd, userName);
+        if (ok) {
+          submitBtn.disabled = true;
+          submitBtn.textContent = 'Entrando...';
+          window.location.replace('/');
+        } else {
+          showError('Senha incorreta. Tenta de novo.');
+          input.value = '';
+          input.focus();
+        }
+      });
+
+      inputName.focus();
+    })();
+  </script>
+</body>
+</html>

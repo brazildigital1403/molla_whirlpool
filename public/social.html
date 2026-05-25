@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Conteúdo Social | Whirlpool Brasil</title>
+  <meta name="description" content="Calendário editorial, formatos e planejamento de publicações sociais da Whirlpool Brasil." />
+  <link rel="icon" type="image/webp" href="/img/logo_whirlpool.webp" />
+  <link rel="stylesheet" href="/assets/header.css" />
+  <link rel="stylesheet" href="/assets/breadcrumb.css" />
+  <link rel="stylesheet" href="/assets/footer.css" />
+  <script src="/assets/auth.js"></script>
+  <script src="/assets/header.js"></script>
+  <style>
+    :root {
+      --navy: #0D436B;
+      --blue: #00A0DD;
+      --success: #50E596;
+      --light: #F1F5F9;
+      --white: #FFFFFF;
+      --muted: #5B7280;
+      --shadow: 0 18px 40px rgba(13, 67, 107, 0.10);
+      --radius: 22px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--white);
+      color: var(--navy);
+      line-height: 1.55;
+      min-height: 100vh;
+    }
+
+    .so-hero {
+      padding: 64px 24px 48px;
+      background:
+        radial-gradient(circle at 80% 15%, rgba(0, 160, 221, 0.18), transparent 42%),
+        radial-gradient(circle at 12% 80%, rgba(80, 229, 150, 0.16), transparent 42%),
+        linear-gradient(135deg, #F1F5F9 0%, #FFFFFF 100%);
+    }
+    .so-hero-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .so-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: rgba(0, 160, 221, 0.14);
+      color: var(--navy);
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .so-dot {
+      width: 8px; height: 8px;
+      background: var(--blue);
+      border-radius: 50%;
+      animation: so-pulse 2s ease-in-out infinite;
+    }
+    @keyframes so-pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(1.18); }
+    }
+    .so-hero h1 {
+      font-size: clamp(32px, 5vw, 48px);
+      margin: 0 0 14px;
+      letter-spacing: -0.4px;
+      line-height: 1.1;
+    }
+    .so-hero h1 strong {
+      background: linear-gradient(135deg, var(--navy), var(--blue));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .so-hero p {
+      color: var(--muted);
+      font-size: 16px;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    main {
+      max-width: 1120px;
+      margin: -24px auto 64px;
+      padding: 0 24px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .so-construction {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 56px 40px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(13, 67, 107, 0.06);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .so-construction::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, var(--blue), var(--navy));
+    }
+    .so-construction-icon {
+      font-size: 56px;
+      margin-bottom: 18px;
+      display: block;
+    }
+    .so-construction h2 {
+      font-size: 26px;
+      margin: 0 0 14px;
+      letter-spacing: -0.3px;
+    }
+    .so-construction p.so-lede {
+      color: var(--muted);
+      font-size: 16px;
+      max-width: 580px;
+      margin: 0 auto 28px;
+    }
+
+    .so-roadmap {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      max-width: 760px;
+      margin: 0 auto;
+      text-align: left;
+    }
+    .so-roadmap-item {
+      background: var(--light);
+      border-radius: 14px;
+      padding: 18px 20px;
+      border: 1px solid rgba(13, 67, 107, 0.04);
+    }
+    .so-roadmap-item h3 {
+      font-size: 14px;
+      margin: 0 0 6px;
+      color: var(--navy);
+      font-weight: 800;
+    }
+    .so-roadmap-item p {
+      font-size: 13px;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    @media (max-width: 600px) {
+      .so-hero { padding: 44px 18px 36px; }
+      .so-construction { padding: 40px 22px; }
+      .so-construction-icon { font-size: 44px; }
+      .so-construction h2 { font-size: 22px; }
+      main { padding: 0 16px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-subbar">
+    <div class="page-subbar-inner">
+      <span class="crumb"><a href="/">Central do Cliente</a> &nbsp;/&nbsp; <strong>Social</strong></span>
+    </div>
+  </div>
+
+  <section class="so-hero">
+    <div class="so-hero-inner">
+      <span class="so-eyebrow"><span class="so-dot"></span>Social · Whirlpool Brasil</span>
+      <h1>Conteúdo <strong>Social</strong></h1>
+      <p>Calendário editorial, formatos por canal e planejamento das publicações sociais da Whirlpool — Instagram, LinkedIn, YouTube e mais.</p>
+    </div>
+  </section>
+
+  <main>
+    <div class="so-construction">
+      <span class="so-construction-icon">🚧</span>
+      <h2>Área em construção</h2>
+      <p class="so-lede">Tô organizando os dados de social pra entregar essa área completa. Em breve você verá calendário editorial, mock-ups de posts e o planejamento das publicações.</p>
+
+      <div class="so-roadmap">
+        <div class="so-roadmap-item">
+          <h3>📅 Calendário editorial</h3>
+          <p>Visão mensal/semanal das publicações, organizado por canal e tipo de conteúdo.</p>
+        </div>
+        <div class="so-roadmap-item">
+          <h3>🎨 Mock-ups por formato</h3>
+          <p>Pré-visualização das peças por canal — feed, stories, reels, carrossel, vídeo.</p>
+        </div>
+        <div class="so-roadmap-item">
+          <h3>📊 Planejamento estratégico</h3>
+          <p>Temas, pilares de conteúdo, métricas-alvo e janelas de publicação.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <h2>Conteúdo social com estratégia.</h2>
+    <p>Reúne calendário editorial, formatos, mock-ups e planejamento das publicações sociais da Whirlpool Brasil — pra que cliente e agência alinhem o conteúdo no mesmo ritmo da marca.</p>
+    <div class="brand-footer-row">
+      <img src="/img/logo_molla.svg" alt="Molla" class="brand-logo-footer" />
+      <p class="brand-footer-text">Agência Molla</p>
+    </div>
+  </footer>
+</body>
+</html>

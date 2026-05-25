@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jornada da Marca | Whirlpool Brasil</title>
+  <meta name="description" content="Linha do tempo macro da Whirlpool Brasil — ativações, eventos e marcos numa única visão temporal." />
+  <link rel="icon" type="image/webp" href="/img/logo_whirlpool.webp" />
+  <link rel="stylesheet" href="/assets/header.css" />
+  <link rel="stylesheet" href="/assets/breadcrumb.css" />
+  <link rel="stylesheet" href="/assets/footer.css" />
+  <link rel="stylesheet" href="/assets/bottom-sheet.css" />
+  <link rel="stylesheet" href="/jornada/jornada.css" />
+  <script src="/assets/auth.js"></script>
+  <script src="/assets/header.js"></script>
+  <script src="/assets/bottom-sheet.js"></script>
+</head>
+<body>
+  <div class="page-subbar">
+    <div class="page-subbar-inner">
+      <span class="crumb"><a href="/">Central do Cliente</a> &nbsp;/&nbsp; <strong>Jornada</strong></span>
+    </div>
+  </div>
+  <main>
+    <!-- HERO -->
+    <section class="jr-hero">
+      <div class="jr-hero-inner">
+        <span class="jr-eyebrow"><span class="jr-dot"></span>Jornada · Whirlpool Brasil</span>
+        <h1>Jornada da <strong>Marca</strong></h1>
+        <p class="jr-lede">Linha do tempo macro com todas as ativações da Whirlpool — eventos, mídia, conteúdo social e marcos institucionais numa visão temporal única.</p>
+      </div>
+    </section>
+
+    <!-- TOOLBAR (filtros inline — padrão arquivos.html) -->
+    <div class="jr-toolbar">
+      <div class="jr-toolbar-inner">
+        <div class="jr-search-row">
+          <select id="jrMonthFilter" class="jr-month-select" aria-label="Filtrar por mês"></select>
+          <span class="jr-count" id="jrCount"></span>
+          <span class="jr-toolbar-row-spacer"></span>
+          <span id="jrAdminSlot"></span>
+        </div>
+        <div class="jr-filters" id="jrFilters" role="tablist"></div>
+      </div>
+    </div>
+
+    <!-- TIMELINE -->
+    <section class="jr-timeline-section">
+      <div class="jr-timeline" id="jrTimeline"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <h2>Toda a marca numa visão só.</h2>
+    <p>A jornada centraliza ativações, mídia, eventos e marcos institucionais pra que cliente e agência compartilhem o mesmo contexto temporal da Whirlpool Brasil.</p>
+    <div class="brand-footer-row">
+      <img src="/img/logo_molla.svg" alt="Molla" class="brand-logo-footer" />
+      <p class="brand-footer-text">Agência Molla</p>
+    </div>
+  </footer>
+
+  <!-- Supabase + store + render -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="/assets/config.js"></script>
+  <script src="/assets/events-store.js"></script>
+  <script src="/jornada/jornada.js"></script>
+</body>
+</html>

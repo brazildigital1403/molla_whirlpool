@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Central do Cliente | Whirlpool Brasil</title>
+  <meta name="description" content="Central do cliente Whirlpool Brasil — Jornada, Conteúdo Social, Aprovação de Peças e Arquivos." />
+  <link rel="icon" type="image/webp" href="/img/logo_whirlpool.webp" />
+  <script src="/assets/auth.js"></script>
+  <link rel="stylesheet" href="/assets/header.css" />
+  <style>
+    :root {
+      --navy: #0D436B;
+      --navy-deep: #082F49;
+      --blue: #00A0DD;
+      --blue-soft: #7FCDE9;
+      --success: #50E596;
+      --green: #50E596;
+      --green-soft: #A8F2C9;
+      --light: #F1F5F9;
+      --white: #FFFFFF;
+      --text: #0D436B;
+      --muted: #5B7280;
+      --shadow: 0 18px 40px rgba(13, 67, 107, 0.10);
+      --shadow-lg: 0 24px 60px rgba(13, 67, 107, 0.16);
+      --radius: 22px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--white);
+      color: var(--text);
+      line-height: 1.5;
+      min-height: 100vh;
+    }
+
+    .page-hero {
+      display: grid;
+      place-items: center;
+      padding: 64px 24px 56px;
+      background:
+        radial-gradient(circle at 85% 15%, rgba(0, 160, 221, 0.18), transparent 42%),
+        radial-gradient(circle at 10% 80%, rgba(13, 67, 107, 0.10), transparent 42%),
+        linear-gradient(135deg, #F1F5F9 0%, #FFFFFF 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero {
+      max-width: 1120px;
+      width: 100%;
+      text-align: center;
+    }
+    .brand-mark {
+      display: block;
+      margin: 0 auto 20px;
+      height: 40px;
+      width: auto;
+    }
+    .eyebrow {
+      display: inline-block;
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: rgba(0, 160, 221, 0.12);
+      color: var(--navy);
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+    h1 {
+      font-size: clamp(34px, 5vw, 52px);
+      margin: 0 0 16px;
+      line-height: 1.1;
+      letter-spacing: -0.5px;
+    }
+    h1 strong {
+      background: linear-gradient(135deg, var(--navy), var(--blue));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .lede {
+      font-size: clamp(15px, 1.5vw, 18px);
+      color: var(--muted);
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    main {
+      max-width: 1120px;
+      margin: -40px auto 80px;
+      padding: 0 24px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+    }
+    .grid-single {
+      grid-template-columns: 1fr;
+      margin-top: 24px;
+    }
+    .card-wide { max-width: none; }
+
+    .card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 32px;
+      box-shadow: var(--shadow);
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      transition: transform 220ms ease, box-shadow 220ms ease;
+      border: 1px solid rgba(13, 67, 107, 0.06);
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, var(--blue), var(--navy));
+      opacity: 0.9;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+    }
+    .card .tag {
+      display: inline-block;
+      padding: 5px 12px;
+      border-radius: 999px;
+      background: rgba(0, 160, 221, 0.14);
+      color: var(--navy);
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      align-self: flex-start;
+    }
+    .card.tag-jor .tag { background: rgba(0, 160, 221, 0.14); }
+    .card.tag-social .tag { background: linear-gradient(135deg, rgba(0, 160, 221, 0.18), rgba(80, 229, 150, 0.18)); }
+    .card.tag-end .tag { background: rgba(80, 229, 150, 0.20); color: var(--navy); }
+    .card.tag-arq .tag { background: rgba(13, 67, 107, 0.10); color: var(--navy); }
+
+    .card h2 {
+      font-size: 24px;
+      margin: 0;
+      line-height: 1.25;
+    }
+    .card p {
+      color: var(--muted);
+      font-size: 15px;
+      margin: 0;
+      flex: 1;
+    }
+    .card .cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--navy);
+      font-weight: 700;
+      font-size: 14px;
+      margin-top: 8px;
+    }
+    .card .cta::after {
+      content: "→";
+      transition: transform 220ms ease;
+    }
+    .card:hover .cta::after {
+      transform: translateX(4px);
+    }
+
+    /* Badge "Em breve" pra cards em construção */
+    .card .badge-soon {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(245, 158, 11, 0.18);
+      color: #8A4F03;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+    }
+
+    footer {
+      text-align: center;
+      padding: 32px 24px 48px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    footer strong { color: var(--navy); }
+    footer .footer-logo {
+      height: 22px;
+      width: auto;
+      display: block;
+      margin: 0 auto 10px;
+      opacity: 0.85;
+    }
+
+    @media (max-width: 600px) {
+      .page-hero { padding: 40px 20px 40px; }
+      .brand-mark { height: 32px; margin-bottom: 14px; }
+      main { margin-top: -24px; padding: 0 16px; }
+      .card { padding: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header global injetado por header.js -->
+
+  <section class="page-hero">
+    <div class="hero">
+      <img src="/img/logo_whirlpool.webp" alt="Whirlpool" class="brand-mark" />
+      <span class="eyebrow">Whirlpool Brasil · Central do Cliente</span>
+      <h1>Tudo da campanha num <strong>só lugar</strong></h1>
+      <p class="lede">Acompanhe a jornada, valide conteúdos sociais, aprove peças e acesse os arquivos da Whirlpool Brasil — num hub único, atualizado em tempo real pela Agência Molla.</p>
+    </div>
+  </section>
+
+  <main>
+    <div class="grid">
+      <a class="card tag-jor" href="/jornada">
+        <span class="tag">Jornada</span>
+        <h2>Jornada da Marca</h2>
+        <p>Linha do tempo macro com todas as ativações, eventos e marcos da Whirlpool — visão única e cronológica.</p>
+        <span class="cta">Abrir jornada</span>
+      </a>
+
+      <a class="card tag-social" href="/social">
+        <span class="badge-soon">Em breve</span>
+        <span class="tag">Social</span>
+        <h2>Conteúdo Social</h2>
+        <p>Calendário editorial, formatos por canal e planejamento de publicações para Instagram, LinkedIn e YouTube — em construção.</p>
+        <span class="cta">Abrir social</span>
+      </a>
+
+      <a class="card tag-end" href="/aprovacao">
+        <span class="tag">Aprovação</span>
+        <h2>Aprovação de Peças</h2>
+        <p>Adição, comentários e aprovação de artes e vídeos por campanha — fluxo com comentários ancorados e versionamento.</p>
+        <span class="cta">Abrir aprovações</span>
+      </a>
+
+      <a class="card tag-arq" href="/arquivos">
+        <span class="tag">Arquivos</span>
+        <h2>Arquivos &amp; Downloads</h2>
+        <p>Repositório central com apresentações, documentos, key visuals, planilhas, imagens e vídeos da Whirlpool.</p>
+        <span class="cta">Abrir arquivos</span>
+      </a>
+    </div>
+  </main>
+
+  <footer>
+    <img src="/img/logo_molla.svg" alt="Molla" class="footer-logo" />
+    <p><strong>Agência Molla</strong> · Hub Whirlpool Brasil</p>
+  </footer>
+
+  <script src="/assets/header.js"></script>
+</body>
+</html>

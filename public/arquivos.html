@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arquivos & Downloads | Whirlpool Brasil</title>
+  <meta name="description" content="Repositório centralizado de arquivos da Whirlpool Brasil — apresentações, documentos, key visuals, planilhas, imagens e vídeos." />
+  <link rel="icon" type="image/webp" href="/img/logo_whirlpool.webp" />
+  <link rel="stylesheet" href="/assets/header.css" />
+  <link rel="stylesheet" href="/assets/breadcrumb.css" />
+  <link rel="stylesheet" href="/assets/footer.css" />
+  <link rel="stylesheet" href="/arquivos/arquivos.css" />
+  <script src="/assets/auth.js"></script>
+  <script src="/assets/header.js"></script>
+</head>
+<body>
+  <div class="page-subbar">
+    <div class="page-subbar-inner">
+      <span class="crumb"><a href="/">Central do Cliente</a> &nbsp;/&nbsp; <strong>Arquivos</strong></span>
+    </div>
+  </div>
+  <main>
+    <!-- HERO -->
+    <section class="aq-hero">
+      <div class="aq-hero-inner">
+        <span class="aq-eyebrow"><span class="aq-dot"></span>Arquivos · Whirlpool Brasil</span>
+        <h1>Arquivos &amp; <strong>Downloads</strong></h1>
+        <p class="aq-lede">Repositório central com todos os arquivos da Whirlpool — apresentações, documentos, key visuals, planilhas, imagens e vídeos. Tudo num único lugar.</p>
+      </div>
+    </section>
+
+    <!-- TOOLBAR (filtros + busca + admin) -->
+    <div class="aq-toolbar">
+      <div class="aq-toolbar-inner">
+        <div class="aq-search-row">
+          <input type="text" class="aq-search" id="aqSearch" placeholder="🔍 Buscar arquivo por nome ou descrição..." />
+          <span class="aq-count" id="aqCount"></span>
+          <span class="aq-admin-slot" id="aqAdminSlot"></span>
+        </div>
+        <div class="aq-filters" id="aqFilters" role="tablist"></div>
+      </div>
+    </div>
+
+    <!-- LISTA -->
+    <section class="aq-list-section">
+      <div class="aq-list-container">
+        <div class="aq-grid" id="aqList"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <h2>Tudo num lugar só.</h2>
+    <p>Repositório central de arquivos da Whirlpool Brasil — pra agilizar o acesso a qualquer documento, peça ou referência do time.</p>
+    <div class="brand-footer-row">
+      <img src="/img/logo_molla.svg" alt="Molla" class="brand-logo-footer" />
+      <p class="brand-footer-text">Agência Molla</p>
+    </div>
+  </footer>
+
+  <!-- Supabase + store + render -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="/assets/config.js"></script>
+  <script src="/assets/files-store.js"></script>
+  <script src="/arquivos/arquivos.js"></script>
+</body>
+</html>

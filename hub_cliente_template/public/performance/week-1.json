@@ -1,0 +1,131 @@
+{
+  "id": "week-1",
+  "ordem": 1,
+  "label": "Semana 1",
+  "periodo": "18/05 a 23/05",
+  "periodo_completo": "18 a 23 de maio de 2026",
+  "dias_cobertos": 6,
+  "data_publicacao": "2026-05-24",
+  "autor": "Rafael Moraes · Mídia & Performance",
+  "status": "publicado",
+  "hero": {
+    "titulo_principal": "Meta Ads em fase de aprendizado",
+    "subtitulo": "com sinais consistentes de eficiência",
+    "lead": "Visão consolidada das campanhas de Engajamento e Tráfego rodando no Meta. Seis dias no ar, com dados realizados, metas proporcionais ao plano de 75 dias e leitura do especialista.",
+    "stats": [
+      { "valor": "6 dias", "label": "período coberto" },
+      { "valor": "R$ 8,3K", "label": "investido no período", "accent": true },
+      { "valor": "1,06M", "label": "alcance combinado" },
+      { "valor": "1,33M", "label": "impressões combinadas", "green": true }
+    ]
+  },
+  "contexto": {
+    "titulo": "Como a gente está lendo isso",
+    "alerta": "O algoritmo do Meta Ads normalmente leva entre 7 e 14 dias pra estabilizar entrega, audiência e custo. Este report cobre só os primeiros 6 dias, com criativos ainda passando por aprovação e algoritmo aprendendo. As tendências aqui são indicadores iniciais positivos, não ainda a média estável da campanha. CPM, frequência e custos podem se ajustar nas próximas semanas conforme a audiência satura e novos criativos entram em rodízio.",
+    "base_metas": "As metas comparativas foram calculadas a partir do plano total de 75 dias (R$ 340K bruto). Meta tem 59% da verba (R$ 200,6K). As campanhas de Engajamento e Tráfego receberam R$ 100,3K cada (50/50 do Meta). As metas diárias foram proporcionais aplicadas aos 6 dias deste recorte."
+  },
+  "leituras": [
+    {
+      "tag": "#1 · Destaque",
+      "numero": "−74%",
+      "titulo": "CPM 74% mais barato que a meta — eficiência fora do comum",
+      "texto": "Somando as duas campanhas, o CPM médio foi de R$ 6,28 contra meta de R$ 28. Em métricas de custo, ficar abaixo da meta é sempre bom: significa que a gente comprou mídia mais barata que o esperado. Na prática, cada real virou cerca de 4× mais impressões do que o previsto. Isso é qualidade de segmentação + criativos competitivos nos leilões do Meta.",
+      "destaque": true
+    },
+    {
+      "tag": "#2 · Eficiência",
+      "numero": "+205%",
+      "titulo": "Mais com menos: 56% da verba prevista, 233% das impressões",
+      "texto": "Considerando a meta proporcional pros 6 dias (R$ 16,05K), gastamos R$ 8,34K — menos do que o previsto — mas o volume entregue foi muito maior. O ritmo \"flat\" do plano não captura o efeito da fase inicial, quando criativos entram em aprendizado e a entrega acelera aos poucos. Sobra orçamento pra escalar quando a gente identificar os melhores criativos."
+    },
+    {
+      "tag": "#3 · Segmentação",
+      "numero": "2,0%",
+      "titulo": "CTR acima da meta nas duas campanhas",
+      "texto": "Engajamento fechou em 1,79% (meta 0,80%) e Tráfego em 2,01% (meta 1,50%). Quando o CTR sobe junto com o volume, é sinal forte de match entre criativo, mensagem e audiência. Não é sorte de leilão: é segmentação certa encontrando criativo relevante. O território \"Patrocinadora Oficial do Cuidado\" tá ressoando com o público."
+    },
+    {
+      "tag": "#4 · Insight crítico",
+      "numero": "54K",
+      "titulo": "A campanha de Tráfego tá performando como Engajamento",
+      "texto": "A campanha de Tráfego gerou 54.568 engajamentos nestes 6 dias — mais do que os 36.220 da própria campanha de Engajamento. Esse comportamento só aparece olhando lado a lado. Significa que o conceito da marca tem força emocional mesmo em peças com CTA de clique. Vale considerar replicar elementos do criativo de Tráfego nas peças de Engajamento.",
+      "destaque": true
+    },
+    {
+      "tag": "#5 · Volume",
+      "numero": "2,3×",
+      "titulo": "Tráfego entregando mais do que o dobro de alcance",
+      "texto": "Com orçamento equivalente, Tráfego acumulou 736 mil de alcance contra 325 mil de Engajamento. O CPM mais baixo de Tráfego (R$ 4,44 vs R$ 9,71) explica — e os dois estão muito abaixo da meta de R$ 28. Campanhas otimizadas pra cliques tendem a competir por inventários mais baratos, e a gente tá aproveitando bem essa janela."
+    }
+  ],
+  "campanhas": {
+    "engajamento": {
+      "nome": "Engajamento",
+      "codigo": "M_META_POC_ENG_ST_IG",
+      "canal": "Meta Ads",
+      "periodo": "18/05 a 23/05",
+      "orcamento_total": "R$ 100,3K alocados / 75 dias",
+      "dados_diarios": [
+        { "dia": "18/05", "alcance": 14,     "impressoes": 22,     "cpm": 24.55, "cliques": 2,    "cpc": 0.27, "visitas_perfil": 4,    "engajamento": 6,     "seguidores": 0,  "gasto": 0.54 },
+        { "dia": "19/05", "alcance": 28318,  "impressoes": 37565,  "cpm": 10.99, "cliques": 567,  "cpc": 0.73, "visitas_perfil": 313,  "engajamento": 3573,  "seguidores": 6,  "gasto": 412.80 },
+        { "dia": "20/05", "alcance": 54838,  "impressoes": 88383,  "cpm": 9.19,  "cliques": 1164, "cpc": 0.70, "visitas_perfil": 638,  "engajamento": 6093,  "seguidores": 17, "gasto": 811.87 },
+        { "dia": "21/05", "alcance": 50343,  "impressoes": 79991,  "cpm": 9.33,  "cliques": 1090, "cpc": 0.68, "visitas_perfil": 613,  "engajamento": 5292,  "seguidores": 7,  "gasto": 746.31 },
+        { "dia": "22/05", "alcance": 74550,  "impressoes": 90567,  "cpm": 8.84,  "cliques": 1984, "cpc": 0.40, "visitas_perfil": 1193, "engajamento": 4901,  "seguidores": 21, "gasto": 800.58 },
+        { "dia": "23/05", "alcance": 117418, "impressoes": 162624, "cpm": 10.37, "cliques": 3425, "cpc": 0.49, "visitas_perfil": 2316, "engajamento": 16355, "seguidores": 36, "gasto": 1687.11 }
+      ],
+      "metas": {
+        "alcance": 95524, "impressoes": 286571, "cpm": 28, "cliques": 2293,
+        "ctr": 0.80, "visitas_perfil": 917, "engajamento": 9280, "seguidores": null, "gasto": 8024
+      }
+    },
+    "trafego": {
+      "nome": "Tráfego",
+      "codigo": "M_META_POC_TRF_ST_IG",
+      "canal": "Meta Ads",
+      "periodo": "18/05 a 23/05",
+      "orcamento_total": "R$ 100,3K alocados / 75 dias",
+      "dados_diarios": [
+        { "dia": "18/05", "alcance": 3,      "impressoes": 3,      "cpm": 0,    "cliques": 0,    "cpc": 0,    "visitas_perfil": 0,  "engajamento": 0,     "seguidores": 0, "gasto": 0 },
+        { "dia": "19/05", "alcance": 82940,  "impressoes": 91418,  "cpm": 3.89, "cliques": 1499, "cpc": 0.24, "visitas_perfil": 4,  "engajamento": 4653,  "seguidores": 0, "gasto": 355.48 },
+        { "dia": "20/05", "alcance": 154898, "impressoes": 187253, "cpm": 4.22, "cliques": 3163, "cpc": 0.25, "visitas_perfil": 6,  "engajamento": 12723, "seguidores": 0, "gasto": 790.36 },
+        { "dia": "21/05", "alcance": 175201, "impressoes": 202061, "cpm": 4.36, "cliques": 3742, "cpc": 0.24, "visitas_perfil": 3,  "engajamento": 13236, "seguidores": 0, "gasto": 881.37 },
+        { "dia": "22/05", "alcance": 215389, "impressoes": 250055, "cpm": 4.39, "cliques": 4823, "cpc": 0.23, "visitas_perfil": 6,  "engajamento": 11101, "seguidores": 0, "gasto": 1097.28 },
+        { "dia": "23/05", "alcance": 107783, "impressoes": 143890, "cpm": 5.25, "cliques": 4367, "cpc": 0.17, "visitas_perfil": 18, "engajamento": 12855, "seguidores": 0, "gasto": 755.03 }
+      ],
+      "metas": {
+        "alcance": 95524, "impressoes": 286571, "cpm": 28, "cliques": 4299,
+        "ctr": 1.50, "visitas_perfil": 86, "engajamento": 2320, "seguidores": null, "gasto": 8024
+      }
+    }
+  },
+  "recomendacoes": [
+    {
+      "titulo": "Escalar os criativos top de Tráfego",
+      "texto": "O criativo de Tráfego tá fazendo trabalho dobrado: gera cliques acima da meta e engajamento muito acima da meta. Vale aumentar verba nesses ativos específicos e testar replicar elementos deles nas peças de Engajamento."
+    },
+    {
+      "titulo": "Acompanhar a curva de frequência",
+      "texto": "Se o CPM começar a subir consistentemente, é sinal de saturação da audiência — hora de rodar novos criativos pra refrescar a entrega. Hoje a tendência ainda está estável e baixa, mas precisa de monitoramento semanal."
+    },
+    {
+      "titulo": "Realocar a verba não consumida",
+      "texto": "Gastamos R$ 8,34K dos R$ 16,05K planejados pro período. Essa folga pode ser usada pra escalar os criativos vencedores assim que a fase de aprendizado terminar (entre o 7º e o 14º dia da campanha)."
+    },
+    {
+      "titulo": "Aproveitar a janela de CPM baixo",
+      "texto": "O leilão atual está favorável às nossas campanhas. Enquanto durar essa janela, vale acumular alcance acima da meta sem custo adicional. Ao fim da Onda 1 (em 14/06), a gente revisa entrega e ajusta a estratégia pra Onda 2."
+    },
+    {
+      "titulo": "Validar transposição de criativo",
+      "texto": "Identificar o que faz o criativo de Tráfego performar tão bem em engajamento (gancho de abertura, copy, CTA, formato) e replicar nas peças de Engajamento, mantendo a coerência do conceito \"Patrocinadora Oficial do Cuidado\"."
+    },
+    {
+      "titulo": "Próximo report em D+7",
+      "texto": "O próximo report cobre até 30/05, momento em que a maior parte dos criativos terá saído da fase de aprendizado. A leitura desse próximo recorte vai trazer indicadores mais estáveis de CPM, frequência e custos unitários."
+    }
+  ],
+  "fechamento": {
+    "titulo": "Volume com eficiência. Sinais consistentes. Caminho aberto pra escalar.",
+    "subtitulo": "Este é o primeiro recorte de uma operação de 75 dias. Os dados aqui orientam ajustes táticos e mantêm a campanha alinhada aos objetivos de marca da MetLife pra Copa de 2026."
+  }
+}

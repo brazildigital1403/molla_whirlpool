@@ -1,0 +1,16 @@
+{
+  "name": "molla-whirlpool",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Hub de deliverables estratégicos Whirlpool Brasil — Agência Molla",
+  "scripts": {
+    "dev": "npx serve public -l 3000",
+    "start": "npx serve public -l 3000",
+    "build": "echo 'Static site - no build step required'"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "author": "Agência Molla",
+  "license": "UNLICENSED"
+}

@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Performance da Campanha | MetLife 2026</title>
+  <script src="/assets/auth.js"></script>
+  <link rel="stylesheet" href="/assets/header.css" />
+  <link rel="stylesheet" href="/assets/breadcrumb.css" />
+  <link rel="stylesheet" href="/assets/footer.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    :root {
+      --navy: #003B5C;
+      --blue: #2DB5DF;
+      --teal: #27C7BD;
+      --green: #50E596;
+      --light: #EEF6F8;
+      --white: #FFFFFF;
+      --text: #003B5C;
+      --muted: #5B7280;
+      --warning: #F5A524;
+      --danger: #E5484D;
+      --success: #50E596;
+      --shadow: 0 18px 40px rgba(0, 59, 92, 0.12);
+      --radius: 22px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--light);
+      color: var(--text);
+      line-height: 1.45;
+    }
+    header {
+      display: grid;
+      place-items: center;
+      padding: 80px 24px;
+      background: radial-gradient(circle at top right, rgba(80,229,150,.35), transparent 34%),
+                  linear-gradient(135deg, #EEF6F8 0%, #FFFFFF 100%);
+    }
+    .hero {
+      max-width: 1120px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 40px;
+      align-items: center;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(45,181,223,.14);
+      color: var(--navy);
+      font-weight: 700;
+      margin-bottom: 18px;
+      font-size: 14px;
+    }
+    .eyebrow .dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 0 4px rgba(80,229,150,.22);
+      animation: pulse 1.8s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      50% { box-shadow: 0 0 0 8px rgba(80,229,150,0); }
+    }
+    h1 {
+      font-size: clamp(34px, 5.5vw, 60px);
+      line-height: 1;
+      margin: 0 0 22px;
+      letter-spacing: -1.5px;
+    }
+    h1 .accent { color: var(--blue); }
+    h2 {
+      font-size: clamp(26px, 3.6vw, 40px);
+      line-height: 1.05;
+      margin: 0 0 16px;
+      letter-spacing: -0.8px;
+    }
+    h3 { margin: 0 0 10px; font-size: 20px; }
+    h4 { margin: 14px 0 6px; font-size: 12px; text-transform: uppercase; letter-spacing: .5px; opacity: .85; }
+    p { margin: 0 0 14px; }
+    .lead {
+      font-size: 20px;
+      color: var(--muted);
+      max-width: 680px;
+    }
+    .hero-card {
+      background: var(--navy);
+      color: white;
+      padding: 32px;
+      border-radius: 32px;
+      box-shadow: var(--shadow);
+    }
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-top: 24px;
+    }
+    .metric {
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 18px;
+      padding: 18px;
+    }
+    .metric strong {
+      display: block;
+      font-size: 30px;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    nav {
+      /* substituído pela classe global .anchor-nav (breadcrumb.css)
+         que padroniza scroll lateral + hover azul + sticky */
+    }
+    section { padding: 80px 24px; }
+    section.alt { background: rgba(45,181,223,.04); }
+    .container { max-width: 1180px; margin: 0 auto; }
+    .section-intro { max-width: 820px; margin-bottom: 34px; }
+
+    /* CARDS GENÉRICOS (mesmo padrão do plano-midia) */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .cards-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    .card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 26px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(0,59,92,.06);
+    }
+    .card.dark { background: var(--navy); color: white; }
+    .card.blue { background: var(--blue); color: white; }
+    .card.green { background: var(--green); color: var(--navy); }
+    .card.teal { background: var(--teal); color: var(--navy); }
+    .pill {
+      display: inline-block;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.18);
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+    .white-pill { background: rgba(0,59,92,.08); color: var(--navy); }
+    ul { padding-left: 18px; margin: 14px 0 0; }
+    li { margin: 7px 0; }
+
+    /* DISCLAIMER (estilo Rafael adaptado pra plataforma) */
+    .disclaimer-card {
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+      background: white;
+      border-radius: var(--radius);
+      padding: 26px;
+      box-shadow: var(--shadow);
+      border-left: 4px solid var(--warning);
+    }
+    .disclaimer-icon {
+      flex-shrink: 0;
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: var(--warning);
+      color: white;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      font-size: 22px;
+    }
+
+    /* INSIGHTS GRID — 6 leituras do especialista */
+    .insights-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+    .insight-card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 26px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(0,59,92,.06);
+      display: flex;
+      flex-direction: column;
+    }
+    .insight-card.highlight {
+      background: linear-gradient(135deg, var(--navy) 0%, #002B45 100%);
+      color: white;
+      border: 1px solid rgba(80,229,150,.32);
+    }
+    .insight-card.highlight h3 { color: white; }
+    .insight-card.highlight .insight-num { color: var(--green); }
+    .insight-tag {
+      display: inline-block;
+      align-self: flex-start;
+      padding: 5px 11px;
+      border-radius: 999px;
+      background: rgba(45,181,223,.14);
+      color: var(--navy);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .3px;
+      margin-bottom: 14px;
+    }
+    .insight-card.highlight .insight-tag {
+      background: rgba(80,229,150,.18);
+      color: var(--green);
+    }
+    .insight-num {
+      font-size: 44px;
+      font-weight: 900;
+      line-height: 1;
+      color: var(--blue);
+      margin-bottom: 12px;
+      letter-spacing: -1px;
+    }
+    .insight-card h3 {
+      font-size: 17px;
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+    .insight-card p {
+      font-size: 14px;
+      line-height: 1.55;
+      margin: 0;
+    }
+    .insight-card.highlight p { color: rgba(255,255,255,.86); }
+
+    /* CAMPAIGN BLOCKS */
+    .campaign-banner {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      padding: 22px 28px;
+      border-radius: var(--radius);
+      margin-bottom: 24px;
+      background: white;
+      box-shadow: var(--shadow);
+      border-left: 6px solid var(--blue);
+    }
+    .campaign-banner.trf { border-left-color: var(--teal); }
+    .campaign-icon {
+      width: 56px; height: 56px;
+      border-radius: 16px;
+      background: var(--blue);
+      color: white;
+      font-weight: 900;
+      font-size: 28px;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+    .campaign-banner.trf .campaign-icon { background: var(--teal); }
+    .campaign-banner h2 { font-size: 24px; margin-bottom: 2px; }
+    .campaign-meta {
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 600;
+    }
+    .campaign-spacer { flex: 1; }
+    .campaign-stamp {
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 600;
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    /* MÉTRICAS COMPARADAS (real vs meta) */
+    .metric-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+    .metric-tile {
+      background: white;
+      border-radius: 16px;
+      padding: 18px 20px;
+      box-shadow: 0 4px 14px rgba(0,59,92,.08);
+      border-left: 4px solid rgba(0,59,92,.18);
+    }
+    .metric-tile.up    { border-left-color: var(--green); }
+    .metric-tile.down  { border-left-color: var(--warning); }
+    .metric-tile.neutral { border-left-color: rgba(0,59,92,.18); }
+    .metric-tile-label {
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .metric-tile-value {
+      font-size: 26px;
+      font-weight: 900;
+      line-height: 1;
+      color: var(--navy);
+      margin-bottom: 6px;
+      letter-spacing: -.5px;
+    }
+    .metric-tile-meta {
+      font-size: 11px;
+      color: var(--muted);
+      font-weight: 600;
+    }
+    .metric-tile-badge {
+      display: inline-block;
+      margin-top: 6px;
+      padding: 3px 9px;
+      border-radius: 999px;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .3px;
+    }
+    .metric-tile.up .metric-tile-badge {
+      background: rgba(80,229,150,.18);
+      color: #036937;
+    }
+    .metric-tile.down .metric-tile-badge {
+      background: rgba(245,165,36,.18);
+      color: #864B05;
+    }
+
+    /* TABELAS DIÁRIAS */
+    .table-wrap {
+      overflow-x: auto;
+      background: white;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      margin-top: 22px;
+    }
+    .table-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 22px;
+      border-bottom: 1px solid rgba(0,59,92,.08);
+    }
+    .table-header h3 { margin: 0; font-size: 16px; }
+    .table-header span { font-size: 12px; color: var(--muted); }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 760px;
+    }
+    th, td {
+      padding: 12px 18px;
+      text-align: right;
+      border-bottom: 1px solid rgba(0,59,92,.06);
+      font-size: 13px;
+    }
+    th:first-child, td:first-child { text-align: left; font-weight: 700; }
+    th {
+      background: rgba(238,246,248,.7);
+      color: var(--navy);
+      font-weight: 800;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .3px;
+    }
+    tbody tr:last-child {
+      background: rgba(0,59,92,.04);
+      font-weight: 800;
+    }
+    .insight-strip {
+      margin-top: 22px;
+      padding: 18px 24px;
+      background: rgba(80,229,150,.10);
+      border-left: 4px solid var(--green);
+      border-radius: 14px;
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--navy);
+    }
+    .insight-strip strong { color: var(--navy); }
+
+    /* GRÁFICOS COMPARATIVOS (S50) */
+    .charts-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-top: 24px;
+    }
+    .chart-card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 26px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(0,59,92,.06);
+    }
+    .chart-card-header { margin-bottom: 18px; }
+    .chart-card-header .chart-tag {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .8px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(45,181,223,.12);
+      color: var(--blue);
+      margin-bottom: 10px;
+    }
+    .chart-card-header h3 { margin: 0; font-size: 18px; color: var(--navy); }
+    .chart-card-header p {
+      margin: 6px 0 0;
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .chart-wrap {
+      position: relative;
+      height: 280px;
+    }
+
+    /* RECOMENDAÇÕES */
+    .rec-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+    .rec-card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 26px 26px 26px 76px;
+      box-shadow: var(--shadow);
+      position: relative;
+      border: 1px solid rgba(0,59,92,.06);
+    }
+    .rec-num {
+      position: absolute;
+      left: 22px; top: 22px;
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: var(--green);
+      color: var(--navy);
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      font-size: 18px;
+    }
+    .rec-card h3 { font-size: 17px; margin-bottom: 8px; }
+    .rec-card p { font-size: 14px; line-height: 1.55; margin: 0; color: var(--muted); }
+
+    .note {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 18px;
+    }
+    footer.site-footer {
+      padding: 56px 24px;
+      background: var(--navy);
+      color: white;
+      text-align: center;
+    }
+    footer.site-footer h2 {
+      max-width: 760px;
+      margin: 0 auto 12px;
+      font-size: 26px;
+      line-height: 1.25;
+    }
+    footer.site-footer p {
+      max-width: 680px;
+      margin: 0 auto;
+      color: rgba(255,255,255,.78);
+    }
+    .footer-meta {
+      margin-top: 28px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,.16);
+      font-size: 12px;
+      color: rgba(255,255,255,.5);
+    }
+    .brand-footer-row {
+      margin-top: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    .brand-logo-footer { height: 24px; opacity: .9; }
+    .brand-footer-text { font-size: 12px; opacity: .7; margin: 0; }
+
+    @media (max-width: 920px) {
+      .hero, .cards, .cards-2, .rec-grid, .insights-grid, .charts-grid { grid-template-columns: 1fr; }
+      .metric-grid { grid-template-columns: 1fr; }
+      .campaign-banner { flex-wrap: wrap; }
+      .campaign-stamp { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-subbar">
+    <div class="page-subbar-inner">
+      <span class="crumb"><a href="/">Central do Cliente</a> &nbsp;/&nbsp; <span class="crumb-group">Mídia</span> &nbsp;/&nbsp; <strong>Performance</strong></span>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <header>
+    <div class="hero">
+      <div>
+        <span class="eyebrow"><span class="dot"></span> Report de performance · 18/05 a 23/05/2026</span>
+        <h1>Meta Ads em <span class="accent">fase de aprendizado</span>, com sinais consistentes de eficiência.</h1>
+        <p class="lead">Visão consolidada das campanhas de <strong>Engajamento</strong> e <strong>Tráfego</strong> rodando no Meta. Período de 6 dias, com dados realizados, metas proporcionais ao plano de 75 dias e leitura do especialista.</p>
+      </div>
+      <div class="hero-card">
+        <h3>Recorte deste report</h3>
+        <p>Primeiros 6 dias da operação. Algoritmo do Meta ainda em fase de aprendizado — os próximos reports trarão leitura mais estável.</p>
+        <div class="metric-grid">
+          <div class="metric"><strong>6 dias</strong><span>período</span></div>
+          <div class="metric"><strong>R$ 8,3K</strong><span>realizado</span></div>
+          <div class="metric"><strong>1,06M</strong><span>alcance</span></div>
+          <div class="metric"><strong>1,33M</strong><span>impressões</span></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="anchor-nav" aria-label="Navegação interna do Report">
+    <div class="anchor-nav-inner">
+      <a href="#contexto">Como ler esse report</a>
+      <a href="#leituras">Os 6 dias em 5 leituras</a>
+      <a href="#campanhas">Engajamento e Tráfego no detalhe</a>
+      <a href="#comparativo">Comparativo diarizado</a>
+      <a href="#proximos-passos">Pra onde vamos agora</a>
+    </div>
+  </nav>
+
+  <!-- SEÇÃO 1 · COMO LER ESSE REPORT -->
+  <section id="contexto">
+    <div class="container">
+      <div class="section-intro">
+        <span class="eyebrow white-pill">Contexto</span>
+        <h2>6 dias é um recorte inicial — a leitura completa virá com o tempo.</h2>
+      </div>
+
+      <div class="disclaimer-card">
+        <div class="disclaimer-icon">!</div>
+        <div>
+          <p style="margin-bottom: 10px;"><strong>Janela de aprendizado das plataformas.</strong> O Meta Ads opera com algoritmo de otimização que normalmente leva entre 7 e 14 dias para estabilizar entrega, audiência e custo.</p>
+          <p style="margin: 0;">Este report cobre os <strong>primeiros 6 dias</strong> da operação (18/05 a 23/05), com criativos passando por aprovação e algoritmo ainda em curva. As tendências mostradas aqui são <strong>indicadores iniciais positivos</strong>, mas não representam ainda a média estável da campanha. CPM, frequência e custos podem se ajustar nas próximas semanas conforme a audiência satura e novos criativos entram no rodízio.</p>
+        </div>
+      </div>
+
+      <p class="note" style="margin-top: 22px;">As <strong>metas comparativas</strong> apresentadas neste report foram calculadas a partir do plano de mídia total (75 dias, 18/05 a 31/07), com orçamento de <strong>R$ 340 mil</strong> distribuído em 59% Meta Ads, 23% YouTube e 18% LinkedIn. Para as campanhas de Engajamento e Tráfego no Meta, considerou-se <strong>R$ 100,3 mil cada</strong> (50/50 do total Meta), com metas diárias proporcionais aplicadas aos 6 dias deste recorte.</p>
+    </div>
+  </section>
+
+  <!-- SEÇÃO 2 · OS 6 DIAS EM 5 LEITURAS -->
+  <section id="leituras" class="alt">
+    <div class="container">
+      <div class="section-intro">
+        <span class="eyebrow white-pill">Leitura do especialista</span>
+        <h2>Os primeiros 6 dias em 5 leituras.</h2>
+        <p class="lead">O conjunto de dados mostra uma operação saudável, com sinais consistentes de eficiência criativa e calibragem precisa de audiência. Abaixo, os pontos que merecem atenção.</p>
+      </div>
+
+      <div class="insights-grid">
+        <div class="insight-card highlight">
+          <span class="insight-tag">#1 · Destaque</span>
+          <div class="insight-num">−74%</div>
+          <h3>CPM 74% mais barato que o benchmark — eficiência excepcional.</h3>
+          <p>Combinando as duas campanhas, o CPM médio realizado foi de <strong>R$ 6,28</strong> contra um benchmark planejado de R$ 28. <strong>Em métricas de custo, ficar abaixo da meta é sempre positivo</strong>: significa que estamos comprando mídia mais barata que o esperado. Na prática, cada real investido entregou cerca de 4 vezes mais impressões que o previsto.</p>
+        </div>
+
+        <div class="insight-card">
+          <span class="insight-tag">#2 · Eficiência</span>
+          <div class="insight-num">+205%</div>
+          <h3>Entregamos mais com menos: 56% do orçamento previsto, 233% das impressões.</h3>
+          <p>Considerando a meta proporcional pra 6 dias (R$ 16,05 mil), o investimento realizado de R$ 8,34 mil ficou abaixo do planejado, mas o volume entregue foi muito superior. O ritmo flat de investimento previsto no plano não captura, intencionalmente, o efeito da fase inicial. <strong>Sobra orçamento pra escalar quando os melhores criativos forem identificados.</strong></p>
+        </div>
+
+        <div class="insight-card">
+          <span class="insight-tag">#3 · Segmentação</span>
+          <div class="insight-num">2,0%</div>
+          <h3>CTR acima do benchmark nas duas campanhas.</h3>
+          <p>Engajamento ficou em 1,79% (meta 0,80%) e Tráfego em 2,01% (meta 1,50%). Quando CTR sobe junto com o volume, é sinal forte de <strong>fit entre criativo, mensagem e audiência</strong>. Não é variação de leilão: é segmentação certa encontrando criativo relevante. O território "Patrocinadora Oficial do Cuidado" está ressoando com o público-alvo.</p>
+        </div>
+
+        <div class="insight-card highlight">
+          <span class="insight-tag">#4 · Insight crítico</span>
+          <div class="insight-num">54K</div>
+          <h3>A campanha de Tráfego está performando como Engajamento.</h3>
+          <p>A campanha de TRF gerou <strong>54.568 engajamentos</strong> nestes 6 dias — mais que os 36.220 da própria campanha de ENG. <strong>Significa que o conceito da marca tem força emocional mesmo em peças com CTA de clique.</strong> Vale considerar replicar elementos desse criativo de Tráfego nas peças de Engajamento.</p>
+        </div>
+
+        <div class="insight-card">
+          <span class="insight-tag">#5 · Volume</span>
+          <div class="insight-num">2,3×</div>
+          <h3>Tráfego entregando mais que o dobro do alcance de Engajamento.</h3>
+          <p>Mesmo com orçamento equivalente, a campanha de Tráfego acumulou <strong>736 mil de alcance</strong> contra 325 mil de Engajamento. O CPM mais baixo de TRF (R$ 4,44 vs R$ 9,71) explica a diferença — e ambos estão muito abaixo do benchmark de R$ 28. Campanhas otimizadas pra cliques tendem a competir por inventários mais baratos.</p>
+        </div>
+
+        <div class="insight-card">
+          <span class="insight-tag">#6 · Aprendizado</span>
+          <div class="insight-num">D+6</div>
+          <h3>Estamos no início da curva — os melhores aprendizados vêm a seguir.</h3>
+          <p>O Meta Ads tipicamente leva entre 7 e 14 dias pra estabilizar a entrega de cada criativo. Os dados destes 6 dias são <strong>indicadores iniciais consistentes</strong>, mas ainda não representam a média final. O próximo report (D+7) trará leitura mais estável e permitirá decisões de escala com mais segurança.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEÇÃO 3 · ENGAJAMENTO E TRÁFEGO NO DETALHE -->
+  <section id="campanhas">
+    <div class="container">
+      <div class="section-intro">
+        <span class="eyebrow white-pill">Campanhas no detalhe</span>
+        <h2>Engajamento e Tráfego dia a dia.</h2>
+        <p class="lead">Métricas consolidadas vs meta proporcional pros 6 dias + desempenho diário detalhado. <strong>Verde</strong> indica resultado positivo: volume acima da meta OU custo abaixo dela.</p>
+      </div>
+
+      <!-- ENG -->
+      <div class="campaign-banner">
+        <div class="campaign-icon">E</div>
+        <div>
+          <h2 style="font-size: 22px; margin: 0;">Campanha de Engajamento</h2>
+          <div class="campaign-meta">M_META_POC_ENG_ST_IG · Meta Ads · 18/05 a 23/05</div>
+        </div>
+        <div class="campaign-spacer"></div>
+        <div class="campaign-stamp">R$ 100,3K alocados / 75 dias</div>
+      </div>
+
+      <div class="metric-row" id="grid-eng"></div>
+
+      <div class="table-wrap">
+        <div class="table-header">
+          <h3>Desempenho diário — Engajamento</h3>
+          <span>6 linhas + total</span>
+        </div>
+        <table id="tabela-eng">
+          <thead>
+            <tr>
+              <th>Dia</th>
+              <th>Alcance</th>
+              <th>Impressões</th>
+              <th>CPM</th>
+              <th>Cliques</th>
+              <th>CTR</th>
+              <th>Visitas perfil</th>
+              <th>Engajamento</th>
+              <th>Investido</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+
+      <div class="insight-strip">
+        <strong>Leitura rápida:</strong> entrega ainda na fase inicial — dia 23/05 saltou pra 117K de alcance, sinal de que o algoritmo encontrou audiência. CTR médio de 1,79% (mais que o dobro da meta 0,80%) confirma fit do criativo. Único alerta: visitas ao perfil estão acima da meta, então o link nos posts está convertendo bem.
+      </div>
+
+      <!-- TRF -->
+      <div class="campaign-banner trf" style="margin-top: 56px;">
+        <div class="campaign-icon">T</div>
+        <div>
+          <h2 style="font-size: 22px; margin: 0;">Campanha de Tráfego</h2>
+          <div class="campaign-meta">M_META_POC_TRF_ST_LP · Meta Ads · 18/05 a 23/05</div>
+        </div>
+        <div class="campaign-spacer"></div>
+        <div class="campaign-stamp">R$ 100,3K alocados / 75 dias</div>
+      </div>
+
+      <div class="metric-row" id="grid-trf"></div>
+
+      <div class="table-wrap">
+        <div class="table-header">
+          <h3>Desempenho diário — Tráfego</h3>
+          <span>6 linhas + total</span>
+        </div>
+        <table id="tabela-trf">
+          <thead>
+            <tr>
+              <th>Dia</th>
+              <th>Alcance</th>
+              <th>Impressões</th>
+              <th>CPM</th>
+              <th>Cliques</th>
+              <th>CTR</th>
+              <th>Engajamento</th>
+              <th>Investido</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+
+      <div class="insight-strip">
+        <strong>Leitura rápida:</strong> volume explosivo desde o dia 19/05 — picos de 215K de alcance/dia. CPM em R$ 4,44 (84% abaixo do benchmark) explica o salto. Engajamento de 54K mostra que peças com CTA de clique também estão gerando interação orgânica — comportamento de dupla entrega.
+      </div>
+    </div>
+  </section>
+
+  <!-- SEÇÃO 3.5 · COMPARATIVO DIARIZADO (4 gráficos + conclusão) -->
+  <section id="comparativo">
+    <div class="container">
+      <!-- COMPARATIVO DIARIZADO · 4 gráficos -->
+      <div class="section-intro">
+        <span class="eyebrow white-pill">Comparativo diarizado</span>
+        <h2 style="font-size: 26px;">ENG × TRF dia a dia, nas 4 métricas-chave.</h2>
+        <p>Evolução diária comparando as duas campanhas. A curva de crescimento de TRF é mais acentuada nos primeiros dias, enquanto ENG mostra crescimento mais consistente até o pico do dia 23/05.</p>
+      </div>
+
+      <div class="charts-grid">
+        <div class="chart-card">
+          <div class="chart-card-header">
+            <span class="chart-tag">Volume</span>
+            <h3>Alcance diário</h3>
+            <p>Pessoas únicas impactadas por dia em cada campanha.</p>
+          </div>
+          <div class="chart-wrap"><canvas id="chart-alcance"></canvas></div>
+        </div>
+
+        <div class="chart-card">
+          <div class="chart-card-header">
+            <span class="chart-tag">Volume</span>
+            <h3>Impressões diárias</h3>
+            <p>Total de exibições registradas por dia.</p>
+          </div>
+          <div class="chart-wrap"><canvas id="chart-impressoes"></canvas></div>
+        </div>
+
+        <div class="chart-card">
+          <div class="chart-card-header">
+            <span class="chart-tag">Ação</span>
+            <h3>Cliques no link × Visitas ao perfil</h3>
+            <p>Comparação de ações geradas. Visitas ao perfil são acompanhadas apenas na campanha de Engajamento, que tem esse KPI alinhado ao objetivo.</p>
+          </div>
+          <div class="chart-wrap"><canvas id="chart-acoes"></canvas></div>
+        </div>
+
+        <div class="chart-card">
+          <div class="chart-card-header">
+            <span class="chart-tag">Eficiência</span>
+            <h3>CPC × Custo por visita ao perfil</h3>
+            <p>Custos unitários por ação. <strong>Quanto menor, melhor</strong> a eficiência — significa que cada ação custou menos pra marca.</p>
+          </div>
+          <div class="chart-wrap"><canvas id="chart-custos"></canvas></div>
+        </div>
+      </div>
+
+      <!-- CONCLUSÃO COMPARATIVA -->
+      <div class="section-intro" style="margin-top: 56px;">
+        <h2 style="font-size: 26px;">Quem entrega o quê: ENG × TRF lado a lado</h2>
+        <p>Volume vs eficiência. Cada campanha tem seu papel — uma alcança mais, outra engaja mais.</p>
+      </div>
+
+      <div class="cards-2">
+        <div class="card blue">
+          <span class="pill">Engajamento · ENG</span>
+          <h3 style="color: white;">Mais profundidade</h3>
+          <ul style="color: rgba(255,255,255,.94);">
+            <li><strong>325K</strong> alcance acumulado</li>
+            <li><strong>R$ 9,71</strong> CPM (vs R$ 28 benchmark)</li>
+            <li><strong>36K</strong> interações</li>
+            <li><strong>5.077</strong> visitas ao perfil</li>
+            <li>CTR <strong>1,79%</strong> · meta 0,80%</li>
+          </ul>
+        </div>
+        <div class="card teal">
+          <span class="pill white-pill">Tráfego · TRF</span>
+          <h3>Mais escala</h3>
+          <ul>
+            <li><strong>736K</strong> alcance acumulado (<strong>2,3×</strong> ENG)</li>
+            <li><strong>R$ 4,44</strong> CPM (vs R$ 28 benchmark)</li>
+            <li><strong>54K</strong> interações (sem ser foco da campanha)</li>
+            <li><strong>17.594</strong> cliques no link</li>
+            <li>CTR <strong>2,01%</strong> · meta 1,50%</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEÇÃO 4 · PRA ONDE VAMOS AGORA -->
+  <section id="proximos-passos" class="alt">
+    <div class="container">
+      <div class="section-intro">
+        <span class="eyebrow white-pill">Próximos 14 dias</span>
+        <h2>Pra onde vamos a partir daqui.</h2>
+        <p class="lead">Com base na leitura dos 6 primeiros dias, esses são os movimentos que maximizam aprendizado e eficiência da operação.</p>
+      </div>
+
+      <div class="rec-grid">
+        <div class="rec-card">
+          <div class="rec-num">1</div>
+          <h3>Manter e escalar os criativos top de Tráfego</h3>
+          <p>O criativo de TRF está fazendo trabalho dobrado: gera cliques acima da meta e engajamento muito acima da meta. Aumentar verba nesses ativos específicos e testar replicar elementos deles nos criativos de ENG.</p>
+        </div>
+
+        <div class="rec-card">
+          <div class="rec-num">2</div>
+          <h3>Acompanhar curva de frequência</h3>
+          <p>Se o CPM começar a subir consistentemente, é sinal de saturação da audiência — hora de rodar criativos novos pra refrescar a entrega. Hoje a tendência ainda está estável e baixa, mas precisa ser monitorada semanalmente.</p>
+        </div>
+
+        <div class="rec-card">
+          <div class="rec-num">3</div>
+          <h3>Realocar verba não consumida</h3>
+          <p>Gastamos R$ 8,34 mil dos R$ 16,05 mil planejados pro período. Essa folga pode ser usada pra escalar os criativos vencedores assim que a fase de aprendizado terminar (entre o 7º e 14º dia da campanha).</p>
+        </div>
+
+        <div class="rec-card">
+          <div class="rec-num">4</div>
+          <h3>Aproveitar a janela de CPM baixo</h3>
+          <p>O leilão atual está favorável às nossas campanhas. Enquanto essa janela durar, vale acumular alcance acima da meta sem custo adicional. Ao fim da Onda 1 (14/06), revisamos a entrega e ajustamos a estratégia pra Onda 2.</p>
+        </div>
+
+        <div class="rec-card">
+          <div class="rec-num">5</div>
+          <h3>Próximo report: D+7 com leitura estável</h3>
+          <p>O próximo report cobrirá o período até 30/05, momento em que a maior parte dos criativos terá saído da fase de aprendizado. Vai trazer indicadores mais estáveis de CPM, frequência e custos unitários.</p>
+        </div>
+
+        <div class="rec-card">
+          <div class="rec-num">6</div>
+          <h3>Validar transposição de elementos criativos</h3>
+          <p>Identificar o que faz o criativo de Tráfego performar tão bem em engajamento (gancho, copy, CTA, formato) e replicar esses elementos nas peças de Engajamento, mantendo coerência com o conceito "Patrocinadora Oficial do Cuidado".</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <h2>Volume com eficiência. Sinais consistentes. Caminho aberto pra escalar.</h2>
+    <p>Este é o primeiro recorte de uma operação de 75 dias. Os dados orientam ajustes táticos e mantêm a operação alinhada aos objetivos de marca da MetLife pra Copa de 2026.</p>
+    <div class="footer-meta">
+      Report gerado em 24/05/2026 · Período coberto: 18/05 a 23/05/2026 · Fonte: Meta Ads · Confidential — Internal use only
+    </div>
+    <div class="brand-footer-row">
+      <img src="/img/logo_molla.svg" alt="Molla" class="brand-logo-footer" />
+      <p class="brand-footer-text">Agência Molla</p>
+    </div>
+  </footer>
+
+  <script src="/assets/header.js"></script>
+
+  <script>
+    // ============================================================
+    // DADOS REAIS (do report do Rafael · 18/05 a 23/05)
+    // ============================================================
+    const dadosEng = [
+      {dia: "18/05", alcance: 14,     impressoes: 22,     cpm: 24.55, cliques: 2,    cpc: 0.27, ctr: 9.09, visitas_perfil: 4,    engajamento: 6,     gasto: 0.54},
+      {dia: "19/05", alcance: 28318,  impressoes: 37565,  cpm: 10.99, cliques: 567,  cpc: 0.73, ctr: 1.51, visitas_perfil: 313,  engajamento: 3573,  gasto: 412.80},
+      {dia: "20/05", alcance: 54838,  impressoes: 88383,  cpm: 9.19,  cliques: 1164, cpc: 0.70, ctr: 1.32, visitas_perfil: 638,  engajamento: 6093,  gasto: 811.87},
+      {dia: "21/05", alcance: 50343,  impressoes: 79991,  cpm: 9.33,  cliques: 1090, cpc: 0.68, ctr: 1.36, visitas_perfil: 613,  engajamento: 5292,  gasto: 746.31},
+      {dia: "22/05", alcance: 74550,  impressoes: 90567,  cpm: 8.84,  cliques: 1984, cpc: 0.40, ctr: 2.19, visitas_perfil: 1193, engajamento: 4901,  gasto: 800.58},
+      {dia: "23/05", alcance: 117418, impressoes: 162624, cpm: 10.37, cliques: 3425, cpc: 0.49, ctr: 2.11, visitas_perfil: 2316, engajamento: 16355, gasto: 1687.11}
+    ];
+
+    const dadosTrf = [
+      {dia: "18/05", alcance: 3,      impressoes: 3,      cpm: 0,    cliques: 0,    cpc: 0,    ctr: 0,    visitas_perfil: 0,  engajamento: 0,     gasto: 0},
+      {dia: "19/05", alcance: 82940,  impressoes: 91418,  cpm: 3.89, cliques: 1499, cpc: 0.24, ctr: 1.64, visitas_perfil: 4,  engajamento: 4653,  gasto: 355.48},
+      {dia: "20/05", alcance: 154898, impressoes: 187253, cpm: 4.22, cliques: 3163, cpc: 0.25, ctr: 1.69, visitas_perfil: 6,  engajamento: 12723, gasto: 790.36},
+      {dia: "21/05", alcance: 175201, impressoes: 202061, cpm: 4.36, cliques: 3742, cpc: 0.24, ctr: 1.85, visitas_perfil: 3,  engajamento: 13236, gasto: 881.37},
+      {dia: "22/05", alcance: 215389, impressoes: 250055, cpm: 4.39, cliques: 4823, cpc: 0.23, ctr: 1.93, visitas_perfil: 6,  engajamento: 11101, gasto: 1097.28},
+      {dia: "23/05", alcance: 107783, impressoes: 143890, cpm: 5.25, cliques: 4367, cpc: 0.17, ctr: 3.03, visitas_perfil: 18, engajamento: 12855, gasto: 755.03}
+    ];
+
+    const metaEng = { alcance: 95524, impressoes: 286571, cpm: 28, cliques: 2293, ctr: 0.80, visitas_perfil: 917, engajamento: 9280, gasto: 8024 };
+    const metaTrf = { alcance: 95524, impressoes: 286571, cpm: 28, cliques: 4299, ctr: 1.50, engajamento: 2320, gasto: 8024 };
+
+    const fmtNum = n => Math.round(n).toLocaleString('pt-BR');
+    const fmtMoney = n => 'R$ ' + n.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    const fmtPct = n => n.toFixed(2).replace('.', ',') + '%';
+    const fmtCPM = n => 'R$ ' + n.toFixed(2).replace('.', ',');
+
+    function sumColumn(arr, col) {
+      return arr.reduce((acc, row) => acc + (row[col] || 0), 0);
+    }
+    function calcRealized(arr) {
+      const impressoes = sumColumn(arr, 'impressoes');
+      const cliques = sumColumn(arr, 'cliques');
+      const gasto = sumColumn(arr, 'gasto');
+      return {
+        alcance: sumColumn(arr, 'alcance'),
+        impressoes: impressoes,
+        cpm: impressoes > 0 ? (gasto / impressoes * 1000) : 0,
+        cliques: cliques,
+        ctr: impressoes > 0 ? (cliques / impressoes * 100) : 0,
+        visitas_perfil: sumColumn(arr, 'visitas_perfil'),
+        engajamento: sumColumn(arr, 'engajamento'),
+        gasto: gasto
+      };
+    }
+    function badge(real, meta, isCost) {
+      if (meta == null) return 'neutral';
+      const ratio = real / meta;
+      if (isCost) return ratio <= 1.05 ? 'up' : 'down';
+      return ratio >= 0.95 ? 'up' : 'down';
+    }
+    function pctDelta(real, meta, isCost) {
+      if (meta == null || meta === 0) return '';
+      const delta = ((real - meta) / meta) * 100;
+      const sign = delta >= 0 ? '+' : '';
+      const efeito = isCost
+        ? (delta <= 0 ? 'mais barato' : 'mais caro')
+        : (delta >= 0 ? 'acima da meta' : 'abaixo da meta');
+      return sign + delta.toFixed(0) + '% ' + efeito;
+    }
+
+    function renderTile(label, value, meta, formatter, isCost) {
+      const b = badge(value, meta, isCost);
+      const metaLabel = meta == null ? '—' : (formatter === fmtPct ? fmtPct(meta) : (formatter === fmtMoney || formatter === fmtCPM ? formatter(meta) : fmtNum(meta)));
+      const deltaLabel = pctDelta(value, meta, isCost);
+      return `
+        <div class="metric-tile ${b}">
+          <div class="metric-tile-label">${label}</div>
+          <div class="metric-tile-value">${formatter(value)}</div>
+          <div class="metric-tile-meta">Meta: ${metaLabel}</div>
+          ${deltaLabel ? `<span class="metric-tile-badge">${deltaLabel}</span>` : ''}
+        </div>
+      `;
+    }
+
+    function renderCampaignGrid(elId, real, meta, includeVisitas) {
+      const tiles = [
+        renderTile('Alcance',     real.alcance,     meta.alcance,     fmtNum,   false),
+        renderTile('Impressões',  real.impressoes,  meta.impressoes,  fmtNum,   false),
+        renderTile('CPM',         real.cpm,         meta.cpm,         fmtCPM,   true),
+        renderTile('Cliques',     real.cliques,     meta.cliques,     fmtNum,   false),
+        renderTile('CTR',         real.ctr,         meta.ctr,         fmtPct,   false),
+      ];
+      if (includeVisitas) {
+        tiles.push(renderTile('Visitas perfil', real.visitas_perfil, meta.visitas_perfil, fmtNum, false));
+      }
+      tiles.push(renderTile('Engajamento', real.engajamento, meta.engajamento, fmtNum, false));
+      tiles.push(renderTile('Investido', real.gasto, meta.gasto, fmtMoney, true));
+      document.getElementById(elId).innerHTML = tiles.join('');
+    }
+
+    function renderTable(tableId, data, includeVisitas) {
+      const tbody = document.querySelector(`#${tableId} tbody`);
+      if (!tbody) return;
+      const rows = data.map(d => {
+        const cells = [
+          `<td>${d.dia}</td>`,
+          `<td>${fmtNum(d.alcance)}</td>`,
+          `<td>${fmtNum(d.impressoes)}</td>`,
+          `<td>${d.cpm > 0 ? fmtCPM(d.cpm) : '—'}</td>`,
+          `<td>${fmtNum(d.cliques)}</td>`,
+          `<td>${d.ctr > 0 ? fmtPct(d.ctr) : '—'}</td>`,
+        ];
+        if (includeVisitas) cells.push(`<td>${fmtNum(d.visitas_perfil)}</td>`);
+        cells.push(`<td>${fmtNum(d.engajamento)}</td>`);
+        cells.push(`<td>${fmtMoney(d.gasto)}</td>`);
+        return `<tr>${cells.join('')}</tr>`;
+      });
+      // Linha total
+      const total = calcRealized(data);
+      const totalCells = [
+        `<td>Total</td>`,
+        `<td>${fmtNum(total.alcance)}</td>`,
+        `<td>${fmtNum(total.impressoes)}</td>`,
+        `<td>${fmtCPM(total.cpm)}</td>`,
+        `<td>${fmtNum(total.cliques)}</td>`,
+        `<td>${fmtPct(total.ctr)}</td>`,
+      ];
+      if (includeVisitas) totalCells.push(`<td>${fmtNum(total.visitas_perfil)}</td>`);
+      totalCells.push(`<td>${fmtNum(total.engajamento)}</td>`);
+      totalCells.push(`<td>${fmtMoney(total.gasto)}</td>`);
+      rows.push(`<tr>${totalCells.join('')}</tr>`);
+      tbody.innerHTML = rows.join('');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const realEng = calcRealized(dadosEng);
+      const realTrf = calcRealized(dadosTrf);
+      renderCampaignGrid('grid-eng', realEng, metaEng, true);
+      renderCampaignGrid('grid-trf', realTrf, metaTrf, false);
+      renderTable('tabela-eng', dadosEng, true);
+      renderTable('tabela-trf', dadosTrf, false);
+      renderCharts();
+    });
+
+    // ============================================================
+    // GRÁFICOS COMPARATIVOS (Chart.js · do report do Rafael)
+    // ============================================================
+    function renderCharts() {
+      if (typeof Chart === 'undefined') {
+        console.warn('Chart.js não carregou — gráficos comparativos não renderizados.');
+        return;
+      }
+      const dias = dadosEng.map(d => d.dia);
+
+      const colorEng = '#003B5C';
+      const colorEngLight = 'rgba(0, 59, 92, 0.12)';
+      const colorTrf = '#2DB5DF';
+      const colorTrfLight = 'rgba(45, 181, 223, 0.18)';
+      const colorAccent = '#50E596';
+      const colorAccentLight = 'rgba(80, 229, 150, 0.18)';
+
+      const baseOptions = {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            position: 'bottom',
+            labels: {
+              font: { family: 'Arial', size: 12, weight: '700' },
+              color: '#003B5C',
+              usePointStyle: true,
+              padding: 18
+            }
+          },
+          tooltip: {
+            backgroundColor: '#003B5C',
+            titleFont: { family: 'Arial', size: 13, weight: '700' },
+            bodyFont: { family: 'Arial', size: 12 },
+            padding: 12,
+            cornerRadius: 8,
+            displayColors: true,
+            boxPadding: 4
+          }
+        },
+        scales: {
+          x: {
+            grid: { display: false },
+            ticks: { color: '#5B7280', font: { family: 'Arial', size: 11, weight: '600' } }
+          },
+          y: {
+            beginAtZero: true,
+            grid: { color: 'rgba(0,59,92,.06)' },
+            ticks: {
+              color: '#5B7280',
+              font: { family: 'Arial', size: 11 },
+              callback: function(v) { return v.toLocaleString('pt-BR'); }
+            }
+          }
+        }
+      };
+
+      // GRÁFICO 1 — ALCANCE diário (área)
+      new Chart(document.getElementById('chart-alcance'), {
+        type: 'line',
+        data: {
+          labels: dias,
+          datasets: [
+            {
+              label: 'Engajamento',
+              data: dadosEng.map(d => d.alcance),
+              borderColor: colorEng, backgroundColor: colorEngLight,
+              borderWidth: 3, tension: 0.35, fill: true,
+              pointBackgroundColor: colorEng, pointBorderColor: 'white',
+              pointBorderWidth: 2, pointRadius: 5, pointHoverRadius: 7
+            },
+            {
+              label: 'Tráfego',
+              data: dadosTrf.map(d => d.alcance),
+              borderColor: colorTrf, backgroundColor: colorTrfLight,
+              borderWidth: 3, tension: 0.35, fill: true,
+              pointBackgroundColor: colorTrf, pointBorderColor: 'white',
+              pointBorderWidth: 2, pointRadius: 5, pointHoverRadius: 7
+            }
+          ]
+        },
+        options: baseOptions
+      });
+
+      // GRÁFICO 2 — IMPRESSÕES (barras)
+      new Chart(document.getElementById('chart-impressoes'), {
+        type: 'bar',
+        data: {
+          labels: dias,
+          datasets: [
+            {
+              label: 'Engajamento',
+              data: dadosEng.map(d => d.impressoes),
+              backgroundColor: colorEng,
+              borderRadius: 8, barPercentage: 0.7, categoryPercentage: 0.7
+            },
+            {
+              label: 'Tráfego',
+              data: dadosTrf.map(d => d.impressoes),
+              backgroundColor: colorTrf,
+              borderRadius: 8, barPercentage: 0.7, categoryPercentage: 0.7
+            }
+          ]
+        },
+        options: baseOptions
+      });
+
+      // GRÁFICO 3 — CLIQUES × VISITAS AO PERFIL
+      new Chart(document.getElementById('chart-acoes'), {
+        type: 'line',
+        data: {
+          labels: dias,
+          datasets: [
+            {
+              label: 'Cliques — Tráfego',
+              data: dadosTrf.map(d => d.cliques),
+              borderColor: colorTrf, backgroundColor: colorTrfLight,
+              borderWidth: 3, tension: 0.35, fill: false,
+              pointBackgroundColor: colorTrf, pointBorderColor: 'white',
+              pointBorderWidth: 2, pointRadius: 5
+            },
+            {
+              label: 'Cliques — Engajamento',
+              data: dadosEng.map(d => d.cliques),
+              borderColor: colorEng, backgroundColor: colorEngLight,
+              borderWidth: 3, tension: 0.35, fill: false,
+              pointBackgroundColor: colorEng, pointBorderColor: 'white',
+              pointBorderWidth: 2, pointRadius: 5
+            },
+            {
+              label: 'Visitas perfil — Engajamento',
+              data: dadosEng.map(d => d.visitas_perfil),
+              borderColor: colorAccent, backgroundColor: colorAccentLight,
+              borderWidth: 3, tension: 0.35, fill: false, borderDash: [6, 4],
+              pointBackgroundColor: colorAccent, pointBorderColor: 'white',
+              pointBorderWidth: 2, pointRadius: 5
+            }
+          ]
+        },
+        options: baseOptions
+      });
+
+      // GRÁFICO 4 — CPC × CUSTO POR VISITA AO PERFIL
+      const cpvEng = dadosEng.map(d => d.visitas_perfil > 0 ? +(d.gasto / d.visitas_perfil).toFixed(2) : 0);
+      new Chart(document.getElementById('chart-custos'), {
+        type: 'line',
+        data: {
+          labels: dias,
+          datasets: [
+            {
+              label: 'CPC — Engajamento',
+              data: dadosEng.map(d => d.cpc),
+              borderColor: colorEng, backgroundColor: colorEngLight,
+              borderWidth: 3, tension: 0.35, fill: false,
+              pointBackgroundColor: colorEng, pointBorderColor: 'white',
+              pointBorderWidth: 2, pointRadius: 5
+            },
+            {
+              label: 'CPC — Tráfego',
+              data: dadosTrf.map(d => d.cpc),
+              borderColor: colorTrf, backgroundColor: colorTrfLight,
+              borderWidth: 3, tension: 0.35, fill: false,
+              pointBackgroundColor: colorTrf, pointBorderColor: 'white',
+              pointBorderWidth: 2, pointRadius: 5
+            },
+            {
+              label: 'Custo por visita ao perfil — Engajamento',
+              data: cpvEng,
+              borderColor: colorAccent, backgroundColor: colorAccentLight,
+              borderWidth: 2, borderDash: [6, 4], tension: 0.35, fill: false,
+              pointBackgroundColor: colorAccent, pointBorderColor: 'white',
+              pointBorderWidth: 2, pointRadius: 4
+            }
+          ]
+        },
+        options: {
+          ...baseOptions,
+          scales: {
+            ...baseOptions.scales,
+            y: {
+              ...baseOptions.scales.y,
+              ticks: {
+                ...baseOptions.scales.y.ticks,
+                callback: function(v) { return 'R$ ' + v.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2}); }
+              }
+            }
+          }
+        }
+      });
+    }
+  </script>
+</body>
+</html>

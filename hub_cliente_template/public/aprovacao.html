@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aprovação de Peças | MetLife Brasil 2026</title>
+  <meta name="description" content="Adição, comentários e aprovação de artes e vídeos por campanha — MetLife Brasil 2026." />
+  <script src="/assets/auth.js"></script>
+  <link rel="stylesheet" href="/assets/header.css" />
+  <link rel="stylesheet" href="/assets/footer.css" />
+  <link rel="stylesheet" href="/assets/bottom-sheet.css" />
+  <link rel="stylesheet" href="/assets/aprovacao.css" />
+  <script src="/assets/bottom-sheet.js" defer></script>
+</head>
+<body>
+  <!-- Header global injetado por header.js -->
+
+  <div class="page-subbar">
+    <div class="page-subbar-inner">
+      <span class="crumb" id="crumb"></span>
+    </div>
+  </div>
+
+  <div class="page-header">
+    <div class="page-header-inner">
+      <span class="eyebrow">Aprovação de Peças</span>
+      <h1>Fluxo de <strong>Aprovação</strong></h1>
+      <p class="lede">Comente e aprove peça a peça.</p>
+    </div>
+  </div>
+
+  <main id="appContent">
+    <!-- Renderizado dinamicamente por aprovacao.js -->
+  </main>
+
+  <footer class="site-footer">
+    <h2>Cada peça tem sua jornada de aprovação.</h2>
+    <p>Comentários ancorados, versões com snapshot e auditoria completa do fluxo de aprovação das peças da campanha MetLife Brasil 2026.</p>
+    <div class="brand-footer-row">
+      <img src="/img/logo_molla.svg" alt="Molla" class="brand-logo-footer" />
+      <p class="brand-footer-text">Agência Molla</p>
+    </div>
+  </footer>
+
+  <!-- Header global -->
+  <script src="/assets/header.js"></script>
+  <!-- Supabase SDK + camada de dados (ordem importa) -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="/assets/config.js"></script>
+  <script src="/assets/supabase-store.js"></script>
+  <script src="/assets/aprovacao.js"></script>
+</body>
+</html>
