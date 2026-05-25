@@ -19,9 +19,16 @@
 |---|---|
 | Repo GitHub | https://github.com/brazildigital1403/molla_whirlpool |
 | Vercel | https://vercel.com/brazildigital1403s-projects/molla-whirlpool |
+| Produção (Vercel) | https://molla-whirlpool.vercel.app *(confirmar URL exata)* |
 | Supabase | https://exyqqiquhiswrhcpdemf.supabase.co |
-| Produção (Vercel) | a confirmar após primeiro deploy |
 | Pasta local (Du) | `~/Library/CloudStorage/GoogleDrive-eduardo@brazildigital.ag/Meu Drive/BRAZILDIGITAL/SITES/WHIRLPOOL_BRASIL` |
+
+## ⚙️ Config Vercel (importante pra próximas Mias)
+
+- Framework Preset: **Other** (não Next.js — a Vercel auto-detecta errado no primeiro import)
+- Output Directory: **`public`**
+- Build Command: vazio
+- Install Command: vazio
 
 ## 🎨 Identidade visual
 
@@ -34,8 +41,9 @@
 | `--white` | `#FFFFFF` | Fundo geral |
 | `--muted` | `#5B7280` | Texto secundário |
 
-- Logos em `public/img/`: `logo_whirlpool.webp` (preto, header/favicon), `logo_whirlpool_white.png` (branco, reserva), `logo_molla.svg` (footer).
-- Fonte: Arial nativa (sem webfont externa).
+- Logos em `public/img/`: `logo_whirlpool.webp` (preto — header/favicon), `logo_whirlpool_white.png` (branco — reserva), `logo_molla.svg` (footer).
+- Fonte: Arial nativa.
+- Gradientes: `navy → blue` (cara corporate; difere do `blue → green` do MetLife original).
 
 ## 🔐 Senhas
 
@@ -44,33 +52,34 @@
 | `cliente` | `whirlpool2026` | Ver tudo, comentar, aprovar |
 | `molla` | `molla@2026@` | Tudo + criar/editar/excluir (admin) |
 
-Definidas em `public/assets/auth.js`. localStorage keys: `whirlpool_auth`, `whirlpool_role`, `whirlpool_user`.
+Em `public/assets/auth.js`. localStorage keys: `whirlpool_auth`, `whirlpool_role`, `whirlpool_user`. Global: `window.WhirlpoolAuth`.
 
 ## 🗺️ Estrutura de páginas
 
 | Página | Rota | Tipo | Status |
 |---|---|---|---|
-| Hub | `/` | base | ✅ pronto |
-| Login | `/login` | base | ✅ pronto |
-| Jornada | `/jornada` | base | ✅ pronto (template, conteúdo no Supabase) |
+| Hub | `/` | base | ✅ no ar |
+| Login | `/login` | base | ✅ no ar |
+| Jornada | `/jornada` | base | ✅ no ar (aguarda schema.sql) |
 | Social | `/social` | nova | 🚧 placeholder, aguarda briefing |
-| Aprovação | `/aprovacao` | semi-base | ✅ pronto (template, conteúdo no Supabase) |
-| Arquivos | `/arquivos` | base | ✅ pronto (template, conteúdo no Supabase) |
-| Ajuda | `/ajuda` | base | ✅ pronto (refeito para 4 áreas) |
+| Aprovação | `/aprovacao` | semi-base | ✅ no ar (aguarda schema.sql) |
+| Arquivos | `/arquivos` | base | ✅ no ar (aguarda schema.sql) |
+| Ajuda | `/ajuda` | base | ✅ no ar (refeito pra 4 áreas) |
 
-NAV_ITEMS atual em `public/assets/header.js`: Jornada · Social · Aprovação · Arquivos (sem grupos hierárquicos).
+NAV_ITEMS em `public/assets/header.js`: Jornada · Social · Aprovação · Arquivos (sem grupos hierárquicos).
 
 ## 🗃️ Backend Supabase
 
 - Schema base em `docs/schema.sql` (tabelas `events`, `arquivos`, `pecas`, `aprovacoes`).
-- Ainda **falta rodar o SQL** no Dashboard Supabase do Whirlpool — Du faz manual.
+- ⏳ **Pendente**: rodar o SQL no dashboard. Sem isso as páginas dinâmicas ficam vazias.
 - Realtime habilitado via `supabase.channel(...)`.
+- RLS desabilitado (uso interno).
 
 ## 📜 Sessões
 
 ### S1 · Bootstrap (25/05/2026)
 
-**Objetivo**: Adaptar template MetLife → Whirlpool. Fase 1+2+3+5 do CONFIG.
+**Objetivo**: adaptar template MetLife → Whirlpool. Fases 1+2+3+5 do CONFIG.
 
 **Decisões importantes**:
 - Páginas descartadas: cronograma, plano-midia, performance, blitz, elemidia, muito-alem-do-jogo.
@@ -83,20 +92,24 @@ NAV_ITEMS atual em `public/assets/header.js`: Jornada · Social · Aprovação �
 **Métricas da faxina**:
 - 138 substituições de hex colors
 - 263 substituições de `rgba()`
-- 196 substituições de marca (MetLife/metlife/MetLifeAuth/etc.)
-- 239 substituições de prefixo de classe (`mlh-` → `whp-`)
-- Smoke test: 80 verdes, 0 vermelhos
+- 196 substituições de marca
+- 239 substituições de prefixo de classe
+- Smoke test: 80/80 verde
+
+**Atropelos resolvidos**:
+- Pasta local não era repo Git → `git init` + remote add + push manual.
+- `git add .` puxou lixo (template original, ZIPs, logos soltos da raiz) → limpeza com `rm -rf` + `.gitignore` reforçado + commit `chore(cleanup)`.
+- Vercel detectou Next.js automaticamente → mudança manual no dashboard: Framework Preset = Other, Output Directory = `public`, Build/Install vazios.
 
 **Próximos passos (Du faz manual)**:
-1. Rodar `docs/schema.sql` no SQL Editor do Supabase Whirlpool.
-2. Primeiro `git add . / commit / push` → Vercel deploya automático.
-3. Validar acesso em `whirlpool.vercel.app` (ou domínio final) com as duas senhas.
-4. Quando o briefing de Social chegar: passar pra Mia 2 trabalhar na página.
+1. ⏳ Rodar `docs/schema.sql` no SQL Editor do Supabase Whirlpool.
+2. ⏳ Quando briefing de Social chegar: passar pra próxima Mia trabalhar na página.
+3. ⏳ Domínio customizado (opcional).
 
 **Pendências reconhecidas**:
 - `social.html` é placeholder visual — sem dados, sem calendário real.
-- `ajuda.html` tem dicas que ainda mencionam "campanha" em alguns trechos (vocabulário neutro da aprovação) — manter por enquanto, ajustar se Du pedir.
-- Domínio customizado não definido ainda.
+- `ajuda.html` ainda menciona "campanha" em alguns trechos do fluxo de Aprovação (vocabulário neutro, manter).
+- Domínio customizado não definido.
 
 ---
 
