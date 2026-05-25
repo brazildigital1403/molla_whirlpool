@@ -28,3 +28,12 @@ logs/
 # Build temp
 dist/
 .cache/
+
+# Artefatos de bootstrap — não voltar
+hub_cliente_template/
+hub_cliente_template_v1.zip
+molla_whirlpool_v1.zip
+*_template.md
+
+# macOS
+.DS_Store
