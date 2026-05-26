@@ -144,7 +144,7 @@
           <span></span><span></span><span></span>
         </button>
         <a class="whp-logo" href="/" aria-label="Central do Cliente">
-          <img src="/img/logo_pecas_originais.png" alt="Peças Originais" />
+          <img src="/img/logo_pecas_originais.svg" alt="Peças Originais" />
         </a>
         <nav class="whp-nav" aria-label="Navegação principal">
           ${navItemsHtml}
@@ -213,7 +213,7 @@
       <div class="whp-drawer" id="whpDrawer" role="dialog" aria-modal="true" aria-label="Menu" aria-hidden="true">
         <div class="whp-drawer-head">
           <a class="whp-drawer-logo" href="/" aria-label="Central do Cliente">
-            <img src="/img/logo_pecas_originais.png" alt="Peças Originais" />
+            <img src="/img/logo_pecas_originais.svg" alt="Peças Originais" />
           </a>
           <button class="whp-drawer-close" id="whpDrawerClose" type="button" aria-label="Fechar menu">×</button>
         </div>
