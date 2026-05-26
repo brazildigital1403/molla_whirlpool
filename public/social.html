@@ -4,165 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Conteúdo Social | Whirlpool Brasil</title>
-  <meta name="description" content="Calendário editorial, formatos e planejamento de publicações sociais da Whirlpool Brasil." />
+  <meta name="description" content="Pré-pauta editorial de social media da Whirlpool Brasil — aprovação, comentários e visão por mês." />
   <link rel="icon" type="image/webp" href="/img/logo_whirlpool.webp" />
   <link rel="stylesheet" href="/assets/header.css" />
   <link rel="stylesheet" href="/assets/breadcrumb.css" />
   <link rel="stylesheet" href="/assets/footer.css" />
+  <link rel="stylesheet" href="/social/social.css" />
   <script src="/assets/auth.js"></script>
   <script src="/assets/header.js"></script>
-  <style>
-    :root {
-      --navy: #0D436B;
-      --blue: #00A0DD;
-      --success: #50E596;
-      --light: #F1F5F9;
-      --white: #FFFFFF;
-      --muted: #5B7280;
-      --shadow: 0 18px 40px rgba(13, 67, 107, 0.10);
-      --radius: 22px;
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: var(--white);
-      color: var(--navy);
-      line-height: 1.55;
-      min-height: 100vh;
-    }
-
-    .so-hero {
-      padding: 64px 24px 48px;
-      background:
-        radial-gradient(circle at 80% 15%, rgba(0, 160, 221, 0.18), transparent 42%),
-        radial-gradient(circle at 12% 80%, rgba(80, 229, 150, 0.16), transparent 42%),
-        linear-gradient(135deg, #F1F5F9 0%, #FFFFFF 100%);
-    }
-    .so-hero-inner {
-      max-width: 1120px;
-      margin: 0 auto;
-      text-align: center;
-    }
-    .so-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 6px 14px;
-      border-radius: 999px;
-      background: rgba(0, 160, 221, 0.14);
-      color: var(--navy);
-      font-weight: 700;
-      font-size: 12px;
-      letter-spacing: 0.8px;
-      text-transform: uppercase;
-      margin-bottom: 16px;
-    }
-    .so-dot {
-      width: 8px; height: 8px;
-      background: var(--blue);
-      border-radius: 50%;
-      animation: so-pulse 2s ease-in-out infinite;
-    }
-    @keyframes so-pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.6; transform: scale(1.18); }
-    }
-    .so-hero h1 {
-      font-size: clamp(32px, 5vw, 48px);
-      margin: 0 0 14px;
-      letter-spacing: -0.4px;
-      line-height: 1.1;
-    }
-    .so-hero h1 strong {
-      background: linear-gradient(135deg, var(--navy), var(--blue));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-    .so-hero p {
-      color: var(--muted);
-      font-size: 16px;
-      max-width: 640px;
-      margin: 0 auto;
-    }
-
-    main {
-      max-width: 1120px;
-      margin: -24px auto 64px;
-      padding: 0 24px;
-      position: relative;
-      z-index: 2;
-    }
-
-    .so-construction {
-      background: var(--white);
-      border-radius: var(--radius);
-      padding: 56px 40px;
-      box-shadow: var(--shadow);
-      border: 1px solid rgba(13, 67, 107, 0.06);
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .so-construction::before {
-      content: "";
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 5px;
-      background: linear-gradient(90deg, var(--blue), var(--navy));
-    }
-    .so-construction-icon {
-      font-size: 56px;
-      margin-bottom: 18px;
-      display: block;
-    }
-    .so-construction h2 {
-      font-size: 26px;
-      margin: 0 0 14px;
-      letter-spacing: -0.3px;
-    }
-    .so-construction p.so-lede {
-      color: var(--muted);
-      font-size: 16px;
-      max-width: 580px;
-      margin: 0 auto 28px;
-    }
-
-    .so-roadmap {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 16px;
-      max-width: 760px;
-      margin: 0 auto;
-      text-align: left;
-    }
-    .so-roadmap-item {
-      background: var(--light);
-      border-radius: 14px;
-      padding: 18px 20px;
-      border: 1px solid rgba(13, 67, 107, 0.04);
-    }
-    .so-roadmap-item h3 {
-      font-size: 14px;
-      margin: 0 0 6px;
-      color: var(--navy);
-      font-weight: 800;
-    }
-    .so-roadmap-item p {
-      font-size: 13px;
-      color: var(--muted);
-      margin: 0;
-    }
-
-    @media (max-width: 600px) {
-      .so-hero { padding: 44px 18px 36px; }
-      .so-construction { padding: 40px 22px; }
-      .so-construction-icon { font-size: 44px; }
-      .so-construction h2 { font-size: 22px; }
-      main { padding: 0 16px; }
-    }
-  </style>
 </head>
 <body>
   <div class="page-subbar">
@@ -171,44 +20,136 @@
     </div>
   </div>
 
+  <!-- HERO · seletor de mês + tema + KPIs -->
   <section class="so-hero">
     <div class="so-hero-inner">
-      <span class="so-eyebrow"><span class="so-dot"></span>Social · Whirlpool Brasil</span>
-      <h1>Conteúdo <strong>Social</strong></h1>
-      <p>Calendário editorial, formatos por canal e planejamento das publicações sociais da Whirlpool — Instagram, LinkedIn, YouTube e mais.</p>
-    </div>
-  </section>
-
-  <main>
-    <div class="so-construction">
-      <span class="so-construction-icon">🚧</span>
-      <h2>Área em construção</h2>
-      <p class="so-lede">Tô organizando os dados de social pra entregar essa área completa. Em breve você verá calendário editorial, mock-ups de posts e o planejamento das publicações.</p>
-
-      <div class="so-roadmap">
-        <div class="so-roadmap-item">
-          <h3>📅 Calendário editorial</h3>
-          <p>Visão mensal/semanal das publicações, organizado por canal e tipo de conteúdo.</p>
+      <div class="so-hero-top">
+        <span class="so-eyebrow"><span class="so-dot"></span>Pré-pauta editorial</span>
+        <div class="so-mes-picker">
+          <label for="soMesSelect" class="so-mes-label">Mês</label>
+          <select id="soMesSelect" class="so-mes-select" aria-label="Selecionar mês"></select>
         </div>
-        <div class="so-roadmap-item">
-          <h3>🎨 Mock-ups por formato</h3>
-          <p>Pré-visualização das peças por canal — feed, stories, reels, carrossel, vídeo.</p>
+      </div>
+
+      <h1 class="so-tema" id="soTema">Carregando…</h1>
+      <p class="so-conceito" id="soConceito"></p>
+
+      <div class="so-meta" id="soMeta"></div>
+
+      <!-- KPIs · pendente · aprovado · reprovado · total -->
+      <div class="so-kpis" id="soKpis">
+        <div class="so-kpi so-kpi-pendente">
+          <span class="so-kpi-num" id="soKpiPendente">—</span>
+          <span class="so-kpi-label">Pendentes</span>
         </div>
-        <div class="so-roadmap-item">
-          <h3>📊 Planejamento estratégico</h3>
-          <p>Temas, pilares de conteúdo, métricas-alvo e janelas de publicação.</p>
+        <div class="so-kpi so-kpi-aprovado">
+          <span class="so-kpi-num" id="soKpiAprovado">—</span>
+          <span class="so-kpi-label">Aprovadas</span>
+        </div>
+        <div class="so-kpi so-kpi-reprovado">
+          <span class="so-kpi-num" id="soKpiReprovado">—</span>
+          <span class="so-kpi-label">Reprovadas</span>
+        </div>
+        <div class="so-kpi so-kpi-total">
+          <span class="so-kpi-num" id="soKpiTotal">—</span>
+          <span class="so-kpi-label">Total</span>
+        </div>
+      </div>
+
+      <!-- Barra de progresso -->
+      <div class="so-progress" aria-label="Progresso de aprovação">
+        <div class="so-progress-bar">
+          <div class="so-progress-aprovado" id="soProgAprovado" style="width:0%"></div>
+          <div class="so-progress-reprovado" id="soProgReprovado" style="width:0%"></div>
         </div>
       </div>
     </div>
+  </section>
+
+  <!-- TOOLBAR · filtros -->
+  <div class="so-toolbar">
+    <div class="so-toolbar-inner">
+      <div class="so-filters">
+        <div class="so-filter-group" data-group="tipo">
+          <span class="so-filter-label">Tipo</span>
+          <div class="so-chips" id="soFiltersTipo"></div>
+        </div>
+        <div class="so-filter-group" data-group="linha">
+          <span class="so-filter-label">Linha editorial</span>
+          <div class="so-chips" id="soFiltersLinha"></div>
+        </div>
+        <div class="so-filter-group" data-group="peca">
+          <span class="so-filter-label">Peça</span>
+          <div class="so-chips" id="soFiltersPeca"></div>
+        </div>
+        <div class="so-filter-group" data-group="formato">
+          <span class="so-filter-label">Formato</span>
+          <div class="so-chips" id="soFiltersFormato"></div>
+        </div>
+        <div class="so-filter-group" data-group="status">
+          <span class="so-filter-label">Status</span>
+          <div class="so-chips" id="soFiltersStatus"></div>
+        </div>
+      </div>
+
+      <div class="so-toolbar-actions">
+        <span class="so-count" id="soCount"></span>
+        <button type="button" class="so-clear" id="soClearFilters" hidden>Limpar filtros</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- GRID · cards -->
+  <main class="so-main">
+    <div class="so-grid" id="soGrid">
+      <!-- renderizado por social.js -->
+    </div>
+    <div class="so-empty" id="soEmpty" hidden>
+      <span class="so-empty-icon">🔍</span>
+      <h3>Nada por aqui</h3>
+      <p>Nenhuma publicação bate com os filtros atuais.</p>
+      <button type="button" class="so-empty-action" id="soEmptyClear">Limpar filtros</button>
+    </div>
   </main>
+
+  <!-- DRAWER · detalhe (cria via JS) -->
+  <div class="so-drawer-backdrop" id="soDrawerBackdrop" hidden></div>
+  <aside class="so-drawer" id="soDrawer" aria-hidden="true" aria-label="Detalhe da publicação">
+    <!-- renderizado por social.js -->
+  </aside>
+
+  <!-- MODAL · reprovar (com motivo obrigatório) -->
+  <div class="so-modal-backdrop" id="soModalBackdrop" hidden></div>
+  <div class="so-modal" id="soModalReprovar" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="so-modal-head">
+      <h3>Reprovar publicação</h3>
+      <button type="button" class="so-modal-close" id="soModalClose" aria-label="Fechar">×</button>
+    </div>
+    <div class="so-modal-body">
+      <p>Pra reprovar, conta pra Molla o que precisa ajustar. Esse texto vira o primeiro comentário do thread.</p>
+      <label for="soMotivoText" class="so-modal-label">Motivo da reprovação <span class="so-required">*</span></label>
+      <textarea id="soMotivoText" class="so-motivo" rows="4" placeholder="Ex: O tom do humor ficou agressivo demais, preciso de algo mais leve…"></textarea>
+      <div class="so-modal-error" id="soMotivoError" hidden>Escreva o motivo da reprovação.</div>
+    </div>
+    <div class="so-modal-foot">
+      <button type="button" class="so-btn-ghost" id="soModalCancel">Cancelar</button>
+      <button type="button" class="so-btn-danger" id="soModalConfirm">Reprovar publicação</button>
+    </div>
+  </div>
 
   <footer class="site-footer">
     <h2>Conteúdo social com estratégia.</h2>
-    <p>Reúne calendário editorial, formatos, mock-ups e planejamento das publicações sociais da Whirlpool Brasil — pra que cliente e agência alinhem o conteúdo no mesmo ritmo da marca.</p>
+    <p>Calendário editorial, formatos e planejamento das publicações sociais da Whirlpool Brasil — pra que cliente e agência alinhem o conteúdo no mesmo ritmo da marca.</p>
     <div class="brand-footer-row">
       <img src="/img/logo_molla.svg" alt="Molla" class="brand-logo-footer" />
       <p class="brand-footer-text">Agência Molla</p>
     </div>
   </footer>
+
+  <!-- Supabase + store + render -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="/assets/config.js"></script>
+  <script src="/assets/social-store.js"></script>
+  <script src="/social/social.js"></script>
 </body>
 </html>

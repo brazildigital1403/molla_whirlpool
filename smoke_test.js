@@ -86,10 +86,15 @@ const MUST_EXIST = [
   'public/assets/supabase-store.js',
   'public/assets/events-store.js',
   'public/assets/files-store.js',
+  'public/assets/social-store.js',
   'public/assets/aprovacao.css',
   'public/assets/aprovacao.js',
   'public/assets/bottom-sheet.css',
   'public/assets/bottom-sheet.js',
+  'public/social/social.css',
+  'public/social/social.js',
+  'docs/social_schema.sql',
+  'docs/social_seed_junho.sql',
 ];
 for (const f of MUST_EXIST) {
   if (exists(f)) ok(f);
@@ -175,7 +180,8 @@ const REQUIRED = [
   { file: 'public/index.html',       re: /#0D436B/,                        label: 'index usa navy Whirlpool' },
   { file: 'public/index.html',       re: /#00A0DD/,                        label: 'index usa blue Whirlpool' },
   { file: 'public/index.html',       re: /--success/,                      label: 'index :root tem --success' },
-  { file: 'public/social.html',      re: /em construção/i,                 label: 'social.html eh placeholder' },
+  { file: 'public/social.html',      re: /social-store\.js/,               label: 'social.html carrega social-store.js' },
+  { file: 'public/social.html',      re: /soMesSelect/,                    label: 'social.html tem seletor de mes' },
   { file: 'vercel.json',             re: /"\/social"/,                     label: 'vercel.json tem rota /social' },
   { file: 'vercel.json',             re: /"\/jornada"/,                    label: 'vercel.json tem rota /jornada' },
 ];
@@ -231,6 +237,54 @@ else ko("ajuda.html perdeu verdes semanticos — UX de aprovacao fica inconsiste
 // 7g) 3 areas em vez de 4
 if (/As 3 áreas/.test(ajudaHtml) && !/As 4 áreas/.test(ajudaHtml)) ok("ajuda mostra '3 areas' (sem Jornada)");
 else ko("ajuda ainda fala em '4 areas'");
+
+// ============================================================
+// SECAO 8 · FEATURE SOCIAL (S2 parte 2)
+// ============================================================
+console.log(`\n${YEL}8. Feature Social${RST}`);
+
+const socialStoreJs = read('public/assets/social-store.js');
+const socialJs = read('public/social/social.js');
+const socialCss = read('public/social/social.css');
+const socialHtml = read('public/social.html');
+
+const socialChecks = [
+  { test: /window\.SocialStore\s*=/.test(socialStoreJs), label: 'social-store expõe window.SocialStore' },
+  { test: /approvePost|rejectPost|reopenPost/.test(socialStoreJs), label: 'social-store tem approve/reject/reopen' },
+  { test: /createComentario|listComentarios/.test(socialStoreJs), label: 'social-store tem CRUD de comentários' },
+  { test: /listHistorico/.test(socialStoreJs), label: 'social-store tem historico' },
+  { test: /\bsubscribe\b/.test(socialStoreJs), label: 'social-store tem realtime subscribe' },
+  { test: /so-card-strip|so-card-mock|so-card-tag/.test(socialCss), label: 'social.css tem classes do card' },
+  { test: /so-drawer/.test(socialCss), label: 'social.css tem drawer lateral' },
+  { test: /so-modal/.test(socialCss), label: 'social.css tem modal de reprovação' },
+  { test: /data-linha="institucional"/.test(socialCss), label: 'social.css tem token por linha editorial' },
+  { test: /svgCarrossel|svgEstatico|svgReels/.test(socialJs), label: 'social.js gera mockup SVG por formato' },
+  { test: /openRejectModal/.test(socialJs), label: 'social.js abre modal de reprovação' },
+  { test: /motivo\.trim\(\)/.test(socialJs) || /motivo\b/.test(socialStoreJs), label: 'reprovação exige motivo (não-vazio)' },
+  { test: /soFiltersTipo|soFiltersLinha|soFiltersStatus/.test(socialHtml), label: 'social.html tem containers de filtros' },
+  { test: /WhirlpoolAuth/.test(socialJs), label: 'social.js usa WhirlpoolAuth pra identificar autor' },
+];
+for (const c of socialChecks) {
+  if (c.test) ok(c.label);
+  else ko(c.label);
+}
+
+// schema SQL
+const sqlSchema = read('docs/social_schema.sql');
+const sqlSeed   = read('docs/social_seed_junho.sql');
+const schemaChecks = [
+  { test: /CREATE TABLE.*social_meses/i.test(sqlSchema), label: 'schema cria social_meses' },
+  { test: /CREATE TABLE.*social_posts/i.test(sqlSchema), label: 'schema cria social_posts' },
+  { test: /CREATE TABLE.*social_comentarios/i.test(sqlSchema), label: 'schema cria social_comentarios' },
+  { test: /CREATE TABLE.*social_historico/i.test(sqlSchema), label: 'schema cria social_historico' },
+  { test: /supabase_realtime/.test(sqlSchema), label: 'schema habilita realtime' },
+  { test: /'2026-06'/.test(sqlSeed) && /Junho 2026/.test(sqlSeed), label: 'seed popula Junho 2026' },
+  { test: (sqlSeed.match(/\(\d{1,2}, DATE/g) || []).length === 12, label: 'seed tem exatamente 12 posts' },
+];
+for (const c of schemaChecks) {
+  if (c.test) ok(c.label);
+  else ko(c.label);
+}
 
 // ============================================================
 // SECAO 5 · ROTAS DESCARTADAS NAO PODEM EXISTIR NO vercel.json
