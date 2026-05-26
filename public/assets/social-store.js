@@ -492,6 +492,7 @@
       tipo:            data.tipo || 'always_on',
       tema:            data.tema.trim(),
       explicacao:      data.explicacao.trim(),
+      interacao_story: (data.interacao_story || '').trim() || null,
       status:          'pendente',
     };
     const { data: created, error } = await supabase
@@ -513,6 +514,7 @@
     if (data.tema !== undefined)            payload.tema            = (data.tema || '').trim();
     if (data.explicacao !== undefined)      payload.explicacao      = (data.explicacao || '').trim();
     if (data.peca !== undefined)            payload.peca            = (data.peca || '').trim() || null;
+    if (data.interacao_story !== undefined) payload.interacao_story = (data.interacao_story || '').trim() || null;
 
     const { data: updated, error } = await supabase
       .from('social_posts').update(payload).eq('id', id).select().single();

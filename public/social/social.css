@@ -470,6 +470,36 @@ body {
   color: var(--so-navy);
 }
 
+/* Badge "AO VIVO" — posts reativos (jogos da Copa) */
+.so-card-tag-ao-vivo {
+  background: var(--so-danger);
+  color: var(--so-white);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  letter-spacing: 0.6px;
+}
+.so-ao-vivo-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--so-white);
+  animation: so-ao-vivo-pulse 1.4s ease-in-out infinite;
+}
+@keyframes so-ao-vivo-pulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(255,255,255,0.6); }
+  50%      { opacity: 0.55; box-shadow: 0 0 0 4px rgba(255,255,255,0); }
+}
+
+/* Chip "+ Story" no meta do card · sutil */
+.so-card-meta-story {
+  background: rgba(255, 103, 31, 0.10);
+  color: var(--so-navy);
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 11px;
+}
+
 /* Mockup SVG do formato — preenche largura */
 .so-card-mock {
   margin: 0 20px;
@@ -723,6 +753,27 @@ body {
   border-radius: 0 12px 12px 0;
   padding: 14px 16px;
   margin: 0 0 22px;
+}
+
+/* Caixa do Story · destacada do briefing pra ficar óbvio */
+.so-story-box {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--so-navy);
+  background: rgba(255, 103, 31, 0.06);
+  border: 1px solid rgba(255, 103, 31, 0.20);
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin: 0 0 18px;
+  position: relative;
+}
+.so-story-box::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; bottom: 0;
+  width: 3px;
+  background: var(--so-blue);
+  border-radius: 12px 0 0 12px;
 }
 
 .so-section-title {

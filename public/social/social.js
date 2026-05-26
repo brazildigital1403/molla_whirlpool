@@ -329,6 +329,11 @@
       </article>
     `;
   }
+  // detecta posts ao vivo (tema contém "POST AO VIVO" ou "AO VIVO")
+  function isPostAoVivo(p) {
+    return !!p && typeof p.tema === 'string' && /AO VIVO/i.test(p.tema);
+  }
+
   function cardHtml(p) {
     const linha = LINHAS[p.linha_editorial] || { label: p.linha_editorial, cor: '#FF671F' };
     const fmtLabel = FORMATOS[p.formato] || p.formato;
@@ -337,6 +342,12 @@
     const tipoChip = p.tipo === 'campanha'
       ? '<span class="so-card-tag so-card-tag-tipo-campanha">⚽ Campanha Copa</span>'
       : '<span class="so-card-tag">Always On</span>';
+    const aoVivoBadge = isPostAoVivo(p)
+      ? '<span class="so-card-tag so-card-tag-ao-vivo"><span class="so-ao-vivo-dot"></span>AO VIVO</span>'
+      : '';
+    const storyChip = p.interacao_story
+      ? '<span class="so-card-meta-item so-card-meta-story" title="Este post tem interação no Story">📲 + Story</span>'
+      : '';
 
     const adminBtns = state.isAdmin ? `
       <button type="button" class="so-btn so-btn-edit" data-action="post-edit" title="Editar post">✏️</button>
@@ -352,6 +363,7 @@
             <span class="so-card-date-month">${esc(data.month)}</span>
           </div>
           <div class="so-card-tags">
+            ${aoVivoBadge}
             ${tipoChip}
             <span class="so-card-tag so-card-tag-linha">${esc(linha.label)}</span>
             <span class="so-card-tag">${esc(fmtLabel)}</span>
@@ -367,6 +379,7 @@
           <div class="so-card-meta">
             ${p.peca ? `<span class="so-card-meta-item"><strong>Peça:</strong> ${esc(p.peca)}</span>` : ''}
             <span class="so-card-meta-item"><strong>#${esc(p.numero)}</strong></span>
+            ${storyChip}
           </div>
         </div>
 
@@ -488,6 +501,7 @@
       </div>
       <div class="so-drawer-body">
         <div class="so-drawer-tags">
+          ${isPostAoVivo(p) ? '<span class="so-card-tag so-card-tag-ao-vivo"><span class="so-ao-vivo-dot"></span>AO VIVO</span>' : ''}
           ${tipoChip}
           <span class="so-card-tag so-card-tag-linha" style="color:${linha.cor}; background:${linha.cor}1f">${esc(linha.label)}</span>
           <span class="so-card-tag">${esc(fmtLabel)}</span>
@@ -503,6 +517,11 @@
         </div>
 
         <p class="so-drawer-explicacao">${esc(p.explicacao)}</p>
+
+        ${p.interacao_story ? `
+          <h4 class="so-section-title">📲 Interação no Story</h4>
+          <div class="so-story-box">${esc(p.interacao_story).replace(/\n/g, '<br>')}</div>
+        ` : ''}
 
         ${notice}
 
@@ -541,6 +560,7 @@
     const pecaP   = isNew ? ''             : (p.peca || '');
     const temaP   = isNew ? ''             : (p.tema || '');
     const explP   = isNew ? ''             : (p.explicacao || '');
+    const storyP  = isNew ? ''             : (p.interacao_story || '');
 
     // Decide se a peça atual é uma das fixas ou "Outro"
     const pecaIsFixa = PECAS_FIXAS.indexOf(pecaP) >= 0;
@@ -636,6 +656,12 @@
           <div class="so-field">
             <label class="so-field-label" for="soFExpl">Explicação breve <span class="so-required">*</span></label>
             <textarea class="so-input" id="soFExpl" rows="5" placeholder="Briefing detalhado do post…" required>${esc(explP)}</textarea>
+          </div>
+
+          <div class="so-field">
+            <label class="so-field-label" for="soFStory">📲 Interação no Story</label>
+            <textarea class="so-input" id="soFStory" rows="4" placeholder="Enquete / Quiz / Caixinha de texto que vai junto com o post…">${esc(storyP)}</textarea>
+            <p class="so-form-help">Texto livre. Suporta múltiplas interações (enquete + caixinha, etc).</p>
           </div>
 
           <div class="so-modal-error" id="soFErr" hidden></div>
@@ -827,6 +853,7 @@
       peca:            pecaFinal || null,
       tema:            ($('#soFTema', root).value || '').trim(),
       explicacao:      ($('#soFExpl', root).value || '').trim(),
+      interacao_story: ($('#soFStory', root).value || '').trim(),
     };
   }
 
