@@ -10,10 +10,10 @@
   // LABELS / CORES
   // ============================================================
   const LINHAS = {
-    institucional:  { label: 'Institucional',         cor: '#0D436B' },
-    conhecimento:   { label: 'Conhecimento de peças', cor: '#00A0DD' },
+    institucional:  { label: 'Institucional',         cor: '#39454D' },
+    conhecimento:   { label: 'Conhecimento de peças', cor: '#FF671F' },
     resolucao:      { label: 'Resolução de problemas',cor: '#F59E0B' },
-    boas_praticas:  { label: 'Boas práticas',         cor: '#1E7BAB' },
+    boas_praticas:  { label: 'Boas práticas',         cor: '#0F766E' },
     humor:          { label: 'Humor técnico',         cor: '#7C6EE8' },
   };
   const FORMATOS = {
