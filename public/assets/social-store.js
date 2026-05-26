@@ -282,6 +282,19 @@
     return data;
   }
 
+  /**
+   * Exclui um comentário. Só admin (molla) deveria conseguir,
+   * mas a checagem fica no cliente — RLS atual permite tudo.
+   */
+  async function deleteComentario(commentId) {
+    if (!commentId) throw new Error('commentId obrigatório');
+    const { error } = await supabase
+      .from('social_comentarios').delete().eq('id', commentId);
+    if (error) throw error;
+    cache.comentariosByPost.clear();
+    return true;
+  }
+
 
   // ============================================================
   // HISTÓRICO
@@ -524,7 +537,7 @@
   window.SocialStore = {
     listMeses, getMes,
     listPosts, approvePost, rejectPost, reopenPost,
-    listComentarios, createComentario,
+    listComentarios, createComentario, deleteComentario,
     listHistorico,
     subscribe, ping, calcStats,
     // admin CRUD

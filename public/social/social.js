@@ -418,7 +418,6 @@
         const post = state.posts.find(p => p.id === postId);
         if (post) drawer.innerHTML = drawerFullHtml(post, comentarios, historico);
       }
-      wireDrawerEvents(drawer);
     } catch (err) {
       console.error('[social] erro carregando detalhe:', err);
       drawer.innerHTML = `
@@ -427,7 +426,6 @@
           <button type="button" class="so-drawer-close" data-action="close" aria-label="Fechar">×</button>
         </div>
         <div class="so-drawer-body"><p>Não consegui carregar os detalhes. Tenta de novo em alguns segundos.</p></div>`;
-      wireDrawerEvents(drawer);
     }
   }
   function closeDrawer() {
@@ -685,6 +683,7 @@
             <span class="so-comment-when">${esc(ago(c.created_at))}</span>
           </div>
           <span class="so-comment-role ${c.role === 'molla' ? 'molla' : ''}">${esc(c.role)}</span>
+          ${state.isAdmin ? `<button type="button" class="so-comment-del-btn" data-action="comment-delete" data-comment-id="${esc(c.id)}" title="Excluir comentário" aria-label="Excluir comentário">🗑️</button>` : ''}
         </div>
         <p class="so-comment-text">${esc(c.texto)}</p>
       </div>
@@ -775,6 +774,24 @@
     } finally {
       btn.disabled = false; btn.textContent = oldLabel;
     }
+  }
+
+  function doDeleteComentario(commentId, postId) {
+    openConfirm({
+      title: 'Excluir comentário',
+      body:  'Excluir esse comentário do thread? Não dá pra desfazer.',
+      btnLabel: 'Excluir comentário',
+      onConfirm: async () => {
+        try {
+          await window.SocialStore.deleteComentario(commentId);
+          closeConfirm();
+          if (state.drawerPostId === postId) await openDrawer(postId);
+        } catch (e) {
+          console.error('[social] delete comentário erro:', e);
+          alert('Erro ao excluir: ' + (e.message || ''));
+        }
+      }
+    });
   }
   async function doReopen(postId) {
     if (!confirm('Reabrir essa publicação? O status volta pra pendente.')) return;
@@ -1084,7 +1101,16 @@
   // ============================================================
   // EVENT WIRING
   // ============================================================
+  // ============================================================
+  // EVENT WIRING DO DRAWER · uma única vez no boot
+  // ------------------------------------------------------------
+  // Antes era chamado a cada openDrawer e acumulava listeners,
+  // o que fazia 1 clique em "Comentar" inserir N comentários.
+  // ============================================================
   function wireDrawerEvents(drawer) {
+    if (drawer._wired) return;
+    drawer._wired = true;
+
     drawer.addEventListener('click', async (ev) => {
       const btn = ev.target.closest('[data-action]');
       if (!btn) return;
@@ -1098,6 +1124,11 @@
       if (action === 'comment') {
         const ta = $('#soCommentInput', drawer);
         if (ta) await doComment(postId, ta, btn);
+        return;
+      }
+      if (action === 'comment-delete') {
+        const commentId = btn.dataset.commentId;
+        if (commentId) doDeleteComentario(commentId, postId);
         return;
       }
       // admin actions
@@ -1128,6 +1159,9 @@
   }
 
   function wireGlobalEvents() {
+    // Wire do drawer · uma única vez, no boot
+    wireDrawerEvents($('#soDrawer'));
+
     // seletor de mês
     $('#soMesSelect').addEventListener('change', async (e) => {
       const slug = e.target.value;
