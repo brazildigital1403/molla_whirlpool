@@ -287,6 +287,30 @@ for (const c of schemaChecks) {
 }
 
 // ============================================================
+// SECAO 9 · ADMIN DE CONTEÚDO (S4)
+// ============================================================
+console.log(`\n${YEL}9. Admin de conteúdo${RST}`);
+const adminChecks = [
+  { test: /createMes|updateMes|deleteMes|duplicateMes/.test(socialStoreJs), label: 'store tem CRUD de meses' },
+  { test: /createPost|updatePost|deletePost/.test(socialStoreJs), label: 'store tem CRUD de posts' },
+  { test: /so-adminbar/.test(socialHtml), label: 'social.html tem barra de admin' },
+  { test: /soModalMonth/.test(socialHtml), label: 'social.html tem modal de mês' },
+  { test: /soModalConfirm2/.test(socialHtml), label: 'social.html tem modal de confirmação' },
+  { test: /drawerEditHtml/.test(socialJs), label: 'social.js tem drawer em modo edit' },
+  { test: /openMonthModal/.test(socialJs), label: 'social.js abre modal de mês' },
+  { test: /doSavePost|doDeletePost/.test(socialJs), label: 'social.js tem ações admin de post' },
+  { test: /doSaveMonth|doDeleteMonth/.test(socialJs), label: 'social.js tem ações admin de mês' },
+  { test: /isAdmin/.test(socialJs), label: 'social.js distingue admin de cliente' },
+  { test: /so-card-new/.test(socialCss), label: 'social.css tem card "+ Novo post"' },
+  { test: /so-edit-form/.test(socialCss), label: 'social.css tem estilos do form de edit' },
+  { test: /social_meses/.test(read('docs/social_migration_admin.sql')), label: 'migration de realtime para social_meses existe' },
+];
+for (const c of adminChecks) {
+  if (c.test) ok(c.label);
+  else ko(c.label);
+}
+
+// ============================================================
 // SECAO 5 · ROTAS DESCARTADAS NAO PODEM EXISTIR NO vercel.json
 // ============================================================
 console.log(`\n${YEL}5. Rotas descartadas removidas do vercel.json${RST}`);

@@ -66,6 +66,19 @@
     </div>
   </section>
 
+  <!-- ADMIN BAR · visível só pra molla -->
+  <div class="so-adminbar" id="soAdminBar" hidden>
+    <div class="so-adminbar-inner">
+      <span class="so-adminbar-tag">⚙️ Admin</span>
+      <div class="so-adminbar-actions">
+        <button type="button" class="so-admin-btn" data-action="month-edit">✏️ Editar mês</button>
+        <button type="button" class="so-admin-btn" data-action="month-new">+ Novo mês</button>
+        <button type="button" class="so-admin-btn" data-action="month-duplicate">📋 Duplicar</button>
+        <button type="button" class="so-admin-btn so-admin-btn-danger" data-action="month-delete">🗑️ Excluir mês</button>
+      </div>
+    </div>
+  </div>
+
   <!-- TOOLBAR · filtros (1 linha: chips + selects + chips) -->
   <div class="so-toolbar">
     <div class="so-toolbar-inner">
@@ -145,6 +158,75 @@
     <div class="so-modal-foot">
       <button type="button" class="so-btn-ghost" id="soModalCancel">Cancelar</button>
       <button type="button" class="so-btn-danger" id="soModalConfirm">Reprovar publicação</button>
+    </div>
+  </div>
+
+  <!-- MODAL · Mês (criar / editar / duplicar) — admin -->
+  <div class="so-modal-backdrop" id="soModalMonthBackdrop" hidden></div>
+  <div class="so-modal so-modal-month" id="soModalMonth" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="so-modal-head">
+      <h3 id="soModalMonthTitle">Editar mês</h3>
+      <button type="button" class="so-modal-close" data-action="month-close" aria-label="Fechar">×</button>
+    </div>
+    <div class="so-modal-body">
+      <div class="so-form-row so-form-row-3">
+        <div class="so-field">
+          <label class="so-field-label" for="soMonthAno">Ano <span class="so-required">*</span></label>
+          <input type="number" class="so-input" id="soMonthAno" min="2024" max="2035" />
+        </div>
+        <div class="so-field">
+          <label class="so-field-label" for="soMonthMes">Mês <span class="so-required">*</span></label>
+          <select class="so-input" id="soMonthMes">
+            <option value="1">Janeiro</option><option value="2">Fevereiro</option>
+            <option value="3">Março</option><option value="4">Abril</option>
+            <option value="5">Maio</option><option value="6">Junho</option>
+            <option value="7">Julho</option><option value="8">Agosto</option>
+            <option value="9">Setembro</option><option value="10">Outubro</option>
+            <option value="11">Novembro</option><option value="12">Dezembro</option>
+          </select>
+        </div>
+        <div class="so-field">
+          <label class="so-field-label" for="soMonthNome">Nome de exibição</label>
+          <input type="text" class="so-input" id="soMonthNome" placeholder="Junho 2026" />
+        </div>
+      </div>
+      <div class="so-field">
+        <label class="so-field-label" for="soMonthTema">Tema do mês</label>
+        <input type="text" class="so-input" id="soMonthTema" placeholder="Ex: Precisão que classifica" />
+      </div>
+      <div class="so-field">
+        <label class="so-field-label" for="soMonthEstrategia">Estratégia (peças/foco)</label>
+        <input type="text" class="so-input" id="soMonthEstrategia" placeholder="Ex: Placas, filtros e mecanismos" />
+      </div>
+      <div class="so-field">
+        <label class="so-field-label" for="soMonthCampanha">Campanha em curso</label>
+        <input type="text" class="so-input" id="soMonthCampanha" placeholder="Ex: Campanha Copa do Mundo 2026 + Always On" />
+      </div>
+      <div class="so-field">
+        <label class="so-field-label" for="soMonthConceito">Conceito do mês</label>
+        <textarea class="so-input" id="soMonthConceito" rows="3" placeholder="Parágrafo descrevendo o conceito do mês…"></textarea>
+      </div>
+      <div class="so-modal-error" id="soMonthError" hidden></div>
+    </div>
+    <div class="so-modal-foot">
+      <button type="button" class="so-btn-ghost" data-action="month-close">Cancelar</button>
+      <button type="button" class="so-btn-open"  data-action="month-save">Salvar mês</button>
+    </div>
+  </div>
+
+  <!-- MODAL · Confirmação genérica (delete) -->
+  <div class="so-modal-backdrop" id="soModalConfirmBackdrop" hidden></div>
+  <div class="so-modal so-modal-confirm" id="soModalConfirm2" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="so-modal-head">
+      <h3 id="soConfirmTitle">Confirmar</h3>
+      <button type="button" class="so-modal-close" data-action="confirm-close" aria-label="Fechar">×</button>
+    </div>
+    <div class="so-modal-body">
+      <p id="soConfirmBody"></p>
+    </div>
+    <div class="so-modal-foot">
+      <button type="button" class="so-btn-ghost"  data-action="confirm-close">Cancelar</button>
+      <button type="button" class="so-btn-danger" id="soConfirmAction">Confirmar</button>
     </div>
   </div>
 

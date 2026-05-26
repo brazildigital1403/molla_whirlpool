@@ -1027,6 +1027,208 @@ body {
 }
 
 /* ============================================================
+   8.5 ADMIN · barra superior, botões nos cards, forms
+   ============================================================ */
+.so-adminbar {
+  background: linear-gradient(135deg, rgba(13, 67, 107, 0.06), rgba(0, 160, 221, 0.06));
+  border-bottom: 1px solid var(--so-border);
+}
+.so-adminbar-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 10px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.so-adminbar-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: var(--so-navy);
+  color: var(--so-white);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+.so-adminbar-actions { display: flex; flex-wrap: wrap; gap: 6px; }
+.so-admin-btn {
+  background: var(--so-white);
+  border: 1.5px solid var(--so-border);
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--so-navy);
+  cursor: pointer;
+  transition: all 160ms ease;
+}
+.so-admin-btn:hover {
+  border-color: var(--so-blue);
+  background: rgba(0, 160, 221, 0.06);
+}
+.so-admin-btn-danger { color: var(--so-danger); }
+.so-admin-btn-danger:hover {
+  border-color: var(--so-danger);
+  background: rgba(229, 72, 77, 0.06);
+}
+
+/* Card: botões edit/delete inline na footer (só pra admin) */
+.so-card-actions .so-btn-edit {
+  background: rgba(0, 160, 221, 0.10);
+  color: var(--so-navy);
+  border-color: rgba(0, 160, 221, 0.30);
+}
+.so-card-actions .so-btn-edit:hover {
+  background: rgba(0, 160, 221, 0.18);
+  transform: translateY(-1px);
+}
+.so-card-actions .so-btn-del {
+  background: rgba(229, 72, 77, 0.08);
+  color: var(--so-danger);
+  border-color: rgba(229, 72, 77, 0.28);
+}
+.so-card-actions .so-btn-del:hover {
+  background: rgba(229, 72, 77, 0.18);
+  transform: translateY(-1px);
+}
+
+/* Card especial "+ Novo post" — primeiro card do grid pro admin */
+.so-card-new {
+  background: var(--so-white);
+  border: 2px dashed var(--so-blue);
+  border-radius: var(--so-radius);
+  padding: 32px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 220ms ease;
+  min-height: 240px;
+  color: var(--so-navy);
+}
+.so-card-new:hover {
+  background: rgba(0, 160, 221, 0.06);
+  border-color: var(--so-navy);
+  transform: translateY(-4px);
+  box-shadow: var(--so-shadow-lg);
+}
+.so-card-new-icon {
+  width: 60px; height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--so-blue), var(--so-navy));
+  color: var(--so-white);
+  display: grid;
+  place-items: center;
+  font-size: 30px;
+  font-weight: 300;
+  line-height: 1;
+}
+.so-card-new-title {
+  font-size: 16px;
+  font-weight: 800;
+  margin: 4px 0 0;
+}
+.so-card-new-sub {
+  font-size: 12px;
+  color: var(--so-muted);
+  text-align: center;
+}
+
+/* Drawer · modo edição (post) */
+.so-edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.so-form-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.so-form-row-2 > .so-field { flex: 1 1 calc(50% - 5px); }
+.so-form-row-3 > .so-field { flex: 1 1 calc(33% - 7px); min-width: 100px; }
+.so-field { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.so-field-label {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+  color: var(--so-navy);
+  text-transform: uppercase;
+}
+.so-input {
+  width: 100%;
+  border: 1.5px solid var(--so-border);
+  border-radius: 10px;
+  padding: 9px 12px;
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--so-navy);
+  background: var(--so-white);
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+.so-input:focus {
+  outline: none;
+  border-color: var(--so-blue);
+  box-shadow: 0 0 0 3px rgba(0, 160, 221, 0.14);
+}
+textarea.so-input { resize: vertical; min-height: 70px; }
+select.so-input {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'><path d='M2 4l4 4 4-4' stroke='%230D436B' stroke-width='1.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 12px 12px;
+  padding-right: 32px;
+}
+.so-radios { display: flex; gap: 8px; flex-wrap: wrap; }
+.so-radio {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border-radius: 999px;
+  border: 1.5px solid var(--so-border);
+  background: var(--so-white);
+  font-size: 12.5px;
+  font-weight: 700;
+  cursor: pointer;
+  color: var(--so-navy);
+  transition: all 160ms ease;
+}
+.so-radio input { display: none; }
+.so-radio:has(input:checked),
+.so-radio.is-active {
+  background: var(--so-navy);
+  color: var(--so-white);
+  border-color: var(--so-navy);
+}
+.so-radio:hover { border-color: var(--so-blue); }
+
+.so-form-help {
+  font-size: 12px;
+  color: var(--so-muted);
+  margin: -2px 0 0;
+}
+
+/* Modal de mês — versão wider */
+.so-modal-month {
+  width: min(640px, calc(100vw - 32px));
+}
+.so-modal-confirm {
+  width: min(440px, calc(100vw - 32px));
+}
+
+/* ============================================================
    8. EMPTY STATE
    ============================================================ */
 .so-empty {

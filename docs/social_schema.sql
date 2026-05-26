@@ -125,6 +125,10 @@ CREATE TRIGGER trg_social_meses_updated_at
 DO $$
 BEGIN
   BEGIN
+    ALTER PUBLICATION supabase_realtime ADD TABLE social_meses;
+  EXCEPTION WHEN duplicate_object THEN NULL;
+  END;
+  BEGIN
     ALTER PUBLICATION supabase_realtime ADD TABLE social_posts;
   EXCEPTION WHEN duplicate_object THEN NULL;
   END;
