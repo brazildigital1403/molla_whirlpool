@@ -3,16 +3,16 @@
    ============================================================ */
 
 :root {
-  --aj-navy: #0D436B;
-  --aj-blue: #00A0DD;
-  --aj-green: #0D436B;
+  --aj-navy: #39454D;
+  --aj-blue: #FF671F;
+  --aj-green: #39454D;
   --aj-amber: #F59E0B;
   --aj-red: #E5484D;
   --aj-light: #F4F7FA;
   --aj-muted: #7A8B97;
-  --aj-shadow-sm: 0 2px 8px rgba(13, 67, 107, 0.05);
-  --aj-shadow: 0 4px 16px rgba(13, 67, 107, 0.08);
-  --aj-shadow-lg: 0 8px 30px rgba(13, 67, 107, 0.12);
+  --aj-shadow-sm: 0 2px 8px rgba(57, 69, 77, 0.05);
+  --aj-shadow: 0 4px 16px rgba(57, 69, 77, 0.08);
+  --aj-shadow-lg: 0 8px 30px rgba(57, 69, 77, 0.12);
 }
 
 body {
@@ -34,7 +34,7 @@ body {
   position: relative;
   margin: 24px 0 40px;
   padding: 56px 40px;
-  background: linear-gradient(135deg, rgba(0, 160, 221, 0.10) 0%, rgba(13, 67, 107, 0.08) 100%);
+  background: linear-gradient(135deg, rgba(255, 103, 31, 0.10) 0%, rgba(57, 69, 77, 0.08) 100%);
   border-radius: 24px;
   overflow: hidden;
 }
@@ -43,7 +43,7 @@ body {
   position: absolute;
   top: -80px; right: -80px;
   width: 280px; height: 280px;
-  background: radial-gradient(circle, rgba(0, 160, 221, 0.18), transparent 70%);
+  background: radial-gradient(circle, rgba(255, 103, 31, 0.18), transparent 70%);
   border-radius: 50%;
 }
 .aj-hero-inner {
@@ -57,7 +57,7 @@ body {
   letter-spacing: 1.2px;
   text-transform: uppercase;
   color: var(--aj-blue);
-  background: rgba(0, 160, 221, 0.14);
+  background: rgba(255, 103, 31, 0.14);
   padding: 6px 14px;
   border-radius: 999px;
   margin-bottom: 16px;
@@ -98,7 +98,7 @@ body {
   border-radius: 999px;
   font-size: 13px;
   font-weight: 700;
-  border: 1.5px solid rgba(13, 67, 107, 0.08);
+  border: 1.5px solid rgba(57, 69, 77, 0.08);
   transition: all 200ms ease;
 }
 .aj-toc a:hover {
@@ -145,7 +145,7 @@ body {
   font-weight: 800;
   letter-spacing: -0.5px;
   flex-shrink: 0;
-  box-shadow: 0 6px 16px rgba(13, 67, 107, 0.20);
+  box-shadow: 0 6px 16px rgba(57, 69, 77, 0.20);
 }
 .aj-section-head h2 {
   font-size: 28px;
@@ -189,7 +189,7 @@ body {
   border-radius: 16px;
   padding: 28px;
   box-shadow: var(--aj-shadow-sm);
-  border: 1px solid rgba(13, 67, 107, 0.04);
+  border: 1px solid rgba(57, 69, 77, 0.04);
 }
 .aj-steps {
   margin: 0;
@@ -227,7 +227,7 @@ body {
   left: 14px; top: 30px;
   width: 2px;
   height: calc(100% - 30px);
-  background: rgba(0, 160, 221, 0.20);
+  background: rgba(255, 103, 31, 0.20);
 }
 .aj-steps li:last-child::after { display: none; }
 .aj-steps a {
@@ -257,7 +257,7 @@ body {
   border-radius: 16px;
   padding: 20px;
   box-shadow: var(--aj-shadow-sm);
-  border: 1px solid rgba(13, 67, 107, 0.04);
+  border: 1px solid rgba(57, 69, 77, 0.04);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -292,7 +292,7 @@ body {
   border-radius: 14px;
   padding: 22px 20px;
   box-shadow: var(--aj-shadow-sm);
-  border: 1px solid rgba(13, 67, 107, 0.04);
+  border: 1px solid rgba(57, 69, 77, 0.04);
   transition: all 220ms ease;
 }
 .aj-area:hover {
@@ -329,8 +329,8 @@ body {
   margin: 0;
 }
 .aj-area-featured {
-  background: linear-gradient(135deg, rgba(0, 160, 221, 0.08), rgba(13, 67, 107, 0.06));
-  border-color: rgba(0, 160, 221, 0.18);
+  background: linear-gradient(135deg, rgba(255, 103, 31, 0.08), rgba(57, 69, 77, 0.06));
+  border-color: rgba(255, 103, 31, 0.18);
 }
 .aj-pill {
   font-size: 9px;
@@ -367,7 +367,7 @@ body {
   font-size: 13px;
   font-weight: 800;
   color: var(--aj-blue);
-  background: rgba(0, 160, 221, 0.12);
+  background: rgba(255, 103, 31, 0.12);
   padding: 4px 10px;
   border-radius: 999px;
   letter-spacing: 0.4px;
@@ -408,11 +408,11 @@ body {
   padding: 8px 0;
   font-size: 13px;
   color: var(--aj-navy);
-  border-bottom: 1px solid rgba(13, 67, 107, 0.06);
+  border-bottom: 1px solid rgba(57, 69, 77, 0.06);
 }
 .aj-md-table td:first-child { width: 40%; }
 .aj-md-table code {
-  background: rgba(13, 67, 107, 0.06);
+  background: rgba(57, 69, 77, 0.06);
   padding: 3px 8px;
   border-radius: 5px;
   font-size: 12px;
@@ -459,7 +459,7 @@ body {
   border-radius: 14px;
   padding: 22px 20px;
   box-shadow: var(--aj-shadow-sm);
-  border: 1px solid rgba(13, 67, 107, 0.04);
+  border: 1px solid rgba(57, 69, 77, 0.04);
   position: relative;
 }
 .aj-benefit-num {
@@ -467,7 +467,7 @@ body {
   top: 16px; right: 18px;
   font-size: 36px;
   font-weight: 800;
-  color: rgba(0, 160, 221, 0.15);
+  color: rgba(255, 103, 31, 0.15);
   line-height: 1;
 }
 .aj-benefit h4, .aj-tip-card h4 {
@@ -489,7 +489,7 @@ body {
   margin-bottom: 10px;
 }
 .aj-tip-card code {
-  background: rgba(13, 67, 107, 0.06);
+  background: rgba(57, 69, 77, 0.06);
   padding: 1px 5px;
   border-radius: 4px;
   font-size: 11px;

@@ -236,7 +236,7 @@
     if (state.setupPending) {
       lista.innerHTML = `
         <div class="aq-empty">
-          <strong>Tabela <code style="background:rgba(13, 67, 107,.06);padding:1px 6px;border-radius:4px;">files</code> ainda não foi criada no Supabase.</strong>
+          <strong>Tabela <code style="background:rgba(57, 69, 77,.06);padding:1px 6px;border-radius:4px;">files</code> ainda não foi criada no Supabase.</strong>
           Aplique o schema SQL no Supabase Dashboard → SQL Editor antes de usar a seção.
           <br><br>
           <button type="button" class="aq-btn-ghost" id="aqRetry">Já apliquei — tentar novamente</button>

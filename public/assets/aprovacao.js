@@ -260,7 +260,7 @@
       <div class="empty-state">
         <div class="loader" style="
           width: 40px; height: 40px; margin: 0 auto 14px;
-          border: 3px solid rgba(13, 67, 107,0.12);
+          border: 3px solid rgba(57, 69, 77,0.12);
           border-top-color: var(--blue);
           border-radius: 50%;
           animation: spin 800ms linear infinite;

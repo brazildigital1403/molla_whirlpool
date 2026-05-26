@@ -109,7 +109,7 @@
   // SVG MOCKUPS · um por formato
   // ============================================================
   function svgCarrossel(corHex) {
-    const cor = corHex || '#00A0DD';
+    const cor = corHex || '#FF671F';
     return `
       <svg viewBox="0 0 320 90" xmlns="http://www.w3.org/2000/svg" aria-label="Mockup de carrossel">
         <rect x="6"   y="10" width="56" height="70" rx="6" fill="${cor}" opacity="0.96"/>
@@ -127,7 +127,7 @@
     `;
   }
   function svgEstatico(corHex) {
-    const cor = corHex || '#00A0DD';
+    const cor = corHex || '#FF671F';
     return `
       <svg viewBox="0 0 320 90" xmlns="http://www.w3.org/2000/svg" aria-label="Mockup de post estático">
         <rect x="120" y="6" width="80" height="78" rx="8" fill="${cor}"/>
@@ -138,7 +138,7 @@
     `;
   }
   function svgReels(corHex) {
-    const cor = corHex || '#00A0DD';
+    const cor = corHex || '#FF671F';
     return `
       <svg viewBox="0 0 320 90" xmlns="http://www.w3.org/2000/svg" aria-label="Mockup de Reels">
         <rect x="138" y="2" width="44" height="86" rx="6" fill="${cor}"/>
@@ -149,7 +149,7 @@
     `;
   }
   function svgCarrosselReels(corHex) {
-    const cor = corHex || '#00A0DD';
+    const cor = corHex || '#FF671F';
     return `
       <svg viewBox="0 0 320 90" xmlns="http://www.w3.org/2000/svg" aria-label="Mockup de Carrossel e Reels">
         <rect x="6"   y="12" width="40" height="66" rx="5" fill="${cor}" opacity="0.95"/>
@@ -330,7 +330,7 @@
     `;
   }
   function cardHtml(p) {
-    const linha = LINHAS[p.linha_editorial] || { label: p.linha_editorial, cor: '#00A0DD' };
+    const linha = LINHAS[p.linha_editorial] || { label: p.linha_editorial, cor: '#FF671F' };
     const fmtLabel = FORMATOS[p.formato] || p.formato;
     const stsLabel = STATUS[p.status] ? STATUS[p.status].label : p.status;
     const data = fmtData(p.data_post);
@@ -448,7 +448,7 @@
       <div class="so-drawer-body"><p>Carregando detalhes da publicação…</p></div>`;
   }
   function drawerFullHtml(p, comentarios, historico) {
-    const linha = LINHAS[p.linha_editorial] || { label: p.linha_editorial, cor: '#00A0DD' };
+    const linha = LINHAS[p.linha_editorial] || { label: p.linha_editorial, cor: '#FF671F' };
     const fmtLabel = FORMATOS[p.formato] || p.formato;
     const data = fmtData(p.data_post);
     const stsLabel = STATUS[p.status] ? STATUS[p.status].label : p.status;

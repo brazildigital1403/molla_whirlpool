@@ -17,22 +17,22 @@
    1. TOKENS
    ============================================================ */
 :root {
-  --so-navy:   #0D436B;
-  --so-blue:   #00A0DD;
-  --so-blue-soft: #7FCDE9;
+  --so-navy:   #39454D;
+  --so-blue:   #FF671F;
+  --so-blue-soft: #FFB082;
   --so-blue-2: #1E7BAB;
   --so-amber:  #F59E0B;
   --so-violet: #7C6EE8;
   --so-success: #16A34A;   /* verde semântico de "aprovado" */
   --so-success-soft: #50E596;
   --so-danger: #E5484D;
-  --so-light:  #F1F5F9;
+  --so-light:  #F2F3F8;
   --so-white:  #FFFFFF;
   --so-muted:  #5B7280;
-  --so-border: rgba(13, 67, 107, 0.08);
+  --so-border: rgba(57, 69, 77, 0.08);
 
-  --so-shadow:    0 8px 24px rgba(13, 67, 107, 0.08);
-  --so-shadow-lg: 0 18px 48px rgba(13, 67, 107, 0.16);
+  --so-shadow:    0 8px 24px rgba(57, 69, 77, 0.08);
+  --so-shadow-lg: 0 18px 48px rgba(57, 69, 77, 0.16);
   --so-radius:    18px;
   --so-radius-sm: 12px;
 }
@@ -58,9 +58,9 @@ body {
 .so-hero {
   padding: 48px 24px 32px;
   background:
-    radial-gradient(circle at 85% 20%, rgba(0, 160, 221, 0.18), transparent 42%),
-    radial-gradient(circle at 12% 85%, rgba(13, 67, 107, 0.12), transparent 42%),
-    linear-gradient(135deg, #F1F5F9 0%, #FFFFFF 100%);
+    radial-gradient(circle at 85% 20%, rgba(255, 103, 31, 0.18), transparent 42%),
+    radial-gradient(circle at 12% 85%, rgba(57, 69, 77, 0.12), transparent 42%),
+    linear-gradient(135deg, #F2F3F8 0%, #FFFFFF 100%);
 }
 .so-hero-inner {
   max-width: 1180px;
@@ -82,7 +82,7 @@ body {
   gap: 8px;
   padding: 6px 14px;
   border-radius: 999px;
-  background: rgba(0, 160, 221, 0.14);
+  background: rgba(255, 103, 31, 0.14);
   color: var(--so-navy);
   font-weight: 700;
   font-size: 12px;
@@ -124,14 +124,14 @@ body {
   cursor: pointer;
   appearance: none;
   -webkit-appearance: none;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'><path d='M2 4l4 4 4-4' stroke='%230D436B' stroke-width='1.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'><path d='M2 4l4 4 4-4' stroke='%2339454D' stroke-width='1.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>");
   background-repeat: no-repeat;
   background-position: right 12px center;
   background-size: 12px 12px;
   transition: border-color 160ms ease;
 }
 .so-mes-select:hover { border-color: var(--so-blue); }
-.so-mes-select:focus { outline: none; border-color: var(--so-blue); box-shadow: 0 0 0 4px rgba(0, 160, 221, 0.14); }
+.so-mes-select:focus { outline: none; border-color: var(--so-blue); box-shadow: 0 0 0 4px rgba(255, 103, 31, 0.14); }
 
 .so-tema {
   font-size: clamp(28px, 4vw, 42px);
@@ -220,7 +220,7 @@ body {
 .so-progress { margin-top: 4px; }
 .so-progress-bar {
   height: 6px;
-  background: rgba(13, 67, 107, 0.08);
+  background: rgba(57, 69, 77, 0.08);
   border-radius: 999px;
   overflow: hidden;
   display: flex;
@@ -292,7 +292,7 @@ body {
 }
 .so-chip:hover {
   border-color: var(--so-blue);
-  background: rgba(0, 160, 221, 0.06);
+  background: rgba(255, 103, 31, 0.06);
 }
 .so-chip.is-active {
   background: var(--so-navy);
@@ -320,7 +320,7 @@ body {
   cursor: pointer;
   appearance: none;
   -webkit-appearance: none;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'><path d='M2 4l4 4 4-4' stroke='%230D436B' stroke-width='1.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'><path d='M2 4l4 4 4-4' stroke='%2339454D' stroke-width='1.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>");
   background-repeat: no-repeat;
   background-position: right 10px center;
   background-size: 12px 12px;
@@ -328,7 +328,7 @@ body {
   min-width: 160px;
 }
 .so-select:hover  { border-color: var(--so-blue); }
-.so-select:focus  { outline: none; border-color: var(--so-blue); box-shadow: 0 0 0 4px rgba(0, 160, 221, 0.14); }
+.so-select:focus  { outline: none; border-color: var(--so-blue); box-shadow: 0 0 0 4px rgba(255, 103, 31, 0.14); }
 /* Quando tem valor (filtro aplicado), pinta de navy pra dar feedback */
 .so-select.is-active {
   background-color: var(--so-navy);
@@ -369,7 +369,7 @@ body {
   cursor: pointer;
   transition: all 160ms ease;
 }
-.so-clear:hover { border-color: var(--so-blue); background: rgba(0, 160, 221, 0.06); }
+.so-clear:hover { border-color: var(--so-blue); background: rgba(255, 103, 31, 0.06); }
 
 /* ============================================================
    4. GRID + cards
@@ -463,11 +463,11 @@ body {
   color: var(--so-navy);
 }
 .so-card-tag-linha {
-  background: var(--so-card-color-soft, rgba(0, 160, 221, 0.14));
+  background: var(--so-card-color-soft, rgba(255, 103, 31, 0.14));
   color: var(--so-card-color, var(--so-navy));
 }
 .so-card-tag-tipo-campanha {
-  background: linear-gradient(135deg, rgba(0, 160, 221, 0.22), rgba(13, 67, 107, 0.18));
+  background: linear-gradient(135deg, rgba(255, 103, 31, 0.22), rgba(57, 69, 77, 0.18));
   color: var(--so-navy);
 }
 
@@ -594,7 +594,7 @@ body {
   background: var(--so-navy);
   color: var(--so-white);
 }
-.so-btn-open:hover { background: #082F49; transform: translateY(-1px); }
+.so-btn-open:hover { background: #2A3138; transform: translateY(-1px); }
 .so-btn-ghost {
   background: transparent;
   border-color: var(--so-border);
@@ -621,7 +621,7 @@ body {
 .so-drawer-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(13, 67, 107, 0.5);
+  background: rgba(57, 69, 77, 0.5);
   z-index: 1099;
   opacity: 0;
   visibility: hidden;
@@ -643,7 +643,7 @@ body {
   width: min(560px, 100vw);
   background: var(--so-white);
   z-index: 1100;
-  box-shadow: -20px 0 60px rgba(13, 67, 107, 0.20);
+  box-shadow: -20px 0 60px rgba(57, 69, 77, 0.20);
   transform: translateX(100%);
   transition: transform 280ms cubic-bezier(0.3, 0, 0.2, 1);
   display: flex;
@@ -672,14 +672,14 @@ body {
 .so-drawer-close {
   width: 36px; height: 36px;
   border: 0;
-  background: rgba(13, 67, 107, 0.06);
+  background: rgba(57, 69, 77, 0.06);
   border-radius: 50%;
   font-size: 22px;
   color: var(--so-navy);
   cursor: pointer;
   transition: background 160ms ease;
 }
-.so-drawer-close:hover { background: rgba(13, 67, 107, 0.12); }
+.so-drawer-close:hover { background: rgba(57, 69, 77, 0.12); }
 
 .so-drawer-body {
   padding: 24px;
@@ -896,7 +896,7 @@ body {
 .so-comment-input:focus {
   outline: none;
   border-color: var(--so-blue);
-  box-shadow: 0 0 0 3px rgba(0, 160, 221, 0.14);
+  box-shadow: 0 0 0 3px rgba(255, 103, 31, 0.14);
 }
 .so-comment-form-actions {
   display: flex;
@@ -938,7 +938,7 @@ body {
 .so-modal-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(13, 67, 107, 0.6);
+  background: rgba(57, 69, 77, 0.6);
   z-index: 1199;
   opacity: 0;
   visibility: hidden;
@@ -959,7 +959,7 @@ body {
   width: min(480px, calc(100vw - 32px));
   background: var(--so-white);
   border-radius: var(--so-radius);
-  box-shadow: 0 30px 80px rgba(13, 67, 107, 0.30);
+  box-shadow: 0 30px 80px rgba(57, 69, 77, 0.30);
   z-index: 1200;
   display: flex;
   flex-direction: column;
@@ -987,13 +987,13 @@ body {
 .so-modal-close {
   width: 32px; height: 32px;
   border: 0;
-  background: rgba(13, 67, 107, 0.06);
+  background: rgba(57, 69, 77, 0.06);
   border-radius: 50%;
   font-size: 20px;
   color: var(--so-navy);
   cursor: pointer;
 }
-.so-modal-close:hover { background: rgba(13, 67, 107, 0.12); }
+.so-modal-close:hover { background: rgba(57, 69, 77, 0.12); }
 
 .so-modal-body { padding: 18px 22px; }
 .so-modal-body p {
@@ -1050,7 +1050,7 @@ body {
    8.5 ADMIN · barra superior, botões nos cards, forms
    ============================================================ */
 .so-adminbar {
-  background: linear-gradient(135deg, rgba(13, 67, 107, 0.06), rgba(0, 160, 221, 0.06));
+  background: linear-gradient(135deg, rgba(57, 69, 77, 0.06), rgba(255, 103, 31, 0.06));
   border-bottom: 1px solid var(--so-border);
 }
 .so-adminbar-inner {
@@ -1091,7 +1091,7 @@ body {
 }
 .so-admin-btn:hover {
   border-color: var(--so-blue);
-  background: rgba(0, 160, 221, 0.06);
+  background: rgba(255, 103, 31, 0.06);
 }
 .so-admin-btn-danger { color: var(--so-danger); }
 .so-admin-btn-danger:hover {
@@ -1101,12 +1101,12 @@ body {
 
 /* Card: botões edit/delete inline na footer (só pra admin) */
 .so-card-actions .so-btn-edit {
-  background: rgba(0, 160, 221, 0.10);
+  background: rgba(255, 103, 31, 0.10);
   color: var(--so-navy);
-  border-color: rgba(0, 160, 221, 0.30);
+  border-color: rgba(255, 103, 31, 0.30);
 }
 .so-card-actions .so-btn-edit:hover {
-  background: rgba(0, 160, 221, 0.18);
+  background: rgba(255, 103, 31, 0.18);
   transform: translateY(-1px);
 }
 .so-card-actions .so-btn-del {
@@ -1136,7 +1136,7 @@ body {
   color: var(--so-navy);
 }
 .so-card-new:hover {
-  background: rgba(0, 160, 221, 0.06);
+  background: rgba(255, 103, 31, 0.06);
   border-color: var(--so-navy);
   transform: translateY(-4px);
   box-shadow: var(--so-shadow-lg);
@@ -1198,13 +1198,13 @@ body {
 .so-input:focus {
   outline: none;
   border-color: var(--so-blue);
-  box-shadow: 0 0 0 3px rgba(0, 160, 221, 0.14);
+  box-shadow: 0 0 0 3px rgba(255, 103, 31, 0.14);
 }
 textarea.so-input { resize: vertical; min-height: 70px; }
 select.so-input {
   appearance: none;
   -webkit-appearance: none;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'><path d='M2 4l4 4 4-4' stroke='%230D436B' stroke-width='1.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'><path d='M2 4l4 4 4-4' stroke='%2339454D' stroke-width='1.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>");
   background-repeat: no-repeat;
   background-position: right 10px center;
   background-size: 12px 12px;

@@ -317,7 +317,7 @@
     if (state.setupPending) {
       wrap.innerHTML = `
         <div class="jr-empty">
-          <strong>Tabela <code style="background:rgba(13, 67, 107,.06);padding:1px 6px;border-radius:4px;">events</code> ainda não foi criada no Supabase.</strong>
+          <strong>Tabela <code style="background:rgba(57, 69, 77,.06);padding:1px 6px;border-radius:4px;">events</code> ainda não foi criada no Supabase.</strong>
           Aplique o schema SQL no Supabase Dashboard → SQL Editor antes de usar a seção.
           <br><br>
           <button type="button" class="jr-btn-ghost" id="jrRetry">Já apliquei — tentar novamente</button>

@@ -7,20 +7,20 @@
   <meta name="description" content="Acesso ao hub Whirlpool Brasil." />
   <style>
     :root {
-      --navy: #0D436B;
-      --navy-deep: #082F49;
-      --blue: #00A0DD;
-      --blue-soft: #7FCDE9;
+      --navy: #39454D;
+      --navy-deep: #2A3138;
+      --blue: #FF671F;
+      --blue-soft: #FFB082;
       --success: #50E596;
       --green: #50E596;
       --green-soft: #A8F2C9;
-      --light: #F1F5F9;
+      --light: #F2F3F8;
       --white: #FFFFFF;
-      --text: #0D436B;
+      --text: #39454D;
       --muted: #5B7280;
       --danger: #E5484D;
-      --shadow: 0 18px 40px rgba(13, 67, 107, 0.12);
-      --shadow-lg: 0 24px 60px rgba(13, 67, 107, 0.18);
+      --shadow: 0 18px 40px rgba(57, 69, 77, 0.12);
+      --shadow-lg: 0 24px 60px rgba(57, 69, 77, 0.18);
       --radius: 22px;
     }
     * { box-sizing: border-box; }
@@ -35,9 +35,9 @@
       place-items: center;
       padding: 24px;
       background:
-        radial-gradient(circle at 85% 15%, rgba(0, 160, 221,.22), transparent 42%),
-        radial-gradient(circle at 10% 80%, rgba(13, 67, 107,.14), transparent 42%),
-        linear-gradient(135deg, #F1F5F9 0%, #FFFFFF 100%);
+        radial-gradient(circle at 85% 15%, rgba(255, 103, 31,.22), transparent 42%),
+        radial-gradient(circle at 10% 80%, rgba(57, 69, 77,.14), transparent 42%),
+        linear-gradient(135deg, #F2F3F8 0%, #FFFFFF 100%);
     }
 
     .card {
@@ -49,7 +49,7 @@
       max-width: 440px;
       position: relative;
       overflow: hidden;
-      border: 1px solid rgba(13, 67, 107, 0.06);
+      border: 1px solid rgba(57, 69, 77, 0.06);
       text-align: center;
     }
     .card::before {
@@ -64,7 +64,7 @@
       display: inline-block;
       padding: 6px 14px;
       border-radius: 999px;
-      background: rgba(0, 160, 221,.14);
+      background: rgba(255, 103, 31,.14);
       color: var(--navy);
       font-weight: 700;
       font-size: 11px;
@@ -110,7 +110,7 @@
     input[type="password"], input[type="text"] {
       width: 100%;
       padding: 14px 48px 14px 16px;
-      border: 1.5px solid rgba(13, 67, 107, 0.14);
+      border: 1.5px solid rgba(57, 69, 77, 0.14);
       border-radius: 14px;
       font-size: 15px;
       font-family: inherit;
@@ -121,7 +121,7 @@
     input:focus {
       outline: none;
       border-color: var(--blue);
-      box-shadow: 0 0 0 4px rgba(0, 160, 221, 0.14);
+      box-shadow: 0 0 0 4px rgba(255, 103, 31, 0.14);
     }
 
     .toggle-vis {
@@ -151,9 +151,9 @@
       letter-spacing: 0.3px;
       cursor: pointer;
       transition: transform 180ms ease, box-shadow 180ms ease, opacity 180ms;
-      box-shadow: 0 8px 22px rgba(13, 67, 107, 0.18);
+      box-shadow: 0 8px 22px rgba(57, 69, 77, 0.18);
     }
-    button.primary:hover { transform: translateY(-1px); box-shadow: 0 12px 28px rgba(13, 67, 107, 0.22); }
+    button.primary:hover { transform: translateY(-1px); box-shadow: 0 12px 28px rgba(57, 69, 77, 0.22); }
     button.primary:active { transform: translateY(0); }
     button.primary:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
 
