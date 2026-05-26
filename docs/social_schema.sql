@@ -139,5 +139,32 @@ BEGIN
 END $$;
 
 -- ============================================================
+-- 7) RLS POLICIES · "anon all" igual ao padrão do projeto
+-- ------------------------------------------------------------
+-- O projeto Whirlpool cria tabelas com RLS habilitado por padrão.
+-- Sem nenhuma policy, a publishable key (anon) NÃO consegue ler
+-- nada. Replicamos o mesmo padrão já usado em campaigns/files/etc.
+-- ============================================================
+DROP POLICY IF EXISTS "anon all" ON social_meses;
+CREATE POLICY "anon all" ON social_meses
+  FOR ALL TO anon, authenticated
+  USING (true) WITH CHECK (true);
+
+DROP POLICY IF EXISTS "anon all" ON social_posts;
+CREATE POLICY "anon all" ON social_posts
+  FOR ALL TO anon, authenticated
+  USING (true) WITH CHECK (true);
+
+DROP POLICY IF EXISTS "anon all" ON social_comentarios;
+CREATE POLICY "anon all" ON social_comentarios
+  FOR ALL TO anon, authenticated
+  USING (true) WITH CHECK (true);
+
+DROP POLICY IF EXISTS "anon all" ON social_historico;
+CREATE POLICY "anon all" ON social_historico
+  FOR ALL TO anon, authenticated
+  USING (true) WITH CHECK (true);
+
+-- ============================================================
 -- FIM · Schema Social Whirlpool
 -- ============================================================

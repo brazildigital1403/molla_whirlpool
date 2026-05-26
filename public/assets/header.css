@@ -420,7 +420,8 @@
   white-space: nowrap;
 }
 .whp-role-chip.whp-role-admin {
-  background: linear-gradient(135deg, var(--whp-blue), var(--whp-navy));
+  background: var(--whp-white, #FFFFFF);
+  border: 1.5px solid var(--whp-navy);
   color: var(--whp-navy);
 }
 @media (max-width: 760px) {
@@ -448,7 +449,8 @@
   width: 26px;
   height: 26px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--whp-blue), var(--whp-navy));
+  background: #FFFFFF;
+  border: 1.5px solid var(--whp-navy);
   color: var(--whp-navy);
   display: grid;
   place-items: center;

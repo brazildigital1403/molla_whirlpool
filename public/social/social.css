@@ -243,24 +243,20 @@ body {
 .so-toolbar-inner {
   max-width: 1180px;
   margin: 0 auto;
-  padding: 14px 24px;
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 16px;
-  flex-wrap: wrap;
+  padding: 12px 24px;
 }
 
-.so-filters {
+/* Linha única — cada filtro é uma "célula" com label em cima do controle */
+.so-filters-row {
   display: flex;
+  align-items: flex-end;
   flex-wrap: wrap;
-  gap: 14px 22px;
-  flex: 1;
+  gap: 10px 16px;
 }
-.so-filter-group {
+.so-filter {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 4px;
   min-width: 0;
 }
 .so-filter-label {
@@ -269,17 +265,19 @@ body {
   letter-spacing: 0.8px;
   text-transform: uppercase;
   color: var(--so-muted);
+  line-height: 1;
 }
+
+/* Chips inline pros filtros visuais (Tipo e Status) */
 .so-chips {
   display: flex;
-  flex-wrap: wrap;
   gap: 6px;
 }
 .so-chip {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 5px 12px;
+  padding: 6px 12px;
   border-radius: 999px;
   background: var(--so-white);
   border: 1.5px solid var(--so-border);
@@ -290,6 +288,7 @@ body {
   cursor: pointer;
   transition: all 160ms ease;
   white-space: nowrap;
+  line-height: 1.2;
 }
 .so-chip:hover {
   border-color: var(--so-blue);
@@ -308,23 +307,61 @@ body {
 }
 .so-chip.is-active .so-chip-color { box-shadow: 0 0 0 2px rgba(255,255,255,0.7); }
 
+/* Selects nativos estilizados */
+.so-select {
+  background: var(--so-white);
+  border: 1.5px solid var(--so-border);
+  border-radius: 999px;
+  padding: 7px 32px 7px 12px;
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--so-navy);
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'><path d='M2 4l4 4 4-4' stroke='%230D436B' stroke-width='1.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 12px 12px;
+  transition: border-color 160ms ease, background-color 160ms ease;
+  min-width: 160px;
+}
+.so-select:hover  { border-color: var(--so-blue); }
+.so-select:focus  { outline: none; border-color: var(--so-blue); box-shadow: 0 0 0 4px rgba(0, 160, 221, 0.14); }
+/* Quando tem valor (filtro aplicado), pinta de navy pra dar feedback */
+.so-select.is-active {
+  background-color: var(--so-navy);
+  color: var(--so-white);
+  border-color: var(--so-navy);
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'><path d='M2 4l4 4 4-4' stroke='white' stroke-width='1.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+}
+
+/* Chips com cor semântica por status */
+.so-chip[data-group="status"][data-value="pendente"] .so-chip-color  { background: var(--so-amber); }
+.so-chip[data-group="status"][data-value="aprovado"] .so-chip-color  { background: var(--so-success); }
+.so-chip[data-group="status"][data-value="reprovado"] .so-chip-color { background: var(--so-danger); }
+
+/* Contador + clear no fim da linha */
 .so-toolbar-actions {
   display: flex;
   align-items: center;
-  gap: 12px;
-  flex-shrink: 0;
+  gap: 10px;
+  margin-left: auto;
+  padding-bottom: 2px;   /* alinha pelo bottom da linha */
 }
 .so-count {
-  font-size: 13px;
+  font-size: 12.5px;
   font-weight: 700;
   color: var(--so-muted);
+  white-space: nowrap;
 }
 .so-count strong { color: var(--so-navy); }
 .so-clear {
   background: transparent;
   border: 1px solid var(--so-border);
   border-radius: 999px;
-  padding: 6px 14px;
+  padding: 6px 12px;
   font-family: inherit;
   font-size: 12px;
   font-weight: 700;
@@ -1032,8 +1069,20 @@ body {
   .so-kpi-num { font-size: 22px; }
 
   .so-toolbar { position: static; }
-  .so-toolbar-inner { padding: 14px 18px; }
-  .so-filters { gap: 12px; flex-direction: column; }
+  .so-toolbar-inner { padding: 14px 16px; }
+  .so-filters-row {
+    gap: 10px 12px;
+    align-items: stretch;
+  }
+  .so-filter { flex: 1 1 calc(50% - 6px); min-width: 0; }
+  .so-select { width: 100%; min-width: 0; }
+  .so-chips { flex-wrap: wrap; }
+  .so-toolbar-actions {
+    flex: 1 1 100%;
+    margin-left: 0;
+    justify-content: space-between;
+    padding-top: 2px;
+  }
 
   .so-main { padding: 0 16px; margin: 16px auto 56px; }
   .so-grid { grid-template-columns: 1fr; gap: 14px; }

@@ -253,21 +253,38 @@
       u.formato.add(p.formato);
     });
 
-    chipsHtml('#soFiltersTipo',    Array.from(u.tipo).sort(),    'tipo',    v => TIPOS[v] || v);
-    chipsHtml('#soFiltersLinha',   Array.from(u.linha),          'linha',   v => LINHAS[v] ? LINHAS[v].label : v, v => LINHAS[v] && LINHAS[v].cor);
-    chipsHtml('#soFiltersPeca',    Array.from(u.peca).sort(),    'peca',    v => v === '__nopeca' ? 'Sem peça' : v);
-    chipsHtml('#soFiltersFormato', Array.from(u.formato).sort(), 'formato', v => FORMATOS[v] || v);
-    chipsHtml('#soFiltersStatus',  Array.from(u.status),         'status',  v => STATUS[v] ? STATUS[v].label : v);
+    // Chips multi-select com cor pra Tipo e Status
+    chipsHtml('#soFiltersTipo',   Array.from(u.tipo).sort(),   'tipo',   v => TIPOS[v] || v);
+    chipsHtml('#soFiltersStatus', Array.from(u.status),        'status', v => STATUS[v] ? STATUS[v].label : v, true);
+
+    // Selects single-select pra Linha editorial, Formato e Peça
+    selectHtml('#soSelectLinha',   Array.from(u.linha),          'linha',   'Todas',     v => LINHAS[v]   ? LINHAS[v].label   : v);
+    selectHtml('#soSelectFormato', Array.from(u.formato).sort(), 'formato', 'Todos',     v => FORMATOS[v] || v);
+    selectHtml('#soSelectPeca',    Array.from(u.peca).sort(),    'peca',    'Todas',     v => v === '__nopeca' ? 'Sem peça' : v);
   }
-  function chipsHtml(rootSel, values, group, labelFn, colorFn) {
+
+  // Chips: usado pra Tipo e Status (multi-select)
+  // Se withColor=true, marca .so-chip-color (a cor real vem do CSS via data-value)
+  function chipsHtml(rootSel, values, group, labelFn, withColor) {
     const root = $(rootSel);
     if (!root) return;
     root.innerHTML = values.map(v => {
       const active = state.filters[group].has(v) ? 'is-active' : '';
-      const color = colorFn ? colorFn(v) : null;
-      const dot = color ? `<span class="so-chip-color" style="background:${color}"></span>` : '';
+      const dot = withColor ? '<span class="so-chip-color"></span>' : '';
       return `<button type="button" class="so-chip ${active}" data-group="${group}" data-value="${esc(v)}">${dot}${esc(labelFn(v))}</button>`;
     }).join('');
+  }
+
+  // Select: single-select pros 3 grupos compactos (Linha, Formato, Peça)
+  function selectHtml(rootSel, values, group, allLabel, labelFn) {
+    const sel = $(rootSel);
+    if (!sel) return;
+    const set = state.filters[group];
+    const current = set.size ? Array.from(set)[0] : '';
+    const options = [`<option value="">${esc(allLabel)}</option>`]
+      .concat(values.map(v => `<option value="${esc(v)}" ${v === current ? 'selected' : ''}>${esc(labelFn(v))}</option>`));
+    sel.innerHTML = options.join('');
+    sel.classList.toggle('is-active', !!current);
   }
 
 
@@ -648,7 +665,7 @@
       renderGrid();
     });
 
-    // chips de filtro
+    // chips de filtro · multi-select (Tipo, Status)
     document.addEventListener('click', (ev) => {
       const chip = ev.target.closest('.so-chip');
       if (!chip) return;
@@ -659,6 +676,22 @@
       if (set.has(value)) set.delete(value);
       else set.add(value);
       renderFilters();
+      renderGrid();
+    });
+
+    // selects de filtro · single-select (Linha editorial, Formato, Peça)
+    document.addEventListener('change', (ev) => {
+      const sel = ev.target.closest('.so-select');
+      if (!sel) return;
+      const group = sel.dataset.group;
+      const value = sel.value;
+      const set = state.filters[group];
+      if (!set) return;
+      set.clear();
+      if (value) set.add(value);
+      sel.classList.toggle('is-active', !!value);
+      // não re-renderiza todos os filtros pra não perder o focus do select aberto;
+      // só re-renderiza a grid e o contador.
       renderGrid();
     });
 

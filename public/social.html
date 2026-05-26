@@ -66,35 +66,46 @@
     </div>
   </section>
 
-  <!-- TOOLBAR · filtros -->
+  <!-- TOOLBAR · filtros (1 linha: chips + selects + chips) -->
   <div class="so-toolbar">
     <div class="so-toolbar-inner">
-      <div class="so-filters">
-        <div class="so-filter-group" data-group="tipo">
+      <div class="so-filters-row">
+
+        <!-- Tipo · 2 valores, chips multi -->
+        <div class="so-filter so-filter-chips" data-group="tipo">
           <span class="so-filter-label">Tipo</span>
           <div class="so-chips" id="soFiltersTipo"></div>
         </div>
-        <div class="so-filter-group" data-group="linha">
-          <span class="so-filter-label">Linha editorial</span>
-          <div class="so-chips" id="soFiltersLinha"></div>
+
+        <!-- Linha editorial · select -->
+        <div class="so-filter so-filter-select">
+          <label class="so-filter-label" for="soSelectLinha">Linha editorial</label>
+          <select class="so-select" id="soSelectLinha" data-group="linha"></select>
         </div>
-        <div class="so-filter-group" data-group="peca">
-          <span class="so-filter-label">Peça</span>
-          <div class="so-chips" id="soFiltersPeca"></div>
+
+        <!-- Formato · select -->
+        <div class="so-filter so-filter-select">
+          <label class="so-filter-label" for="soSelectFormato">Formato</label>
+          <select class="so-select" id="soSelectFormato" data-group="formato"></select>
         </div>
-        <div class="so-filter-group" data-group="formato">
-          <span class="so-filter-label">Formato</span>
-          <div class="so-chips" id="soFiltersFormato"></div>
+
+        <!-- Peça · select -->
+        <div class="so-filter so-filter-select">
+          <label class="so-filter-label" for="soSelectPeca">Peça</label>
+          <select class="so-select" id="soSelectPeca" data-group="peca"></select>
         </div>
-        <div class="so-filter-group" data-group="status">
+
+        <!-- Status · 3 valores, chips multi com cor -->
+        <div class="so-filter so-filter-chips" data-group="status">
           <span class="so-filter-label">Status</span>
           <div class="so-chips" id="soFiltersStatus"></div>
         </div>
-      </div>
 
-      <div class="so-toolbar-actions">
-        <span class="so-count" id="soCount"></span>
-        <button type="button" class="so-clear" id="soClearFilters" hidden>Limpar filtros</button>
+        <!-- Counter + clear -->
+        <div class="so-toolbar-actions">
+          <span class="so-count" id="soCount"></span>
+          <button type="button" class="so-clear" id="soClearFilters" hidden>Limpar</button>
+        </div>
       </div>
     </div>
   </div>
