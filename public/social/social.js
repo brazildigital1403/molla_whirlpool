@@ -13,8 +13,8 @@
     institucional:  { label: 'Institucional',         cor: '#39454D' },
     conhecimento:   { label: 'Conhecimento de peças', cor: '#FF671F' },
     resolucao:      { label: 'Resolução de problemas',cor: '#F59E0B' },
-    boas_praticas:  { label: 'Boas práticas',         cor: '#0F766E' },
-    humor:          { label: 'Humor técnico',         cor: '#7C6EE8' },
+    boas_praticas:  { label: 'Boas práticas',         cor: '#D97706' },
+    humor:          { label: 'Humor técnico',         cor: '#7A8794' },
   };
   const FORMATOS = {
     carrossel:        'Carrossel',

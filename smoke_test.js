@@ -329,8 +329,8 @@ console.log(`\n${YEL}6. Logo Whirlpool nas referencias${RST}`);
 const pagesWithLogo = ['public/index.html', 'public/login.html', 'public/assets/header.js'];
 for (const f of pagesWithLogo) {
   const content = read(f);
-  if (/logo_whirlpool\.webp/.test(content)) ok(`${f} aponta pra logo_whirlpool.webp`);
-  else ko(`${f} nao aponta pra logo_whirlpool.webp`);
+  if (/logo_pecas_originais\.png/.test(content)) ok(`${f} aponta pra logo_pecas_originais.png`);
+  else ko(`${f} nao aponta pra logo_pecas_originais.png`);
 }
 
 // ============================================================

@@ -22,7 +22,6 @@
   --so-blue-soft: #FFB082;
   --so-blue-2: #1E7BAB;
   --so-amber:  #F59E0B;
-  --so-violet: #7C6EE8;
   --so-success: #16A34A;   /* verde semântico de "aprovado" */
   --so-success-soft: #50E596;
   --so-danger: #E5484D;
@@ -612,8 +611,8 @@ body {
 .so-card[data-linha="institucional"]  { --so-card-color: #39454D; --so-card-color-soft: rgba(57, 69, 77, 0.14); }
 .so-card[data-linha="conhecimento"]   { --so-card-color: #FF671F; --so-card-color-soft: rgba(255, 103, 31, 0.14); }
 .so-card[data-linha="resolucao"]      { --so-card-color: #F59E0B; --so-card-color-soft: rgba(245, 158, 11, 0.16); }
-.so-card[data-linha="boas_praticas"]  { --so-card-color: #0F766E; --so-card-color-soft: rgba(15, 118, 110, 0.16); }
-.so-card[data-linha="humor"]          { --so-card-color: #7C6EE8; --so-card-color-soft: rgba(124, 110, 232, 0.16); }
+.so-card[data-linha="boas_praticas"]  { --so-card-color: #D97706; --so-card-color-soft: rgba(217, 119, 6, 0.16); }
+.so-card[data-linha="humor"]          { --so-card-color: #7A8794; --so-card-color-soft: rgba(122, 135, 148, 0.18); }
 
 /* ============================================================
    6. DRAWER lateral
