@@ -38,6 +38,11 @@
 }
 
 * { box-sizing: border-box; }
+
+/* Garante que o atributo HTML [hidden] sempre vença regras
+   que definem display: em elementos com position: fixed/absolute. */
+[hidden] { display: none !important; }
+
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
@@ -582,9 +587,16 @@ body {
   background: rgba(13, 67, 107, 0.5);
   z-index: 1099;
   opacity: 0;
-  transition: opacity 240ms ease;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 240ms ease, visibility 0ms linear 240ms;
 }
-.so-drawer-backdrop.is-open { opacity: 1; }
+.so-drawer-backdrop.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition: opacity 240ms ease, visibility 0ms linear 0ms;
+}
 
 .so-drawer {
   position: fixed;
@@ -871,8 +883,16 @@ body {
   inset: 0;
   background: rgba(13, 67, 107, 0.6);
   z-index: 1199;
-  display: grid;
-  place-items: center;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 200ms ease, visibility 0ms linear 200ms;
+}
+.so-modal-backdrop.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition: opacity 200ms ease, visibility 0ms linear 0ms;
 }
 .so-modal {
   position: fixed;

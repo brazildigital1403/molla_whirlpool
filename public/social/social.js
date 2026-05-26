@@ -523,6 +523,7 @@
     $('#soMotivoError').hidden = true;
     bd.hidden = false;
     requestAnimationFrame(() => {
+      bd.classList.add('is-open');
       modal.classList.add('is-open');
       modal.setAttribute('aria-hidden', 'false');
       setTimeout(() => $('#soMotivoText').focus(), 100);
@@ -532,6 +533,7 @@
     const modal = $('#soModalReprovar');
     const bd = $('#soModalBackdrop');
     modal.classList.remove('is-open');
+    bd.classList.remove('is-open');
     modal.setAttribute('aria-hidden', 'true');
     setTimeout(() => { bd.hidden = true; }, 220);
     delete modal.dataset.postId;
@@ -732,6 +734,17 @@
   // BOOT
   // ============================================================
   async function boot() {
+    // Reset defensivo: garante que nenhum overlay ficou marcado como aberto
+    // por algum cache, navegação anterior ou bug de extensão do navegador.
+    const _bd1 = $('#soDrawerBackdrop');
+    const _bd2 = $('#soModalBackdrop');
+    const _dr  = $('#soDrawer');
+    const _md  = $('#soModalReprovar');
+    if (_bd1) { _bd1.hidden = true; _bd1.classList.remove('is-open'); }
+    if (_bd2) { _bd2.hidden = true; _bd2.classList.remove('is-open'); }
+    if (_dr)  { _dr.classList.remove('is-open'); _dr.setAttribute('aria-hidden', 'true'); }
+    if (_md)  { _md.classList.remove('is-open');  _md.setAttribute('aria-hidden', 'true'); }
+
     if (window.SocialStore && window.SocialStore._failed) {
       $('#soTema').textContent = 'Erro de configuração';
       $('#soConceito').textContent = 'Faltam dependências (Supabase/config). Recarrega a página.';
