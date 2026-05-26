@@ -79,7 +79,7 @@ button { font-family: inherit; }
 .user-chip .avatar {
   width: 22px; height: 22px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--blue), var(--green));
+  background: linear-gradient(135deg, var(--blue), var(--navy));
   color: var(--white);
   display: grid;
   place-items: center;
@@ -107,8 +107,8 @@ button { font-family: inherit; }
 .page-header {
   padding: 36px 24px 24px;
   background:
-    radial-gradient(circle at 85% 0%, rgba(80,229,150,.20), transparent 40%),
-    radial-gradient(circle at 0% 100%, rgba(0, 160, 221,.16), transparent 50%),
+    radial-gradient(circle at 85% 0%, rgba(0, 160, 221,.22), transparent 40%),
+    radial-gradient(circle at 0% 100%, rgba(13, 67, 107,.14), transparent 50%),
     linear-gradient(180deg, #FFFFFF 0%, var(--light) 100%);
 }
 .page-header-inner {
@@ -133,7 +133,7 @@ button { font-family: inherit; }
   letter-spacing: -0.5px;
 }
 .page-header h1 strong {
-  background: linear-gradient(135deg, var(--blue), var(--green));
+  background: linear-gradient(135deg, var(--navy), var(--blue));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -155,7 +155,7 @@ main {
 /* ----------------------------- TOOLBAR ----------------------------- */
 /* ============ DASHBOARD (home da aprovação) ============ */
 .dashboard {
-  background: linear-gradient(135deg, rgba(0, 160, 221, 0.06) 0%, rgba(80, 229, 150, 0.04) 100%);
+  background: linear-gradient(135deg, rgba(0, 160, 221, 0.06) 0%, rgba(13, 67, 107, 0.04) 100%);
   border: 1px solid rgba(13, 67, 107, 0.06);
   border-radius: 16px;
   padding: 22px 24px;
@@ -428,7 +428,7 @@ main {
   position: absolute;
   top: 0; left: 0; right: 0;
   height: 5px;
-  background: linear-gradient(90deg, var(--blue), var(--green));
+  background: linear-gradient(90deg, var(--blue), var(--navy));
 }
 .campaign-card:hover {
   transform: translateY(-4px);
@@ -1663,8 +1663,8 @@ footer.page-footer strong { color: var(--navy); }
   transition: all 200ms ease;
 }
 .version-card.is-current {
-  background: linear-gradient(135deg, rgba(80, 229, 150, 0.10), rgba(0, 160, 221, 0.08));
-  border-color: rgba(80, 229, 150, 0.32);
+  background: linear-gradient(135deg, rgba(0, 160, 221, 0.10), rgba(13, 67, 107, 0.08));
+  border-color: rgba(0, 160, 221, 0.32);
 }
 .version-thumb {
   width: 100%;

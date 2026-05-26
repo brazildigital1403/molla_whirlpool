@@ -45,7 +45,7 @@ main { min-height: 70vh; }
 /* ============ HERO ============ */
 .aq-hero {
   background:
-    radial-gradient(circle at 92% 12%, rgba(80, 229, 150, 0.30), transparent 42%),
+    radial-gradient(circle at 92% 12%, rgba(13, 67, 107, 0.14), transparent 42%),
     radial-gradient(circle at 8% 90%, rgba(0, 160, 221, 0.22), transparent 50%),
     linear-gradient(135deg, #F1F5F9 0%, #FFFFFF 100%);
   padding: 64px 24px 48px;
@@ -71,8 +71,8 @@ main { min-height: 70vh; }
 }
 .aq-dot {
   width: 8px; height: 8px; border-radius: 50%;
-  background: var(--aq-green);
-  box-shadow: 0 0 0 4px rgba(80, 229, 150, 0.18);
+  background: var(--aq-blue);
+  box-shadow: 0 0 0 4px rgba(0, 160, 221, 0.18);
 }
 .aq-hero h1 {
   font-size: 44px;
@@ -82,7 +82,7 @@ main { min-height: 70vh; }
   line-height: 1.1;
 }
 .aq-hero h1 strong {
-  background: linear-gradient(135deg, var(--aq-blue), var(--aq-green));
+  background: linear-gradient(135deg, var(--aq-navy), var(--aq-blue));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
