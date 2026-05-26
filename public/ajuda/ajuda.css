@@ -331,7 +331,6 @@ body {
 .aj-area-featured {
   background: linear-gradient(135deg, rgba(0, 160, 221, 0.08), rgba(13, 67, 107, 0.06));
   border-color: rgba(0, 160, 221, 0.18);
-  grid-column: 1 / -1;
 }
 .aj-pill {
   font-size: 9px;
